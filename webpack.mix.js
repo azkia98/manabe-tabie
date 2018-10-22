@@ -11,5 +11,13 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-   .sass('resources/sass/app.scss', 'public/css');
+// mix.js('resources/js/app.js', 'public/js')
+//    .sass('resources/sass/app.scss', 'public/css');
+
+mix.js('resources/js/panel/panel.js','public/js/panel');
+mix.scripts([
+    'resources/js/panel/combines/index.js',
+], 'public/js/panel/all.js');
+
+
+mix.sass('resources/sass/panel/panel.scss','public/css/panel.css');

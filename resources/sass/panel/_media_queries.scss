@@ -1,0 +1,78 @@
+
+
+// xmall devices (landscape phones, 576px and up)
+@mixin xm() {
+    @media (min-width: 100px) {
+        @content;
+    }
+}
+
+
+// Small devices (landscape phones, 576px and up)
+@mixin sm() {
+    @media (min-width: 576px) {
+        @content;
+    }
+}
+
+// Medium devices (tablets, 768px and up)
+@mixin md() {
+    @media (min-width: 768px) {
+        @content;
+    }
+}
+
+// Large devices (desktops, 992px and up)
+@mixin lg() {
+    @media (min-width: 992px) {
+        @content;
+    }
+}
+
+// Extra large devices (large desktops, 1400px and up)
+@mixin xl() {
+    @media (min-width: 1400px) {
+        @content;
+    }
+}
+
+
+
+/* 
+====================
+    Devices
+====================
+*/
+
+
+// iPad
+@mixin ipad() {
+    @media (width: 768px) and (height: 1024px) {
+        @content;
+    }
+}
+// iPadPro
+@mixin ipadPro() {
+    @media (width: 1024px) and (height: 1366px) {
+        @content;
+    }
+}
+// iphone 6/7/8 plus
+@mixin iphonePlus() {
+    @media (width: 414px) and (height: 736px) {
+        @content;
+    }
+}
+
+
+
+
+
+/* 
+$main_heading_title: 6rem;
+$numbers: 4rem;
+$paragraph: 1.5rem;
+$paragraph_spacing: 2.8rem;
+$buttonsAndNumberSmallDetailText: 1.5rem;
+$navbarFontSize: 1.3333333333333333rem;
+ */

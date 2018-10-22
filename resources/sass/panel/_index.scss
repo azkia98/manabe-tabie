@@ -1,0 +1,54 @@
+body{
+    color: #5a5a5a;
+}
+
+#main{
+    transition: all .5s;
+}
+
+// Nav Bar
+nav{
+    .fa.fa-bars{
+        font-size: 1.4rem;
+    }
+}
+
+// Side bar
+#sidebar{
+    // height: 100%;
+    @include md{
+        height: calc(100vh - 62px) !important;
+        position: fixed;
+        transition: transform .5s linear;
+        &.collapse{
+            transform: translate(100%,0);
+            &.show{
+                transform: translate(0,0);
+            }
+        }
+        &.collapsing{
+            transform: translate(100%,0);
+        }
+        
+    }
+
+    .fa{
+     transition: all .3s ease-in-out; 
+    }
+    .fa-angle-left{
+        transform: rotate(0deg);
+    }
+    .collapsed{
+        .fa-angle-left{
+            // font-weight: bold;
+            transform: rotate(-90deg);
+        }
+    }
+    .nav-link{
+        color: #f8f9fa;
+    }
+
+    .collapsing{
+        height: 0;
+    }
+}

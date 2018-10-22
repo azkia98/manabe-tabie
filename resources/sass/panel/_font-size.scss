@@ -1,0 +1,7 @@
+@for $i from 1 through 10
+{
+    .material-icons.md-#{$i} 
+    {
+         font-size: 0.5rem * $i;
+    }
+}
