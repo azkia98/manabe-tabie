@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Log;
 
 class Member extends Model
 {
@@ -10,9 +11,7 @@ class Member extends Model
 
     public function getEducationAttribute($value)
     {
-        dumb($value);
         switch ($value) {
-            
             case '1':
                 return 'زیر دیپلم';
                 break;
