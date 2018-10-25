@@ -21,3 +21,5 @@ mix.scripts([
 
 
 mix.sass('resources/sass/panel/panel.scss','public/css/panel.css');
+
+mix.styles(['resources/sass/bootstrap-rtl.css'],'public/css/bootstrap-rtl.css');

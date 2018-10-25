@@ -121,6 +121,6 @@
 
 </html>
 
-<script src="/js/panel/app.js"></script>
+<script src="/js/panel/panel.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
-<script src="/js/combined.js"></script>
+<script src="/js/panel/all.js"></script>
