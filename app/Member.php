@@ -35,4 +35,21 @@ class Member extends Model
                 break;
         }
     }
+    public function getTypememberAttribute($value)
+    {
+        switch ($value) {
+            case '1':
+                return 'همیار طبیعت محافظ';
+                break;
+            case '2':
+                return 'مروج';
+                break;
+            case '3':
+                return 'مروج دانش آموز';
+                break;
+            default:
+                return 'کد همیار مورد نظر قابل تشخیص نمیباشد';
+                break;
+        }
+    }
 }

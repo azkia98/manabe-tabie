@@ -22,6 +22,7 @@ Route::get('/', function () {
 
 Route::middleware('auth')->namespace('Panel')->prefix('panel')->group(function(){
     Route::get('/','PanelController@index');
+    Route::resource('members','MembersController');
 });
 
 

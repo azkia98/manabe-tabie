@@ -12,7 +12,7 @@
 <body>
     <nav class="navbar navbar-expand-md navbar-light p-0 sticky-top bg-light">
         <div class="d-flex align-items-center">
-            <a href="#" class="navbar-brand bg-light py-3 px-5 m-0">پنل مدیریت راکت</a>
+            <a href="#" class="navbar-brand bg-light py-3 px-5 m-0">منابع طبیعی</a>
             <i class="fa fa-bars mr-2" data-toggle="collapse" data-target="#sidebar"></i>
         </div>
 
