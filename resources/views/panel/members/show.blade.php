@@ -36,8 +36,10 @@
 </div>
 
 <div class="d-flex justify-content-end">
-  <form action="{{ route('members.destroy',['id'=> $member->id]) }}">
-    <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+  <form action="{{ route('members.destroy',['id'=> $member->id]) }}" method="POST">
+    @method('DELETE')
+    @csrf
+    <button class="btn btn-danger" id="deleteButton"><i class="fa fa-trash"></i></button>
   </form>
 </div>
 @endsection
@@ -45,26 +47,26 @@
 @section('scripts')
 <script>
   $(document).ready(function(){
-
-  });
-  swal({
-  title: "آیا شما مطمئن؟",
-  text: "آیا شما مطمئن هستید که میخواید این همیار را حذف کنید؟",
-  icon: "warning",
-  buttons: {
-    cancel: "خیر",
-    confirm: "بله",
-  },
-  dangerMode: true,
-  })
-  .then((willDelete) => {
-    if (willDelete) {
-      swal("Poof! Your imaginary file has been deleted!", {
-        icon: "success",
+    $('#deleteButton').click(function(e){
+      e.preventDefault();
+      swal({
+      title: "آیا شما مطمئن؟",
+      text: "آیا شما مطمئن هستید که میخواید این همیار را حذف کنید؟",
+      icon: "warning",
+      buttons: {
+        cancel: "خیر",
+        confirm: "بله",
+      },
+      dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+          $('#deleteButton').parent().submit();
+        } else {
+          swal("همیار شما حذف نشد!");
+        }
       });
-    } else {
-      swal("Your imaginary file is safe!");
-    }
+    })
   });
 </script>
 @endsection

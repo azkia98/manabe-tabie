@@ -16,7 +16,6 @@ class MembersController extends Controller
     public function index()
     {
         $members = Member::paginate(20);
-        dump($members);
         return view('panel.members.index',compact('members'));
     }
 
@@ -49,7 +48,6 @@ class MembersController extends Controller
      */
     public function show(Member $member)
     {
-        alert()->success('You have been logged out.', 'Good bye!');
         return view('panel.members.show',compact('member'));
     }
 
@@ -84,6 +82,8 @@ class MembersController extends Controller
      */
     public function destroy(Member $member)
     {
-        //
+        $member->delete();
+        alert()->success('حذف شد !','همیار شما با موفقیت حذف گردید');
+        return redirect()->route('members.index');
     }
 }
