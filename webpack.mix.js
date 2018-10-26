@@ -1,4 +1,4 @@
-const mix = require('laravel-mix');
+const mix = require("laravel-mix");
 
 /*
  |--------------------------------------------------------------------------
@@ -14,12 +14,20 @@ const mix = require('laravel-mix');
 // mix.js('resources/js/app.js', 'public/js')
 //    .sass('resources/sass/app.scss', 'public/css');
 
-mix.js('resources/js/panel/panel.js','public/js/panel');
-mix.scripts([
-    'resources/js/panel/combines/index.js',
-], 'public/js/panel/all.js');
+mix.js("resources/js/panel/panel.js", "public/js/panel");
+mix.scripts(
+    [
+        "resources/js/panel/combines/index.js",
+        "./node_modules/sweetalert/dist/sweetalert.min.js"
+    ],
+    "public/js/panel/all.js"
+);
 
+mix.sass("resources/sass/panel/panel.scss", "public/css/panel.css");
 
-mix.sass('resources/sass/panel/panel.scss','public/css/panel.css');
+mix.styles(
+    ["resources/sass/bootstrap-rtl.css"],
+    "public/css/bootstrap-rtl.css"
+);
 
-mix.styles(['resources/sass/bootstrap-rtl.css'],'public/css/bootstrap-rtl.css');
+mix.disableNotifications();

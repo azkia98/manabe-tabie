@@ -49,6 +49,7 @@ class MembersController extends Controller
      */
     public function show(Member $member)
     {
+        alert()->success('You have been logged out.', 'Good bye!');
         return view('panel.members.show',compact('member'));
     }
 

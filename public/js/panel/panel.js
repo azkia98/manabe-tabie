@@ -10448,7 +10448,6 @@ module.exports = __webpack_require__(6);
 
 
 var Jquery = $ = __webpack_require__(0);
-
 __webpack_require__(3);
 
 /***/ }),

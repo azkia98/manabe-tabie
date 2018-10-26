@@ -10,6 +10,7 @@
 </head>
 
 <body>
+        
     <nav class="navbar navbar-expand-md navbar-light p-0 sticky-top bg-light">
         <div class="d-flex align-items-center">
             <a href="#" class="navbar-brand bg-light py-3 px-5 m-0">منابع طبیعی</a>
@@ -52,3 +53,6 @@
 <script src="/js/panel/panel.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
 <script src="/js/panel/all.js"></script>
+@include('sweet::alert')
+
+@yield('scripts')
