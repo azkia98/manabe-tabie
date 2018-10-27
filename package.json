@@ -17,10 +17,13 @@
         "jquery": "^3.2",
         "laravel-mix": "^2.0",
         "lodash": "^4.17.5",
+        "persian-date": "^1.0.5",
         "popper.js": "^1.12",
         "shabnam-font": "^3.0.0",
         "sweetalert": "^2.1.0",
         "vue": "^2.5.7"
     },
-    "dependencies": {}
+    "dependencies": {
+        "persian-datepicker": "^1.1.3"
+    }
 }

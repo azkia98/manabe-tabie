@@ -11,7 +11,7 @@ $factory->define(App\Member::class, function (Faker $faker) {
         'issuinglocal'=> 'اراک',
         'identitinumber'=> rand(555,9999999),
         'fathername'=> $faker->firstName,
-        'address'=> 'اراک کوچه اول',
+        'address'=> $faker->address,
         'phonenumber'=> '09383904987',
         'education'=> rand(1,6),
         'job'=> 'بیکار',

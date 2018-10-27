@@ -10447,7 +10447,7 @@ module.exports = __webpack_require__(6);
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var Jquery = $ = __webpack_require__(0);
+var Jquery = jQuery = $ = __webpack_require__(0);
 __webpack_require__(3);
 
 /***/ }),

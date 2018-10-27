@@ -1,5 +1,5 @@
 
-const Jquery = $ = require('jquery');
+const Jquery = jQuery = $ = require('jquery');
 require('bootstrap');
 
 

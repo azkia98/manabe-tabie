@@ -16,13 +16,13 @@
             <div class="collapse" id="submenu1">
                 <ul class="nav px-3">
                         <li class="nav-item">
-                            <a href="#" class="nav-link my-1">اضافه کردن </a>
+                            <a href="{{ route('members.create') }}" class="nav-link my-1">اضافه کردن </a>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link my-1">تایید درخواست</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link my-1">مشاهده همه</a>
+                            <a href="{{ route('members.index') }}" class="nav-link my-1">مشاهده همه</a>
                         </li>
                 </ul>
             </div>

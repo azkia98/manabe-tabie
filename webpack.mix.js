@@ -18,7 +18,9 @@ mix.js("resources/js/panel/panel.js", "public/js/panel");
 mix.scripts(
     [
         "resources/js/panel/combines/index.js",
-        "./node_modules/sweetalert/dist/sweetalert.min.js"
+        "./node_modules/sweetalert/dist/sweetalert.min.js",
+        "./node_modules/persian-date/dist/persian-date.js",
+        "./node_modules/persian-datepicker/dist/js/persian-datepicker.js"
     ],
     "public/js/panel/all.js"
 );
