@@ -2,13 +2,13 @@
 
 @section('content')
 <div class="container-fluid">
-    <form action="{{ route('members.store') }}" method="post">
+    <form action="{{ route('members.store') }}" method="post" enctype="multipart/form-data">
       <div class="row">
         <div class="col-md-6">
           <div class="form-group row">
             <label for="name" class="col-sm-2 col-form-label">نام</label>
             <div class="col-sm-10">
-              <input type="email" class="form-control" name="name" id="name" placeholder="نام">
+              <input type="text" class="form-control" name="name" id="name" placeholder="نام">
             </div>
           </div>
         </div>
@@ -27,7 +27,7 @@
           <div class="form-group row">
             <label for="nationalcode" class="col-sm-2 col-form-label">شماره ملی</label>
             <div class="col-sm-10">
-              <input type="email" class="form-control" name="nationalcode" id="nationalcode" placeholder="شماره ملی">
+              <input type="text" class="form-control" name="nationalcode" id="nationalcode" placeholder="شماره ملی">
             </div>
           </div>
         </div>
@@ -46,7 +46,7 @@
           <div class="form-group row">
             <label for="fathername" class="col-sm-2 col-form-label">نام پدر</label>
             <div class="col-sm-10">
-              <input type="email" class="form-control" name="fathername" id="fathername" placeholder="نام پدر">
+              <input type="text" class="form-control" name="fathername" id="fathername" placeholder="نام پدر">
             </div>
           </div>
         </div>
@@ -65,7 +65,7 @@
           <div class="form-group row">
             <label for="identitinumber" class="col-sm-2 col-form-label">شماره شناسنامه</label>
             <div class="col-sm-10">
-              <input type="email" class="form-control" name="identitinumber" id="identitinumber" placeholder="شماره شناسنامه">
+              <input type="text" class="form-control" name="identitinumber" id="identitinumber" placeholder="شماره شناسنامه">
             </div>
           </div>
         </div>
@@ -84,7 +84,7 @@
           <div class="form-group row">
             <label for="birthdate" class="col-sm-2 col-form-label">تاریخ تولد</label>
             <div class="col-sm-10">
-              <input type="email" class="form-control" name="birthdate" id="birthdate" placeholder="تاریخ تولد">
+              <input type="text" class="form-control" name="birthdate" id="birthdate" placeholder="تاریخ تولد">
             </div>
           </div>
         </div>
@@ -127,8 +127,18 @@
         </div>
       </div>
 
-      <textarea name="address" cols="30" rows="10" placeholder="آدرس"></textarea>
-      
+      <div class="row mt-2">
+        <div class="col-md-6">
+          <textarea name="address" class="form-control" cols="30" rows="5" placeholder="آدرس"></textarea>
+        </div>
+        <div class="col-md-6">
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="customFile" name="picture">
+                <label class="custom-file-label" for="customFile">عکس همیار را انتخاب کنید</label>
+            </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-success mt-3">ثبت</button>
     </form>
 </div>
 
