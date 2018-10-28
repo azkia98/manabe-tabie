@@ -51,7 +51,7 @@ class MembersController extends Controller
         alert()->success('همیار شماثب شد!!','همیار شما با موفقیت ثبت شد');
         return redirect()->route('members.index');
     }
-
+    
     /**
      * Display the specified resource.
      *

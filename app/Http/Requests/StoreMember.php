@@ -36,8 +36,8 @@ class StoreMember extends FormRequest
             'education' => 'required',
             'job' => 'required',
             'issuingdate' => 'required',
-            'typemember' => 'required|',
-            'picture' => 'mimes:jpeg,bmp,png',
+            'typemember' => 'required',
+            'picture' => 'required|mimes:jpeg,bmp,png',
         ];
     }
 }
