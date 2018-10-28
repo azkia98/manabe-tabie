@@ -1,8 +1,10 @@
 @extends('panel.layout.master')
 
 @section('content')
+@include('panel.layout.errors')
 <div class="container-fluid">
     <form action="{{ route('members.store') }}" method="post" enctype="multipart/form-data">
+      @csrf
       <div class="row">
         <div class="col-md-6">
           <div class="form-group row">

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Hekmatinasser\Verta\Facades\Verta;
 use Carbon\Carbon;
+use App\Http\Requests\StoreMember;
 
 class MembersController extends Controller
 {
@@ -37,8 +38,10 @@ class MembersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreMember $request)
     {
+
+        dump('fasdf');
         if(!$this->saveMember($request))
         {
             alert()->error('فایل شما با موفقیت ذخیره نشد!','یه مشکلی به وجود آمده!!!');
@@ -99,9 +102,11 @@ class MembersController extends Controller
     /**
      * @return boolval
      * @param Request $request
+     * 
+     * Save Member data on database :)
      */
 
-    public function saveMember(Request $request)
+    public function saveMember(StoreMember $request)
     {
         $member = new Member();
         $member->name = $request->name;
@@ -109,7 +114,6 @@ class MembersController extends Controller
         $member->birthdate = Carbon::now()->timestamp($request->birthdate);
         $member->nationalcode = $request->nationalcode;
         $member->issuinglocal = $request->issuinglocal;
-        $member->identitinumber = $request->identitinumber;
         $member->identitinumber = $request->identitinumber;
         $member->fathername = $request->fathername;
         $member->address = $request->address;
