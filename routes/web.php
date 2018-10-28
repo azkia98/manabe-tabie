@@ -20,7 +20,7 @@ Route::get('/', function () {
 
 
 
-Route::namespace('Panel')->prefix('panel')->group(function(){
+Route::namespace('Panel')->prefix('panell')->group(function(){
     Route::get('/','PanelController@index');
     Route::resource('members','MembersController');
 });
