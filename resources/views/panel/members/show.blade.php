@@ -9,7 +9,7 @@
       <p><span>نام پدر :</span>{{ $member->fathername }}</p>
     </div>
     <div class="col-6 d-flex justify-content-end">
-      <img src="{{ $member->picture }}" height="120" width="120" alt="{{ $member->picture }}">
+      <img src="{{ asset($member->picture) }}" height="120" width="120" alt="{{ $member->picture }}">
     </div>
   </div>
   <hr>
