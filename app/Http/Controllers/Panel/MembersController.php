@@ -42,16 +42,15 @@ class MembersController extends Controller
     {
 
         dump('fasdf');
-        if(!$this->saveMember($request))
-        {
-            alert()->error('فایل شما با موفقیت ذخیره نشد!','یه مشکلی به وجود آمده!!!');
+        if (!$this->saveMember($request)) {
+            alert()->error('فایل شما با موفقیت ذخیره نشد!', 'یه مشکلی به وجود آمده!!!');
             return redirect()->back();
         }
 
-        alert()->success('همیار شماثب شد!!','همیار شما با موفقیت ثبت شد');
+        alert()->success('همیار شماثب شد!!', 'همیار شما با موفقیت ثبت شد');
         return redirect()->route('members.index');
     }
-    
+
     /**
      * Display the specified resource.
      *
@@ -71,7 +70,7 @@ class MembersController extends Controller
      */
     public function edit(Member $member)
     {
-        return $member;
+        return view('panel.members.edit', compact('member'));
     }
 
     /**
@@ -81,9 +80,17 @@ class MembersController extends Controller
      * @param  \App\Member  $member
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Member $member)
+    public function update(StoreMember $request, Member $member)
     {
-        //
+        // return $member;
+        // dd($request->file('picture'));
+        $status = $this->saveMember($request,'UPDATE',$member);
+
+        if(!$status)
+            alert()->error('مشکلی در تغییر دادن همیار به وجود آمده!');
+        
+        alert()->success('اطلاعات همیار شما با موفقیت تغییر کرد !');
+        return redirect()->back();
     }
 
     /**
@@ -106,9 +113,8 @@ class MembersController extends Controller
      * Save Member data on database :)
      */
 
-    public function saveMember(StoreMember $request)
+    public function saveMember(StoreMember $request, $action = 'SAVE',Member $member)
     {
-        $member = new Member();
         $member->name = $request->name;
         $member->familyname = $request->familyname;
         $member->birthdate = Carbon::now()->timestamp($request->birthdate);
@@ -122,9 +128,22 @@ class MembersController extends Controller
         $member->job = $request->job;
         $member->issuingdate = Carbon::now()->timestamp($request->issuingdate);
         $member->typemember = $request->typemember;
-        $path = $request->file('picture')->store('pictures', 'public');
-        $member->picture = 'storage/'.$path;
-        $member->save();
+        if ($request->file('picture')) {
+            $path = $request->file('picture')->store('pictures', 'public');
+            $member->picture = 'storage/' . $path;
+        }
+        switch ($action) {
+            case 'SAVE':
+                $member->save();
+                break;
+            case 'UPDATE':
+                $member->update();
+                break;
+            default:
+                break;
+        }
+
+
         return true;
     }
 }

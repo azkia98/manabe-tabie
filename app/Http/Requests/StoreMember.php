@@ -23,7 +23,7 @@ class StoreMember extends FormRequest
      */
     public function rules()
     {
-        return [
+        $roles= [
             'name' => 'required|string',
             'familyname' => 'required|string',
             'birthdate' => 'required',
@@ -37,7 +37,15 @@ class StoreMember extends FormRequest
             'job' => 'required',
             'issuingdate' => 'required',
             'typemember' => 'required',
-            'picture' => 'required|mimes:jpeg,bmp,png',
         ];
+
+        if ($this->method() == 'POST') {
+            $roles['picture'] = 'required|mimes:jpeg,bmp,png';
+        }elseif($this->method() == 'PATCH'){
+            $roles['picture'] = 'mimes:jpeg,bmp,png';
+        }
+
+        return $roles;
+
     }
 }

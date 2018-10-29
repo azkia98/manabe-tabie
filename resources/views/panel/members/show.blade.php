@@ -21,8 +21,8 @@
     </div>
     <div class="col-md-4">
       <p><span>کد ملی :</span>{{ $member->nationalcode }}</p>
-      <p><span>تحصیلات :</span>{{ $member->education }}</p>
-      <p><span>نوع همیار :</span>{{ $member->typemember }}</p>
+      <p><span>تحصیلات :</span>{{ $member->educationPretty }}</p>
+      <p><span>نوع همیار :</span>{{ $member->typememberPretty }}</p>
       
     </div>
     <div class="col-md-4">

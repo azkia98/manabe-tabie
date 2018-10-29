@@ -21,8 +21,8 @@
             <td>{{ $member->familyname }}</td>
             <td>{{ verta($member->birthdate)->format('%B %d، %Y') }}</td>
             <td>{{ $member->fathername }}</td>
-            <td>{{ $member->typemember }}</td>
-            <td>{{ $member->education }}</td>
+            <td>{{ $member->typememberPretty }}</td>
+            <td>{{ $member->educationPretty }}</td>
             <td class="text-center"><a href="{{ route('members.show',['id'=> $member->id]) }}"><i class="fa fa-info"></i></a></td>
             </tr>
         @endforeach

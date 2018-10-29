@@ -9,9 +9,9 @@ class Member extends Model
 {
     protected $guarded = [];
 
-    public function getEducationAttribute($value)
+    public function getEducationPrettyAttribute()
     {
-        switch ($value) {
+        switch ($this->education) {
             case '1':
                 return 'زیر دیپلم';
                 break;
@@ -35,9 +35,9 @@ class Member extends Model
                 break;
         }
     }
-    public function getTypememberAttribute($value)
+    public function getTypememberPrettyAttribute()
     {
-        switch ($value) {
+        switch ($this->typemember) {
             case '1':
                 return 'همیار طبیعت محافظ';
                 break;
