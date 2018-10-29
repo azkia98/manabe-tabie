@@ -123,7 +123,7 @@ class MembersController extends Controller
         $member->issuingdate = Carbon::now()->timestamp($request->issuingdate);
         $member->typemember = $request->typemember;
         $path = $request->file('picture')->store('pictures', 'public');
-        $member->picture = $path;
+        $member->picture = 'storage/'.$path;
         $member->save();
         return true;
     }
