@@ -71,7 +71,7 @@ class MembersController extends Controller
      */
     public function edit(Member $member)
     {
-        //
+        return $member;
     }
 
     /**

@@ -36,7 +36,8 @@
 </div>
 
 <div class="d-flex justify-content-end">
-  <form action="{{ route('members.destroy',['id'=> $member->id]) }}" method="POST">
+  <a href="{{ route('members.edit',['id'=> $member->id]) }}" class="btn btn-primary ml-1"><i class="fa fa-edit"></i></a>
+  <form action="{{ route('members.destroy',['id'=> $member->id]) }}" class="mb-0" method="POST">
     @method('DELETE')
     @csrf
     <button class="btn btn-danger" id="deleteButton"><i class="fa fa-trash"></i></button>
