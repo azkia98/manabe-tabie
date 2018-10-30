@@ -106,6 +106,12 @@ class MembersController extends Controller
         return redirect()->route('members.index');
     }
 
+
+    public function showCards()
+    {
+       return view('panel.members.show-cards');
+    }
+
     /**
      * @return boolval
      * @param Request $request

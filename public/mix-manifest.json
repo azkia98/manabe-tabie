@@ -1,6 +1,7 @@
 {
     "/js/panel/panel.js": "/js/panel/panel.js",
     "/css/panel.css": "/css/panel.css",
+    "/css/show-cards.css": "/css/show-cards.css",
     "/js/panel/all.js": "/js/panel/all.js",
     "/css/bootstrap-rtl.css": "/css/bootstrap-rtl.css"
 }

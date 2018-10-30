@@ -23,6 +23,7 @@ Route::get('/', function () {
 Route::namespace('Panel')->prefix('panell')->group(function(){
     Route::get('/','PanelController@index');
     Route::resource('members','MembersController');
+    Route::get('/show-cards','MembersController@showCards');
 });
 
 

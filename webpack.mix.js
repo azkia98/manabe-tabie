@@ -26,6 +26,7 @@ mix.scripts(
 );
 
 mix.sass("resources/sass/panel/panel.scss", "public/css/panel.css");
+mix.sass("resources/sass/panel/show-cards.scss", "public/css");
 
 mix.styles(
     ["resources/sass/bootstrap-rtl.css"],
@@ -33,3 +34,12 @@ mix.styles(
 );
 
 mix.disableNotifications();
+
+
+mix.browserSync({
+    proxy: 'manabe-tabie.test',
+    notify: false,
+    browser: "chromium-browser",
+    reloadDebounce: 500,
+    reloadDelay: 500
+});
