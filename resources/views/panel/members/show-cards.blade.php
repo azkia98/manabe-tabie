@@ -8,8 +8,12 @@
 
 <div class="pages">
     <div class="page">
-        <div class="card">
-            
+        <div class="cards">
+            <div class="card">
+                <section class="name"><span>نام :</span> مهدی </section>
+                <section class="familyname"><span>نام خانوادگی :</span> ابراهیمی</section>
+                <section class="familyname"><span>نام خانوادگی :</span> ابراهیمی</section>
+            </div>
         </div>
     </div>
     <div class="page">
