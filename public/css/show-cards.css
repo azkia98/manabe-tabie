@@ -19,6 +19,49 @@ html {
   display: inline-block;
   width: 8.5cm;
   height: 5cm;
+  background-image: url("/images/card-img-sample.jpg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  font-size: 0.7rem;
+  font-weight: 1000;
   position: relative;
+}
+
+.cards .card .picture {
+  height: 1.5cm;
+  position: absolute;
+  top: 18px;
+  left: 30px;
+}
+
+.cards .card .signature {
+  height: 1cm;
+  position: absolute;
+  bottom: 18px;
+  left: 30px;
+}
+
+.cards .card .name {
+  position: absolute;
+  top: 90px;
+  right: 10px;
+}
+
+.cards .card .familyname {
+  position: absolute;
+  top: 110px;
+  right: 10px;
+}
+
+.cards .card .national-code {
+  position: absolute;
+  top: 115px;
+  right: 10px;
+}
+
+.cards .card .fathername {
+  position: absolute;
+  top: 130px;
+  right: 10px;
 }
 
