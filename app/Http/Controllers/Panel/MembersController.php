@@ -8,6 +8,9 @@ use App\Http\Controllers\Controller;
 use Hekmatinasser\Verta\Facades\Verta;
 use Carbon\Carbon;
 use App\Http\Requests\StoreMember;
+use Maatwebsite\Excel\Facades\Excel;
+use App\User;
+use Illuminate\Support\Facades\DB;
 
 class MembersController extends Controller
 {
@@ -84,11 +87,11 @@ class MembersController extends Controller
     {
         // return $member;
         // dd($request->file('picture'));
-        $status = $this->saveMember($request,'UPDATE',$member);
+        $status = $this->saveMember($request, 'UPDATE', $member);
 
-        if(!$status)
+        if (!$status)
             alert()->error('مشکلی در تغییر دادن همیار به وجود آمده!');
-        
+
         alert()->success('اطلاعات همیار شما با موفقیت تغییر کرد !');
         return redirect()->back();
     }
@@ -106,11 +109,62 @@ class MembersController extends Controller
         return redirect()->route('members.index');
     }
 
+    /**
+     * Show all of the members in card view :)
+     */
 
     public function showCards()
     {
-       return view('panel.members.show-cards');
+        return view('panel.members.show-cards');
     }
+
+    /**
+     * Export all of the members data in excel format
+     */
+
+    public function exportExcelAllMembers()
+    {
+        // $members = Member::select("concat(name, ' ' , familyname) as نام و نام‌خانوادگی", 'nationalcode as کد ملی', 'issuinglocal as محل صدور', 'identitinumber as کد ملی', 'fathername as نام پدر', 'address as آدرس', 'phonenumber as تلفن همراه', 'education', 'job as شغل', 'issuingdate', 'typemember')->get();
+        $members = Member::select([
+            DB::raw("CONCAT(name, ' ' , familyname) AS 'نام و نام خانوادگی'"),
+            'birthdate',
+            'identitinumber as شماره شناسمه',
+            'issuinglocal as محل صدور',
+            'nationalcode as کد ملی',
+            'fathername as نام پدر',
+            'address as آدرس',
+            'phonenumber as تلفن همراه',
+            'typemember',
+            'education'
+        ])->get();
+            Excel::create('users', function ($excel) use ($members) {
+            $excel->sheet('همیاران', function ($sheet) use ($members) {
+                $members = $members->map(function ($member, $key) {
+                    $member->تاریخـتولد = verta($member->birthdate)->format('Y');
+                    $member->تاریخـصدور = verta($member->issuingdate)->format('Y');
+                    unset($member->issuingdate);
+                    unset($member->birthdate);
+                    $member->نوعـهمیار = $member->typememberPretty;
+                    $member->تحصیلات = $member->educationPretty;
+                    unset($member->typemember);
+                    unset($member->education);
+                    // $member->fullname = $member->name . ' ' . $member->familyname;
+
+                    unset($member->name);
+                    unset($member->familyname);
+                    return $member;
+                });
+                $sheet->fromArray($members);
+            });
+            // $excel->sheet('همیاران', function ($sheet) {
+            //     $sheet->rows(array(
+            //         array('test1', 'test2'),
+            //         array('test3', 'test4')
+            //     ));
+            // });
+        })->export('xls');
+    }
+
 
     /**
      * @return boolval
@@ -119,7 +173,7 @@ class MembersController extends Controller
      * Save Member data on database :)
      */
 
-    public function saveMember(StoreMember $request, $action = 'SAVE',Member $member)
+    public function saveMember(StoreMember $request, $action = 'SAVE', Member $member)
     {
         $member->name = $request->name;
         $member->familyname = $request->familyname;
