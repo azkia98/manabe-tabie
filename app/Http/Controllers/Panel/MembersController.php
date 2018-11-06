@@ -44,8 +44,7 @@ class MembersController extends Controller
     public function store(StoreMember $request)
     {
 
-        dump('fasdf');
-        if (!$this->saveMember($request)) {
+        if (!$this->saveMember($request,'SAVE',new Member())) {
             alert()->error('فایل شما با موفقیت ذخیره نشد!', 'یه مشکلی به وجود آمده!!!');
             return redirect()->back();
         }
@@ -149,7 +148,6 @@ class MembersController extends Controller
                     unset($member->typemember);
                     unset($member->education);
                     // $member->fullname = $member->name . ' ' . $member->familyname;
-
                     unset($member->name);
                     unset($member->familyname);
                     return $member;
@@ -171,9 +169,11 @@ class MembersController extends Controller
      * @param Request $request
      * 
      * Save Member data on database :)
+     * if you want to save data set SAVE on second parameter 
+     * if you want to update you data use UPDADE  on second parameter 
      */
 
-    public function saveMember(StoreMember $request, $action = 'SAVE', Member $member)
+    public function saveMember(StoreMember $request, $action = 'SAVE',Member $member)
     {
         $member->name = $request->name;
         $member->familyname = $request->familyname;
