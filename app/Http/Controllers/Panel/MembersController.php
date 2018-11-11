@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 use Hekmatinasser\Verta\Facades\Verta;
 use Carbon\Carbon;
 use App\Http\Requests\StoreMember;
+use App\User;
+use Maatwebsite\Excel\Facades\Excel;
 
 class MembersController extends Controller
 {
@@ -84,11 +86,11 @@ class MembersController extends Controller
     {
         // return $member;
         // dd($request->file('picture'));
-        $status = $this->saveMember($request,'UPDATE',$member);
+        $status = $this->saveMember($request, 'UPDATE', $member);
 
-        if(!$status)
+        if (!$status)
             alert()->error('مشکلی در تغییر دادن همیار به وجود آمده!');
-        
+
         alert()->success('اطلاعات همیار شما با موفقیت تغییر کرد !');
         return redirect()->back();
     }
@@ -109,7 +111,7 @@ class MembersController extends Controller
 
     public function showCards()
     {
-       return view('panel.members.show-cards');
+        return view('panel.members.show-cards');
     }
 
     /**
@@ -119,7 +121,7 @@ class MembersController extends Controller
      * Save Member data on database :)
      */
 
-    public function saveMember(StoreMember $request, $action = 'SAVE',Member $member)
+    public function saveMember(StoreMember $request, $action = 'SAVE', Member $member)
     {
         $member->name = $request->name;
         $member->familyname = $request->familyname;
@@ -152,4 +154,62 @@ class MembersController extends Controller
 
         return true;
     }
+
+
+
+    public function showMembersInExcel()
+    {
+        // $users = User::select('id', 'name', 'email', 'created_at')->get();
+
+        $members = Member::all();
+        $data = [
+            // [
+            //     'نام و نام خانوادگی' => 'mahdi',
+            //     'تاریخ تولد' => '۱۳۸۵',
+            //     'شماره شاسنامه' => '0514245215',
+            //     'محل صدور' => 'اراک',
+            //     'کدملی' => '۰۵۲۱۰۷۲۳۴',
+            //     'نام پدر' => 'ابولمعصوم',
+            //     'محل سکونت' => 'اراک',
+            //     'شماره تماس' => '۰۹۳۸۳۹۰۴۹۶۳',
+            //     'شغل' => 'بیکار',
+            //     'سال صدور' => '۱۳۸۵',
+            // ],
+        ];
+
+        foreach ($members as $member) {
+            $data[] = [
+                'نام و نام خانوادگی' => $member->full_name,
+                'تاریخ تولد' => $this->convertToPersian(verta($member->created_at)->year),
+                'شماره شاسنامه' => $this->convertToPersian($member->identitinumber),
+                'محل صدور' => 'اراک',
+                'کدملی' => $this->convertToPersian($member->nationalcode),
+                'نام پدر' => $member->fathername,
+                'محل سکونت' => $member->address,
+                'شماره تماس' => $this->convertToPersian($member->phonenumber),
+                'سطح تحصیلات' => $member->educationPretty,
+                'شغل' => $member->job,
+                'سال صدور' => $this->convertToPersian(verta($member->issuingdate)->year),
+            ];
+        }
+
+
+        Excel::create('users', function ($excel) use ($data) {
+            $excel->sheet('Sheet 1', function ($sheet) use ($data) {
+                $sheet->fromArray($data);
+            });
+        })->export('xls');
+
+        return 'Ok';
+    }
+
+
+    public function convertToPersian($string) {
+        $persian = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+        $num = range(0, 9);
+        $convertedToPersianNumbers = str_replace($num,$persian, $string);
+    
+        return $convertedToPersianNumbers;
+    }
+
 }

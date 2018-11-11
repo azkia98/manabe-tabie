@@ -52,4 +52,8 @@ class Member extends Model
                 break;
         }
     }
+    public function getFullNameAttribute()
+    {
+        return "{$this->name} {$this->familyname}";
+    }
 }

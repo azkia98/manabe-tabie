@@ -177,6 +177,7 @@ return [
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
         Illuminate\Translation\TranslationServiceProvider::class,
         Overtrue\LaravelLang\TranslationServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
 
     ],
 
@@ -228,6 +229,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Verta' => Hekmatinasser\Verta\Verta::class,
         'Alert' => UxWeb\SweetAlert\SweetAlert::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
 
     ],
 
