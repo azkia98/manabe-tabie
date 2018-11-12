@@ -10,18 +10,18 @@
     <div class="page">
         <div class="cards">
             <div class="card">
-                <section class="name"><span>نام :</span> مهدی </section>
-                <section class="familyname"><span>نام خانوادگی :</span> ابراهیمی</section>
-                <section class="national-code"><span>کد ملی :</span> ۰۵۲۱۰۷۳۴۶۴</section>
-                <section class="fathername"><span>نام پدر :</span> حسین دهقانی</section>
+                <section class="number-of-register">۹۶۰۱۶۹ </section>
+                <section class="name"> مهدی ابراهیمی </section>
+                <section class="national-code"> ۰۵۲۱۰۷۳۴۶۴</section>
+                <section class="fathername">حسین دهقانی</section>
+                <section class="birthdate">۱۳۸۵</section>
+                <section class="state">مرکزی</section>
+                <section class="city">شازند</section>
                 <img class="picture" src="/images/Leila_Otadi_92.jpg" alt="">
                 <img class="signature" src="/images/signature.png" alt="">
             </div>
             <div class="card">
-                <section class="name"><span>نام :</span> مهدی </section>
-                <section class="familyname"><span>نام خانوادگی :</span> ابراهیمی</section>
-                <section class="national-code"><span>کد ملی :</span> ۰۵۲۱۰۷۳۴۶۴</section>
-                <section class="fathername"><span>نام پدر :</span> حسین دهقانی</section>
+
             </div>
         </div>
     </div>

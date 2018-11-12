@@ -22,16 +22,16 @@ html {
   background-image: url("/images/card-img-sample.jpg");
   background-size: 100% 100%;
   background-repeat: no-repeat;
-  font-size: 0.7rem;
+  font-size: 0.55rem;
   font-weight: 1000;
   position: relative;
 }
 
 .cards .card .picture {
-  height: 1.5cm;
+  height: 1.6cm;
   position: absolute;
-  top: 18px;
-  left: 30px;
+  top: 6px;
+  left: 20px;
 }
 
 .cards .card .signature {
@@ -43,25 +43,49 @@ html {
 
 .cards .card .name {
   position: absolute;
-  top: 90px;
-  right: 10px;
+  top: 83.5px;
+  right: 89px;
+}
+
+.cards .card .number-of-register {
+  position: absolute;
+  top: 71.5px;
+  right: 83px;
+}
+
+.cards .card .birthdate {
+  position: absolute;
+  top: 125.5px;
+  right: 61px;
 }
 
 .cards .card .familyname {
   position: absolute;
-  top: 110px;
-  right: 10px;
+  top: 112.5px;
+  right: 83px;
 }
 
 .cards .card .national-code {
   position: absolute;
-  top: 115px;
-  right: 10px;
+  top: 99.5px;
+  right: 50px;
 }
 
 .cards .card .fathername {
   position: absolute;
-  top: 130px;
-  right: 10px;
+  top: 110.5px;
+  right: 45px;
+}
+
+.cards .card .state {
+  position: absolute;
+  top: 137.5px;
+  right: 45px;
+}
+
+.cards .card .city {
+  position: absolute;
+  top: 152.5px;
+  right: 61px;
 }
 

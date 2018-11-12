@@ -8,9 +8,8 @@ use App\Http\Controllers\Controller;
 use Hekmatinasser\Verta\Facades\Verta;
 use Carbon\Carbon;
 use App\Http\Requests\StoreMember;
-use Maatwebsite\Excel\Facades\Excel;
 use App\User;
-use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 class MembersController extends Controller
 {
@@ -117,52 +116,6 @@ class MembersController extends Controller
         return view('panel.members.show-cards');
     }
 
-    /**
-     * Export all of the members data in excel format
-     */
-
-    public function exportExcelAllMembers()
-    {
-        // $members = Member::select("concat(name, ' ' , familyname) as نام و نام‌خانوادگی", 'nationalcode as کد ملی', 'issuinglocal as محل صدور', 'identitinumber as کد ملی', 'fathername as نام پدر', 'address as آدرس', 'phonenumber as تلفن همراه', 'education', 'job as شغل', 'issuingdate', 'typemember')->get();
-        $members = Member::select([
-            DB::raw("CONCAT(name, ' ' , familyname) AS 'نام و نام خانوادگی'"),
-            'birthdate',
-            'identitinumber as شماره شناسمه',
-            'issuinglocal as محل صدور',
-            'nationalcode as کد ملی',
-            'fathername as نام پدر',
-            'address as آدرس',
-            'phonenumber as تلفن همراه',
-            'typemember',
-            'education'
-        ])->get();
-            Excel::create('users', function ($excel) use ($members) {
-            $excel->sheet('همیاران', function ($sheet) use ($members) {
-                $members = $members->map(function ($member, $key) {
-                    $member->تاریخـتولد = verta($member->birthdate)->format('Y');
-                    $member->تاریخـصدور = verta($member->issuingdate)->format('Y');
-                    unset($member->issuingdate);
-                    unset($member->birthdate);
-                    $member->نوعـهمیار = $member->typememberPretty;
-                    $member->تحصیلات = $member->educationPretty;
-                    unset($member->typemember);
-                    unset($member->education);
-                    // $member->fullname = $member->name . ' ' . $member->familyname;
-                    unset($member->name);
-                    unset($member->familyname);
-                    return $member;
-                });
-                $sheet->fromArray($members);
-            });
-            // $excel->sheet('همیاران', function ($sheet) {
-            //     $sheet->rows(array(
-            //         array('test1', 'test2'),
-            //         array('test3', 'test4')
-            //     ));
-            // });
-        })->export('xls');
-    }
-
 
     /**
      * @return boolval
@@ -173,7 +126,7 @@ class MembersController extends Controller
      * if you want to update you data use UPDADE  on second parameter 
      */
 
-    public function saveMember(StoreMember $request, $action = 'SAVE',Member $member)
+    public function saveMember(StoreMember $request, $action = 'SAVE', Member $member)
     {
         $member->name = $request->name;
         $member->familyname = $request->familyname;
@@ -206,4 +159,62 @@ class MembersController extends Controller
 
         return true;
     }
+
+
+
+    public function showMembersInExcel()
+    {
+        // $users = User::select('id', 'name', 'email', 'created_at')->get();
+
+        $members = Member::all();
+        $data = [
+            // [
+            //     'نام و نام خانوادگی' => 'mahdi',
+            //     'تاریخ تولد' => '۱۳۸۵',
+            //     'شماره شاسنامه' => '0514245215',
+            //     'محل صدور' => 'اراک',
+            //     'کدملی' => '۰۵۲۱۰۷۲۳۴',
+            //     'نام پدر' => 'ابولمعصوم',
+            //     'محل سکونت' => 'اراک',
+            //     'شماره تماس' => '۰۹۳۸۳۹۰۴۹۶۳',
+            //     'شغل' => 'بیکار',
+            //     'سال صدور' => '۱۳۸۵',
+            // ],
+        ];
+
+        foreach ($members as $member) {
+            $data[] = [
+                'نام و نام خانوادگی' => $member->full_name,
+                'تاریخ تولد' => $this->convertToPersian(verta($member->created_at)->year),
+                'شماره شاسنامه' => $this->convertToPersian($member->identitinumber),
+                'محل صدور' => 'اراک',
+                'کدملی' => $this->convertToPersian($member->nationalcode),
+                'نام پدر' => $member->fathername,
+                'محل سکونت' => $member->address,
+                'شماره تماس' => $this->convertToPersian($member->phonenumber),
+                'سطح تحصیلات' => $member->educationPretty,
+                'شغل' => $member->job,
+                'سال صدور' => $this->convertToPersian(verta($member->issuingdate)->year),
+            ];
+        }
+
+
+        Excel::create('users', function ($excel) use ($data) {
+            $excel->sheet('Sheet 1', function ($sheet) use ($data) {
+                $sheet->fromArray($data);
+            });
+        })->export('xls');
+
+        return 'Ok';
+    }
+
+
+    public function convertToPersian($string) {
+        $persian = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+        $num = range(0, 9);
+        $convertedToPersianNumbers = str_replace($num,$persian, $string);
+    
+        return $convertedToPersianNumbers;
+    }
+
 }
