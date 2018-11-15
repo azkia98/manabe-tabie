@@ -10,7 +10,7 @@
         <th scope="col">نام پدر</th>
         <th scope="col">نوع همیار</th>
         <th scope="col">تحصیلات</th>
-        <th scope="col">اطلاعات بیشتر</th>
+        <th scope="col" class="text-center">امکانات</th>
       </tr>
     </thead>
     <tbody>

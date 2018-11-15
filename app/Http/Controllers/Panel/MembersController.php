@@ -119,6 +119,7 @@ class MembersController extends Controller
 
     /**
      * Show Card Information
+     * @return \Illuminate\Http\Response
      */
 
     public function showCard(Member $member)
