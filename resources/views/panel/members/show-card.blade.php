@@ -9,7 +9,6 @@
 <div class="pages">
     <div class="page">
         <div class="cards">
-            @foreach ($members as $member)
             <div class="card">
                 <section class="number-of-register">{{ $member->id }}</section>
                 <section class="name">{{ $member->name }}</section>
@@ -22,9 +21,7 @@
                 <img class="signature" src="/images/signature.png" alt="">
             </div>
             <div class="card">
-
             </div>
-            @endforeach
         </div>
     </div>
   </div>

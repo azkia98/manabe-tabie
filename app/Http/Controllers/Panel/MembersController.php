@@ -113,7 +113,17 @@ class MembersController extends Controller
 
     public function showCards()
     {
-        return view('panel.members.show-cards');
+        $members = Member::all();
+        return view('panel.members.show-cards',compact('members'));
+    }
+
+    /**
+     * Show Card Information
+     */
+
+    public function showCard(Member $member)
+    {
+        return view('panel.members.show-card',compact('member'));
     }
 
 

@@ -23,8 +23,9 @@ Route::get('/', function () {
 Route::namespace('Panel')->prefix('panell')->group(function(){
     Route::get('/','PanelController@index');
     Route::resource('members','MembersController');
-    Route::get('/show-cards','MembersController@showCards');
-    Route::get('/excel','MembersController@showMembersInExcel');
+    Route::get('/show-cards','MembersController@showCards')->name('cards.index');
+    Route::get('/show-card/{member}','MembersController@showCard')->name('cards.show');
+    Route::get('/excel','MembersController@showMembersInExcel')->name('excel.all');
 });
 
 

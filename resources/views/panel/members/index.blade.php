@@ -23,7 +23,10 @@
             <td>{{ $member->fathername }}</td>
             <td>{{ $member->typememberPretty }}</td>
             <td>{{ $member->educationPretty }}</td>
-            <td class="text-center"><a href="{{ route('members.show',['id'=> $member->id]) }}"><i class="fa fa-info"></i></a></td>
+            <td class="text-center">
+              <a class="btn btn-primary btn-sm" href="{{ route('members.show',['id'=> $member->id]) }}"><i class="fa fa-info"></i></a>
+              <a class="btn btn-success btn-sm" href="{{ route('cards.show',['id'=> $member->id]) }}"><i class="fa fa-id-card"></i></a>
+            </td>
             </tr>
         @endforeach
     </tbody>
