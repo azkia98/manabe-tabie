@@ -56,4 +56,13 @@ class Member extends Model
     {
         return "{$this->name} {$this->familyname}";
     }
+
+
+    public function city(){
+        return $this->belongsTo(City::class);
+    }
+
+    public function state(){
+        return $this->belongsTo(State::class);
+    }
 }

@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="/css/bootstrap-rtl.css" type="text/css">
     <title>پنل سایت</title>
     @yield('head')
+    <meta name="csrf-token" content="<?= csrf_token() ?>">
 </head>
-
+<script>window.Url = '<?= url('/') ?>'</script>
 <body>
         
     <nav class="navbar navbar-expand-md navbar-light p-0 sticky-top bg-light">
@@ -38,7 +39,7 @@
             <!-- SIDE BAR -->
             @include('panel.layout.sidebar')
             </div>
-
+            
             <!-- Main Data -->
             <div class="col-12 col-md-9 col-lg-10 bg-light mr-auto p-4" id="main">
                 @yield('content')

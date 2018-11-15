@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Member;
+use App\State;
 
 class MembersTableSeeder extends Seeder
 {
@@ -12,6 +13,6 @@ class MembersTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Member::class,50)->create();
+        factory(Member::class, 50)->create();
     }
 }

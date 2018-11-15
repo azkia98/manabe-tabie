@@ -1,8 +1,10 @@
 <?php
 
 use Faker\Generator as Faker;
+use App\State;
 
 $factory->define(App\Member::class, function (Faker $faker) {
+    $state = State::with('cities')->orderByRaw("RAND()")->first();
     return [
         'name'=> $faker->firstName,
         'familyname'=> $faker->lastName,
@@ -18,5 +20,7 @@ $factory->define(App\Member::class, function (Faker $faker) {
         'issuingdate'=> $faker->date(),
         'picture'=> 'http://placehold.it/120x120&text='. $faker->firstName,
         'typemember'=> rand(1,3),
+        'state_id'=> $state->id,
+        'city_id'=> $state->cities->random(1)->first()->id
     ];
 });

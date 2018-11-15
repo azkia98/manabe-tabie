@@ -42,6 +42,7 @@ class MembersController extends Controller
      */
     public function store(StoreMember $request)
     {
+        dd($request->all());
 
         if (!$this->saveMember($request,'SAVE',new Member())) {
             alert()->error('فایل شما با موفقیت ذخیره نشد!', 'یه مشکلی به وجود آمده!!!');

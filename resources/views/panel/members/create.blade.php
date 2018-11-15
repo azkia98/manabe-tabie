@@ -128,6 +128,8 @@
             </select>
         </div>
       </div>
+ 
+      <states-cities></states-cities>
 
       <div class="row mt-2">
         <div class="col-md-6">

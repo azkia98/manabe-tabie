@@ -26,6 +26,7 @@
         "vue": "^2.5.7"
     },
     "dependencies": {
+        "http-server": "^0.11.1",
         "persian-datepicker": "^1.1.3"
     }
 }

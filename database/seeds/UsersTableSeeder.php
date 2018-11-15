@@ -24,6 +24,6 @@ class UsersTableSeeder extends Seeder
             'familyname'=> 'Ebrahimi',
             'email'=> 'azkia@iran.ir',
         ]);
-        factory(User::class, 50)->create();
+        factory(User::class, 15)->create();
     }
 }

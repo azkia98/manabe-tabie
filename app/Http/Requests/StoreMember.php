@@ -24,26 +24,26 @@ class StoreMember extends FormRequest
     public function rules()
     {
         $roles= [
-            'name' => 'required|string',
-            'familyname' => 'required|string',
-            'birthdate' => 'required',
-            'nationalcode' => 'required',
-            'issuinglocal' => 'required',
-            'identitinumber' => 'required',
-            'fathername' => 'required',
-            'address' => 'required',
-            'phonenumber' => 'required',
-            'education' => 'required',
-            'job' => 'required',
-            'issuingdate' => 'required',
-            'typemember' => 'required',
+            // 'name' => 'required|string',
+            // 'familyname' => 'required|string',
+            // 'birthdate' => 'required',
+            // 'nationalcode' => 'required',
+            // 'issuinglocal' => 'required',
+            // 'identitinumber' => 'required',
+            // 'fathername' => 'required',
+            // 'address' => 'required',
+            // 'phonenumber' => 'required',
+            // 'education' => 'required',
+            // 'job' => 'required',
+            // 'issuingdate' => 'required',
+            // 'typemember' => 'required',
         ];
 
-        if ($this->method() == 'POST') {
-            $roles['picture'] = 'required|mimes:jpeg,bmp,png';
-        }elseif($this->method() == 'PATCH'){
-            $roles['picture'] = 'mimes:jpeg,bmp,png';
-        }
+        // if ($this->method() == 'POST') {
+        //     $roles['picture'] = 'required|mimes:jpeg,bmp,png';
+        // }elseif($this->method() == 'PATCH'){
+        //     $roles['picture'] = 'mimes:jpeg,bmp,png';
+        // }
 
         return $roles;
 

@@ -15,20 +15,22 @@ class CreateMembersTable extends Migration
     {
         Schema::create('members', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('familyname');
+            $table->string('name')->nullable();
+            $table->string('familyname')->nullable();
             $table->date('birthdate');
-            $table->string('nationalcode');
-            $table->string('issuinglocal');
-            $table->string('identitinumber');
-            $table->string('fathername');
+            $table->string('nationalcode')->nullable();
+            $table->string('issuinglocal')->nullable();
+            $table->string('identitinumber')->nullable();
+            $table->string('fathername')->nullable();
             $table->text('address');
-            $table->string('phonenumber');
+            $table->string('phonenumber')->nullable();
             $table->tinyInteger('education');
-            $table->string('job');
+            $table->string('job')->nullable();
             $table->date('issuingdate');
-            $table->string('picture');
+            $table->string('picture')->nullable();
             $table->tinyInteger('typemember');
+            $table->unsignedInteger('city_id');
+            $table->unsignedInteger('state_id');
             $table->timestamps();
         });
     }
