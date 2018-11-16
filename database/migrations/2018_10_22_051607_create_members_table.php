@@ -24,13 +24,13 @@ class CreateMembersTable extends Migration
             $table->string('fathername')->nullable();
             $table->text('address');
             $table->string('phonenumber')->nullable();
-            $table->tinyInteger('education');
+            $table->tinyInteger('education')->default(-1);
             $table->string('job')->nullable();
             $table->date('issuingdate');
             $table->string('picture')->nullable();
-            $table->tinyInteger('typemember');
-            $table->unsignedInteger('city_id');
-            $table->unsignedInteger('state_id');
+            $table->tinyInteger('typemember')->default(-1);
+            $table->unsignedInteger('city_id')->nullable();
+            $table->unsignedInteger('state_id')->nullable();
             $table->timestamps();
         });
     }

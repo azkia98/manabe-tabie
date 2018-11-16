@@ -10,6 +10,7 @@
         <th scope="col">نام پدر</th>
         <th scope="col">نوع همیار</th>
         <th scope="col">تحصیلات</th>
+        <th scope="col" class="d-none d-md-table-cell">شهر</th>
         <th scope="col" class="text-center">امکانات</th>
       </tr>
     </thead>
@@ -23,6 +24,7 @@
             <td>{{ $member->fathername }}</td>
             <td>{{ $member->typememberPretty }}</td>
             <td>{{ $member->educationPretty }}</td>
+            <td class="d-none d-md-table-cell">{{ $member->city->name }}</td>
             <td class="text-center">
               <a class="btn btn-primary btn-sm" href="{{ route('members.show',['id'=> $member->id]) }}"><i class="fa fa-info"></i></a>
               <a class="btn btn-success btn-sm" href="{{ route('cards.show',['id'=> $member->id]) }}"><i class="fa fa-id-card"></i></a>

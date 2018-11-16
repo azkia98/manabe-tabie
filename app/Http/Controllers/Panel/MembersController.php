@@ -42,7 +42,6 @@ class MembersController extends Controller
      */
     public function store(StoreMember $request)
     {
-        dd($request->all());
 
         if (!$this->saveMember($request,'SAVE',new Member())) {
             alert()->error('فایل شما با موفقیت ذخیره نشد!', 'یه مشکلی به وجود آمده!!!');
@@ -140,6 +139,7 @@ class MembersController extends Controller
 
     public function saveMember(StoreMember $request, $action = 'SAVE', Member $member)
     {
+        
         $member->name = $request->name;
         $member->familyname = $request->familyname;
         $member->birthdate = Carbon::now()->timestamp($request->birthdate);
@@ -153,6 +153,8 @@ class MembersController extends Controller
         $member->job = $request->job;
         $member->issuingdate = Carbon::now()->timestamp($request->issuingdate);
         $member->typemember = $request->typemember;
+        $member->city_id = $request->city;
+        $member->state_id = $request->state;
         if ($request->file('picture')) {
             $path = $request->file('picture')->store('pictures', 'public');
             $member->picture = 'storage/' . $path;

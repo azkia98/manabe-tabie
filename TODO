@@ -3,7 +3,8 @@ Project:
     + create the backable data for our craete form
     + create the members.edit section
     + create the card layout section
-    - add city and state property
+    + add city and state property
+    - add city and state to edit section
     + craete the excel export for our application
     - create the * Gates * for our application
     - create the index page for our application

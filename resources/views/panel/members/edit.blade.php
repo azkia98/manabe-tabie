@@ -130,6 +130,8 @@
         </div>
       </div>
 
+      <states-cities-edit :state_id="{{ $member->state_id }}" :city_id="{{ $member->city_id }}"></states-cities-edit>
+
       <div class="row mt-2">
         <div class="col-md-6">
           <textarea name="address" class="form-control" cols="30" rows="5" placeholder="آدرس">{{ old('address', $member->address) }}</textarea>

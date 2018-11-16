@@ -18,11 +18,13 @@
       <p><span>صادره :</span>{{ $member->issuinglocal }}</p>
       <p><span>شماره همراه :</span>{{ $member->phonenumber }}</p>
       <p><span>شغل :</span>{{ $member->job }}</p>
+      <p><span>استان :</span>{{ $member->state->name }}</p>
     </div>
     <div class="col-md-4">
       <p><span>کد ملی :</span>{{ $member->nationalcode }}</p>
       <p><span>تحصیلات :</span>{{ $member->educationPretty }}</p>
       <p><span>نوع همیار :</span>{{ $member->typememberPretty }}</p>
+      <p><span>شهر :</span>{{ $member->city->name }}</p>
       
     </div>
     <div class="col-md-4">

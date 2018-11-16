@@ -11469,6 +11469,7 @@ window.Vue = __webpack_require__(15);
 
 Vue.component('example-component', __webpack_require__(18));
 Vue.component('states-cities', __webpack_require__(21));
+Vue.component('states-cities-edit', __webpack_require__(72));
 
 var app = new Vue({
   el: '#main'
@@ -30424,6 +30425,247 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 45 */,
+/* 46 */,
+/* 47 */,
+/* 48 */,
+/* 49 */,
+/* 50 */,
+/* 51 */,
+/* 52 */,
+/* 53 */,
+/* 54 */,
+/* 55 */,
+/* 56 */,
+/* 57 */,
+/* 58 */,
+/* 59 */,
+/* 60 */,
+/* 61 */,
+/* 62 */,
+/* 63 */,
+/* 64 */,
+/* 65 */,
+/* 66 */,
+/* 67 */,
+/* 68 */,
+/* 69 */,
+/* 70 */,
+/* 71 */,
+/* 72 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(5)
+/* script */
+var __vue_script__ = __webpack_require__(73)
+/* template */
+var __vue_template__ = __webpack_require__(74)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/panel/components/statesAndcitiesEdit.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-2813b898", Component.options)
+  } else {
+    hotAPI.reload("data-v-2813b898", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 73 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['state_id', 'city_id'],
+  data: function data() {
+    return {
+      states: null,
+      selectedState: null,
+      cities: null,
+      selectedCity: null
+    };
+  },
+  mounted: function mounted() {
+    this.getStates();
+    this.selectedState = this.state_id;
+    this.selectedCity = this.city_id;
+  },
+
+  methods: {
+    getStates: function getStates() {
+      var _this = this;
+
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(Url + "/api/states").then(function (res) {
+        _this.states = res.data;
+        _this.getSpecificCities();
+      }).catch(function (err) {
+        return console.warn(err);
+      });
+    },
+    getSpecificCities: function getSpecificCities() {
+      var _this2 = this;
+
+      // console.log("fasf", document.getElementById('state').value);
+      var stateSelectBoxValue = Number(document.getElementById('state').value);
+      if (stateSelectBoxValue == 0) {
+        this.selectedState = this.state_id;
+      } else {
+        this.selectedState = stateSelectBoxValue;
+      }
+      this.states.map(function (state) {
+        if (state.id == _this2.selectedState) {
+          _this2.cities = state.cities;
+        }
+      });
+    }
+  }
+});
+
+/***/ }),
+/* 74 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "row mt-2" }, [
+    _c("div", { staticClass: "col-md-6" }, [
+      _c("h6", { staticClass: "font-weight-bold" }, [_vm._v("استان :")]),
+      _vm._v(" "),
+      _c(
+        "select",
+        {
+          staticClass: "custom-select",
+          attrs: { name: "state", id: "state" },
+          on: {
+            change: function($event) {
+              _vm.getSpecificCities()
+            }
+          }
+        },
+        [
+          _c("option", { attrs: { disabled: "" } }, [
+            _vm._v("استان خود را انتخاب کنید")
+          ]),
+          _vm._v(" "),
+          _vm._l(_vm.states, function(state) {
+            return _c(
+              "option",
+              {
+                domProps: {
+                  value: state.id,
+                  selected: state.id == _vm.selectedState
+                }
+              },
+              [_vm._v(_vm._s(state.name))]
+            )
+          })
+        ],
+        2
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "col-md-6" }, [
+      _c("h6", { staticClass: "font-weight-bold" }, [_vm._v("شهر :")]),
+      _vm._v(" "),
+      _c(
+        "select",
+        {
+          staticClass: "custom-select",
+          attrs: { name: "city", id: "city" },
+          on: {
+            change: function($event) {
+              _vm.getSpecificCities()
+            }
+          }
+        },
+        [
+          _c("option", { attrs: { disabled: "", selected: "" } }, [
+            _vm._v("شهر خود را انتخاب کنید")
+          ]),
+          _vm._v(" "),
+          _vm._l(_vm.cities, function(city) {
+            return _c(
+              "option",
+              {
+                domProps: {
+                  value: city.id,
+                  selected: city.id == _vm.selectedCity
+                }
+              },
+              [_vm._v(_vm._s(city.name))]
+            )
+          })
+        ],
+        2
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-2813b898", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
