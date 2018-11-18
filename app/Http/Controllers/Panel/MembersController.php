@@ -42,8 +42,7 @@ class MembersController extends Controller
      */
     public function store(StoreMember $request)
     {
-
-        if (!$this->saveMember($request,'SAVE',new Member())) {
+        if (!$this->saveMember($request, 'SAVE', new Member())) {
             alert()->error('فایل شما با موفقیت ذخیره نشد!', 'یه مشکلی به وجود آمده!!!');
             return redirect()->back();
         }
@@ -114,7 +113,7 @@ class MembersController extends Controller
     public function showCards()
     {
         $members = Member::all();
-        return view('panel.members.show-cards',compact('members'));
+        return view('panel.members.show-cards', compact('members'));
     }
 
     /**
@@ -124,7 +123,7 @@ class MembersController extends Controller
 
     public function showCard(Member $member)
     {
-        return view('panel.members.show-card',compact('member'));
+        return view('panel.members.show-card', compact('member'));
     }
 
 
@@ -139,7 +138,7 @@ class MembersController extends Controller
 
     public function saveMember(StoreMember $request, $action = 'SAVE', Member $member)
     {
-        
+
         $member->name = $request->name;
         $member->familyname = $request->familyname;
         $member->birthdate = Carbon::now()->timestamp($request->birthdate);
@@ -198,6 +197,7 @@ class MembersController extends Controller
         ];
 
         foreach ($members as $member) {
+            // dump($member->isStudent() ? '✔' : '');
             $data[] = [
                 'نام و نام خانوادگی' => $member->full_name,
                 'تاریخ تولد' => $this->convertToPersian(verta($member->created_at)->year),
@@ -205,10 +205,15 @@ class MembersController extends Controller
                 'محل صدور' => 'اراک',
                 'کدملی' => $this->convertToPersian($member->nationalcode),
                 'نام پدر' => $member->fathername,
-                'محل سکونت' => $member->address,
+                'استان' => $member->state->name,
+                'شهرستان' => $member->city->name,
+                'روستا' => $member->village,
                 'شماره تماس' => $this->convertToPersian($member->phonenumber),
                 'سطح تحصیلات' => $member->educationPretty,
                 'شغل' => $member->job,
+                'دانش آموزی' => $member->isStudent() ? '✔' : '',
+                'مروج' => $member->isPromoter() ? '✔' : '',
+                'محافظ' => $member->isProtector() ? '✔' : '',
                 'سال صدور' => $this->convertToPersian(verta($member->issuingdate)->year),
             ];
         }
@@ -224,11 +229,12 @@ class MembersController extends Controller
     }
 
 
-    public function convertToPersian($string) {
+    public function convertToPersian($string)
+    {
         $persian = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
         $num = range(0, 9);
-        $convertedToPersianNumbers = str_replace($num,$persian, $string);
-    
+        $convertedToPersianNumbers = str_replace($num, $persian, $string);
+
         return $convertedToPersianNumbers;
     }
 

@@ -45,7 +45,7 @@ class Member extends Model
                 return 'مروج';
                 break;
             case '3':
-                return 'مروج دانش آموز';
+                return 'دانش آموز';
                 break;
             default:
                 return 'کد همیار مورد نظر قابل تشخیص نمیباشد';
@@ -65,4 +65,18 @@ class Member extends Model
     public function state(){
         return $this->belongsTo(State::class);
     }
+    
+    public function isProtector(){
+        return $this->typemember == 1;
+    }
+
+    public function isPromoter(){
+        return $this->typemember == 2;
+    }
+
+    public function isStudent(){
+        return $this->typemember == 3;
+    }
+
+    
 }

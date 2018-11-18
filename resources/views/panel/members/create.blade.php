@@ -119,7 +119,7 @@
         <div class="col-md-6">
           <h6 class="font-weight-bold">تحصیلات :</h6>
           <select class="custom-select" name="education">
-              <option value="1" @if(old('education') == 1) selected @endif>زیر دیپلم</option>
+            <option value="1" @if(old('education') == 1) selected @endif>زیر دیپلم</option>
               <option value="2" @if(old('education') == 2) selected @endif>دیپلم</option>
               <option value="3" @if(old('education') == 3) selected @endif>فوق دیپلم</option>
               <option value="4" @if(old('education') == 4) selected @endif>لیسانس</option>
