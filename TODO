@@ -4,8 +4,11 @@ Project:
     + create the members.edit section
     + create the card layout section
     + add city and state property
-    - add city and state to edit section
+    + add city and state to edit section
     + craete the excel export for our application
-    - create the * Gates * for our application
-    - create the index page for our application
+    x create the * Gates * for our application
+    x create the index page for our application
     - create the signature for our application
+    - create the background for our cards
+    - create the options section
+    - fix the excel export
