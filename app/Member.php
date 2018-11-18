@@ -58,25 +58,48 @@ class Member extends Model
     }
 
 
-    public function city(){
+    public function city()
+    {
         return $this->belongsTo(City::class);
     }
 
-    public function state(){
+    public function state()
+    {
         return $this->belongsTo(State::class);
     }
-    
-    public function isProtector(){
+
+    public function isProtector()
+    {
         return $this->typemember == 1;
     }
 
-    public function isPromoter(){
+    public function isPromoter()
+    {
         return $this->typemember == 2;
     }
 
-    public function isStudent(){
+    public function isStudent()
+    {
         return $this->typemember == 3;
     }
 
-    
+    public function returnTypeValueForClass()
+    {
+        switch ($this->typemember) {
+            case '1':
+                return 'protector';
+                break;
+            case '2':
+                return 'promoter';
+                break;
+            case '3':
+                return 'student';
+                break;
+            default:
+                Log::error('همیار مورد نظر تایپ استانداد ندارد');
+                return false;
+                break;
+        }
+    }
+
 }

@@ -10,7 +10,7 @@
     <div class="page">
         <div class="cards">
             @foreach ($members as $member)
-            <div class="card">
+            <div class="card {{ $member->returnTypeValueForClass() }}">
                 <section class="number-of-register">{{ $member->id }}</section>
                 <section class="name">{{ $member->name }}</section>
                 <section class="national-code"> {{ $member->nationalcode }}</section>
@@ -21,9 +21,12 @@
                 <img class="picture" src="{{ asset($member->picture) }}" alt="">
                 <img class="signature" src="/images/signature.png" alt="">
             </div>
-            <div class="card">
-
-            </div>
+            <div class="card background student">
+                    <section class="issue-date">۱۳۹۷</section>
+                    <section class="expiry-date">{{ $expiryDate->value }}</section>
+                    <section class="local-phone">{{ convertToPersian($localPhone->value) }}</section>
+                    <section class="fax">{{ convertToPersian($fax->value) }}</section>
+                </div>
             @endforeach
         </div>
     </div>

@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use App\Http\Requests\StoreMember;
 use App\User;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Option;
 
 class MembersController extends Controller
 {
@@ -123,7 +124,10 @@ class MembersController extends Controller
 
     public function showCard(Member $member)
     {
-        return view('panel.members.show-card', compact('member'));
+        $fax = Option::GVWK('fax');
+        $expiryDate = Option::GVWK('expiry-date');
+        $localPhone = Option::GVWK('local-phone');
+        return view('panel.members.show-card', compact('member','fax','expiryDate','localPhone'));
     }
 
 

@@ -23,14 +23,54 @@ html{
     display: inline-block;
     width: 8.5cm;
     height: 5cm;
-    background-image: url('/images/card-img-sample.jpg') ;
     background-size: 100% 100%;
     background-repeat: no-repeat;
-    font-size: 0.55rem;
-    font-weight: 1000;
+    &.student{
+      background-image: url('/images/cards/student.png') ;
+    }
+    &.promoter{
+      background-image: url('/images/cards/promoter.png') ;
+    }
+    &.protector{
+      background-image: url('/images/cards/protector.png') ;
+    }
+    &.background{
+      background-image: url('/images/cards/background.png') ;
+    }
+    font-size: 0.40rem;
+    font-weight: 800;
+    
+    
     // background-attachment: fixed;
     position: relative;
     // background-color: red;
+    &.background{
+      &.student{
+        background-image: url('/images/cards/bg-st.png');
+        color: #40679e;
+      }
+      .issue-date{
+        position: absolute;
+        top: 98.7px;
+        right: 75px;
+        color: black;
+      }
+      .expiry-date{
+        position: absolute;
+        top: 108.6px;
+        right: 78px;
+      }
+      .local-phone{
+        position: absolute;
+        top: 133.7px;
+        right: 79px;
+      }
+      .fax{
+        position: absolute;
+        top: 146.7px;
+        right: 57px;
+      }
+    }
     .picture{
       height: 1.6cm;
       position: absolute;
@@ -45,43 +85,43 @@ html{
     }
     .name{
       position: absolute;
-      top: 81px + 2.5px;
-      right: 89px;
+      top: 81px + 2px;
+      right: 89px + 10px;
     }
     .number-of-register{
       position: absolute;
-      top: 69px + 2.5px;
-      right: 83px;
+      top: 69px + 2px;
+      right: 83px + 10px;
     }
     .birthdate{
       position: absolute;
-      top: 123px + 2.5px;
-      right: 61px;
+      top: 123px + 2px;
+      right: 61px + 10px;
     }
     .familyname{
       position: absolute;
-      top: 110px + 2.5px;
-      right: 83px;
+      top: 110px + 2px;
+      right: 83px + 10px;
     }
     .national-code{
       position: absolute;
-      top: 97px + 2.5px;
-      right: 50px;
+      top: 95.5px + 2px;
+      right: 50px + 10px;
     }
     .fathername{
       position: absolute;
-      top: 108px + 2.5px;
-      right: 45px;
+      top: 108px + 2px;
+      right: 50px + 10px;
     }
     .state{
       position: absolute;
-      top: 135px + 2.5px;
-      right: 45px;
+      top: 136px + 2px;
+      right: 45px + 10px;
     }
     .city{
       position: absolute;
-      top: 150px + 2.5px;
-      right: 61px;
+      top: 150px + 2px;
+      right: 61px + 10px;
     }
   }
 }

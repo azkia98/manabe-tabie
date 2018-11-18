@@ -19,12 +19,57 @@ html {
   display: inline-block;
   width: 8.5cm;
   height: 5cm;
-  background-image: url("/images/card-img-sample.jpg");
   background-size: 100% 100%;
   background-repeat: no-repeat;
-  font-size: 0.55rem;
-  font-weight: 1000;
+  font-size: 0.40rem;
+  font-weight: 800;
   position: relative;
+}
+
+.cards .card.student {
+  background-image: url("/images/cards/student.png");
+}
+
+.cards .card.promoter {
+  background-image: url("/images/cards/promoter.png");
+}
+
+.cards .card.protector {
+  background-image: url("/images/cards/protector.png");
+}
+
+.cards .card.background {
+  background-image: url("/images/cards/background.png");
+}
+
+.cards .card.background.student {
+  background-image: url("/images/cards/bg-st.png");
+  color: #40679e;
+}
+
+.cards .card.background .issue-date {
+  position: absolute;
+  top: 98.7px;
+  right: 75px;
+  color: black;
+}
+
+.cards .card.background .expiry-date {
+  position: absolute;
+  top: 108.6px;
+  right: 78px;
+}
+
+.cards .card.background .local-phone {
+  position: absolute;
+  top: 133.7px;
+  right: 79px;
+}
+
+.cards .card.background .fax {
+  position: absolute;
+  top: 146.7px;
+  right: 57px;
 }
 
 .cards .card .picture {
@@ -43,49 +88,49 @@ html {
 
 .cards .card .name {
   position: absolute;
-  top: 83.5px;
-  right: 89px;
+  top: 83px;
+  right: 99px;
 }
 
 .cards .card .number-of-register {
   position: absolute;
-  top: 71.5px;
-  right: 83px;
+  top: 71px;
+  right: 93px;
 }
 
 .cards .card .birthdate {
   position: absolute;
-  top: 125.5px;
-  right: 61px;
+  top: 125px;
+  right: 71px;
 }
 
 .cards .card .familyname {
   position: absolute;
-  top: 112.5px;
-  right: 83px;
+  top: 112px;
+  right: 93px;
 }
 
 .cards .card .national-code {
   position: absolute;
-  top: 99.5px;
-  right: 50px;
+  top: 97.5px;
+  right: 60px;
 }
 
 .cards .card .fathername {
   position: absolute;
-  top: 110.5px;
-  right: 45px;
+  top: 110px;
+  right: 60px;
 }
 
 .cards .card .state {
   position: absolute;
-  top: 137.5px;
-  right: 45px;
+  top: 138px;
+  right: 55px;
 }
 
 .cards .card .city {
   position: absolute;
-  top: 152.5px;
-  right: 61px;
+  top: 152px;
+  right: 71px;
 }
 
