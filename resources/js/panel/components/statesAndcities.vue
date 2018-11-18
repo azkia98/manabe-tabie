@@ -1,18 +1,22 @@
 <template>
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-4">
             <h6 class="font-weight-bold">استان :</h6>
             <select class="custom-select" v-model="selectedState" @change="getSpecificCourses()" name="state">
                 <option disabled selected>استان خود را انتخاب کنید</option>
                 <option v-for="state in states" :value="state.id">{{ state.name }}</option>
             </select>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-4">
             <h6 class="font-weight-bold">شهر :</h6>
             <select class="custom-select" @change="getSpecificCourses()" name="city">
                 <option disabled selected>شهر خود را انتخاب کنید</option>
                 <option v-for="city in cities" :value="city.id">{{ city.name }}</option>
             </select>
+        </div>
+        <div class="col-md-4">
+            <h6>روستا :‌</h6>
+            <input type="text"  class="form-control" name="village" id="village" placeholder="روستا همیار (ضروری نیست)">
         </div>
     </div>
 </template>

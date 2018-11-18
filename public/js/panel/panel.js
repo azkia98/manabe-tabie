@@ -29394,6 +29394,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -30322,7 +30326,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "row" }, [
-    _c("div", { staticClass: "col-md-6" }, [
+    _c("div", { staticClass: "col-md-4" }, [
       _c("h6", { staticClass: "font-weight-bold" }, [_vm._v("استان :")]),
       _vm._v(" "),
       _c(
@@ -30374,7 +30378,7 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "col-md-6" }, [
+    _c("div", { staticClass: "col-md-4" }, [
       _c("h6", { staticClass: "font-weight-bold" }, [_vm._v("شهر :")]),
       _vm._v(" "),
       _c(
@@ -30401,10 +30405,31 @@ var render = function() {
         ],
         2
       )
-    ])
+    ]),
+    _vm._v(" "),
+    _vm._m(0)
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-4" }, [
+      _c("h6", [_vm._v("روستا :‌")]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "form-control",
+        attrs: {
+          type: "text",
+          name: "village",
+          id: "village",
+          placeholder: "روستا همیار (ضروری نیست)"
+        }
+      })
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -30488,6 +30513,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -30545,7 +30574,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "row mt-2" }, [
-    _c("div", { staticClass: "col-md-6" }, [
+    _c("div", { staticClass: "col-md-4" }, [
       _c("h6", { staticClass: "font-weight-bold" }, [_vm._v("استان :")]),
       _vm._v(" "),
       _c(
@@ -30581,7 +30610,7 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "col-md-6" }, [
+    _c("div", { staticClass: "col-md-4" }, [
       _c("h6", { staticClass: "font-weight-bold" }, [_vm._v("شهر :")]),
       _vm._v(" "),
       _c(
@@ -30615,10 +30644,31 @@ var render = function() {
         ],
         2
       )
-    ])
+    ]),
+    _vm._v(" "),
+    _vm._m(0)
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-4" }, [
+      _c("h6", [_vm._v("روستا :‌")]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "form-control",
+        attrs: {
+          type: "text",
+          name: "village",
+          id: "village",
+          placeholder: "روستا همیار (ضروری نیست)"
+        }
+      })
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

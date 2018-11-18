@@ -22,7 +22,7 @@ class CreateMembersTable extends Migration
             $table->string('issuinglocal')->nullable();
             $table->string('identitinumber')->nullable();
             $table->string('fathername')->nullable();
-            $table->text('address');
+            $table->text('address')->nullable();
             $table->string('phonenumber')->nullable();
             $table->tinyInteger('education')->default(-1);
             $table->string('job')->nullable();
@@ -31,6 +31,7 @@ class CreateMembersTable extends Migration
             $table->tinyInteger('typemember')->default(-1);
             $table->unsignedInteger('city_id')->nullable();
             $table->unsignedInteger('state_id')->nullable();
+            $table->string('village')->nullable();
             $table->timestamps();
         });
     }

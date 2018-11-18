@@ -21,6 +21,7 @@ $factory->define(App\Member::class, function (Faker $faker) {
         'picture'=> 'http://placehold.it/120x120&text='. $faker->firstName,
         'typemember'=> rand(1,3),
         'state_id'=> $state->id,
-        'city_id'=> $state->cities->random(1)->first()->id
+        'city_id'=> $state->cities->random(1)->first()->id,
+        'village'=> $faker->word
     ];
 });

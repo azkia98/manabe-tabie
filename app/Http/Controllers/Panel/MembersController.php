@@ -155,6 +155,7 @@ class MembersController extends Controller
         $member->typemember = $request->typemember;
         $member->city_id = $request->city;
         $member->state_id = $request->state;
+        $member->village = $request->village;
         if ($request->file('picture')) {
             $path = $request->file('picture')->store('pictures', 'public');
             $member->picture = 'storage/' . $path;
