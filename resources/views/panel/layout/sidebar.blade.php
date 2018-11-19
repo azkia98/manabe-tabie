@@ -18,19 +18,24 @@
                         <li class="nav-item">
                             <a href="{{ route('members.create') }}" class="nav-link my-1">اضافه کردن </a>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a href="#" class="nav-link my-1">تایید درخواست</a>
-                        </li>
+                        </li> --}}
                         <li class="nav-item">
                             <a href="{{ route('members.index') }}" class="nav-link my-1">مشاهده همه</a>
                         </li>
                 </ul>
             </div>
         </li>
+        
         <li class="nav-item d-flex align-items-center">
+            <i class="fa fa-cogs"></i>
+            <a href="#" class="nav-link my-1 text-nowrap">تنظیمات</a>
+        </li>
+        {{-- <li class="nav-item d-flex align-items-center">
             <i class="fa fa-video-camera"></i>
             <a href="#" class="nav-link my-1 text-nowrap">دوره ها</a>
-        </li>
+        </li> --}}
     </ul>
     {{-- <div>متفرقه</div>
     <ul class="nav flex-column px-3">

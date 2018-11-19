@@ -15,6 +15,7 @@ window.Vue = require('vue');
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('states-cities', require('./components/statesAndcities.vue'));
 Vue.component('states-cities-edit', require('./components/statesAndcitiesEdit.vue'));
+Vue.component('edit-option', require('./components/EditOption.vue'));
 
 const app = new Vue({
     el: '#main'

@@ -10,14 +10,17 @@ class OptionsTableSeeder extends Seeder
         [
             'key'=> 'expiry-date',
             'value' => 'سه سال پس از تاریخ صدور',
+            'label' => 'تاریخ اعتبار'
         ],
         [
             'key'=>'local-phone',
             'value'=>'34130634-7',
+            'label' => 'تلفن اداره کل'
         ],
         [
             'key' => 'fax',
-            'value' => '۳۴۱۶۰۶۳۱'
+            'value' => '۳۴۱۶۰۶۳۱',
+            'label' => 'نمابر'
         ]
         ];
 

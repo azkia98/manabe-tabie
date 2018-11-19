@@ -11476,6 +11476,7 @@ window.Vue = __webpack_require__(16);
 Vue.component('example-component', __webpack_require__(19));
 Vue.component('states-cities', __webpack_require__(22));
 Vue.component('states-cities-edit', __webpack_require__(43));
+Vue.component('edit-option', __webpack_require__(75));
 
 var app = new Vue({
   el: '#main'
@@ -30689,6 +30690,245 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 48 */,
+/* 49 */,
+/* 50 */,
+/* 51 */,
+/* 52 */,
+/* 53 */,
+/* 54 */,
+/* 55 */,
+/* 56 */,
+/* 57 */,
+/* 58 */,
+/* 59 */,
+/* 60 */,
+/* 61 */,
+/* 62 */,
+/* 63 */,
+/* 64 */,
+/* 65 */,
+/* 66 */,
+/* 67 */,
+/* 68 */,
+/* 69 */,
+/* 70 */,
+/* 71 */,
+/* 72 */,
+/* 73 */,
+/* 74 */,
+/* 75 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(76)
+/* template */
+var __vue_template__ = __webpack_require__(77)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/panel/components/EditOption.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-61e67c7f", Component.options)
+  } else {
+    hotAPI.reload("data-v-61e67c7f", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 76 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ["option"],
+    data: function data() {
+        return {
+            showEditButton: true,
+            showInput: false,
+            valueForOption: null
+        };
+    },
+    mounted: function mounted() {},
+
+    methods: {
+        showFormSection: function showFormSection() {
+            this.showEditButton = false;
+            this.showInput = true;
+        },
+        closeFormSection: function closeFormSection() {
+            this.showEditButton = true;
+            this.showInput = false;
+        },
+        sendFormData: function sendFormData() {
+            if (this.valueForOption == "" || this.valueForOption == null) {
+                swal('فیلد شما خالی است !!', 'لطفا فیل را پرکند سپس روی گزینه ارسال کلیک کنید', 'warning');
+                return false;
+            }
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.patch(Url + "/panell/options/" + this.option.id, { value: this.valueForOption }).then(function (res) {
+                console.log(res);
+                var data = res.data;
+                if (data.msg == true) {
+                    window.location.reload();
+                }
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 77 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "d-flex" }, [
+    _c(
+      "button",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: !_vm.showEditButton,
+            expression: "!showEditButton"
+          }
+        ],
+        staticClass: "btn btn-danger btn-sm rounded-0",
+        on: {
+          click: function($event) {
+            _vm.closeFormSection()
+          }
+        }
+      },
+      [_c("i", { staticClass: "fa fa-close" })]
+    ),
+    _vm._v(" "),
+    _c(
+      "button",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.showEditButton,
+            expression: "showEditButton"
+          }
+        ],
+        staticClass: "btn btn-primary btn-sm",
+        on: {
+          click: function($event) {
+            _vm.showFormSection()
+          }
+        }
+      },
+      [_c("i", { staticClass: "fa fa-edit" })]
+    ),
+    _vm._v(" "),
+    _c("input", {
+      directives: [
+        {
+          name: "model",
+          rawName: "v-model",
+          value: _vm.valueForOption,
+          expression: "valueForOption"
+        },
+        {
+          name: "show",
+          rawName: "v-show",
+          value: _vm.showInput,
+          expression: "showInput"
+        }
+      ],
+      attrs: { type: "text", placeholder: _vm.option.label },
+      domProps: { value: _vm.valueForOption },
+      on: {
+        input: function($event) {
+          if ($event.target.composing) {
+            return
+          }
+          _vm.valueForOption = $event.target.value
+        }
+      }
+    }),
+    _vm._v(" "),
+    _c(
+      "button",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: !_vm.showEditButton,
+            expression: "!showEditButton"
+          }
+        ],
+        staticClass: "btn btn-success btn-sm rounded-0",
+        on: {
+          click: function($event) {
+            _vm.sendFormData()
+          }
+        }
+      },
+      [_c("i", { staticClass: "fa fa-send" })]
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-61e67c7f", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
