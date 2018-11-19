@@ -3,7 +3,7 @@
     <ul class="nav flex-column px-3">
         <li class="nav-item d-flex align-items-center">
             <i class="fa fa-dashboard"></i>
-            <a href="#" class="nav-link my-1">داشبورد</a>
+            <a href="{{ route('dashboard') }}" class="nav-link my-1">داشبورد</a>
         </li>
         <li class="nav-item">
             <div class="d-flex align-items-center">
@@ -30,7 +30,7 @@
         
         <li class="nav-item d-flex align-items-center">
             <i class="fa fa-cogs"></i>
-            <a href="#" class="nav-link my-1 text-nowrap">تنظیمات</a>
+            <a href="{{ route('options.index') }}" class="nav-link my-1 text-nowrap">تنظیمات</a>
         </li>
         {{-- <li class="nav-item d-flex align-items-center">
             <i class="fa fa-video-camera"></i>

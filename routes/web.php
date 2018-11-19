@@ -21,7 +21,7 @@ Route::get('/', function () {
 
 
 Route::namespace('Panel')->prefix('panell')->group(function(){
-    Route::get('/','PanelController@index');
+    Route::get('/','PanelController@index')->name('dashboard');
     Route::resource('members','MembersController');
     Route::get('/show-cards','MembersController@showCards')->name('cards.index');
     Route::get('/show-card/{member}','MembersController@showCard')->name('cards.show');

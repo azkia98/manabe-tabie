@@ -102,4 +102,14 @@ class Member extends Model
         }
     }
 
+    public function scopeProtectors($query){
+        return $query->whereTypemember(1); 
+    }
+    public function scopePromoters($query){
+        return $query->whereTypemember(2); 
+    }
+    public function scopeStudents($query){
+        return $query->whereTypemember(3); 
+    }
+
 }
