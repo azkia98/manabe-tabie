@@ -114,7 +114,10 @@ class MembersController extends Controller
     public function showCards()
     {
         $members = Member::all();
-        return view('panel.members.show-cards', compact('members'));
+        $fax = Option::GVWK('fax');
+        $expiryDate = Option::GVWK('expiry-date');
+        $localPhone = Option::GVWK('local-phone');
+        return view('panel.members.show-cards', compact('members','fax','expiryDate','localPhone'));
     }
 
     /**
@@ -127,7 +130,7 @@ class MembersController extends Controller
         $fax = Option::GVWK('fax');
         $expiryDate = Option::GVWK('expiry-date');
         $localPhone = Option::GVWK('local-phone');
-        return view('panel.members.show-card', compact('member','fax','expiryDate','localPhone'));
+        return view('panel.members.show-card', compact('member', 'fax', 'expiryDate', 'localPhone'));
     }
 
 
@@ -231,7 +234,6 @@ class MembersController extends Controller
 
         return 'Ok';
     }
-
 
     public function convertToPersian($string)
     {

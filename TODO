@@ -9,7 +9,9 @@ Project:
     x create the * Gates * for our application
     x create the index page for our application
     - create the signature for our application
-    - create the background for our cards
+    - create CURD for our application
+    + create the background for our cards
     - create the options section
     + fix the excel export
     + add village
+    - create the excel import section
