@@ -16,4 +16,4 @@ Project:
     + add village
     - create the excel import section
     - add search or filter section for our application
-    - create report section for our dashboard `MemberCounts,UserCounts,ProtectorCount,PromoterCount,StudentCount`
+    + create report section for our dashboard `MemberCounts,UserCounts,ProtectorCount,PromoterCount,StudentCount`
