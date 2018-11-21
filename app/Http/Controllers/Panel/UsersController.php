@@ -26,6 +26,7 @@ class UsersController extends Controller
      */
     public function create()
     {
+        return view('panel.users.create');
     }
 
     /**
@@ -36,7 +37,23 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'familyname' => 'required',
+            'username' => 'required',
+            'email' => 'required|unique:users',
+        ]);
+        $user = new User();
+        $user->name = $request->name;
+        $user->familyname = $request->familyname;
+        $user->username = $request->username;
+        $user->username = $request->username;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->save();
+        alert()->success('کاربر شما با موفقیت ثبت شد!');
+        return redirect()->route('users.index');
+        return $request->all();
     }
 
     /**
