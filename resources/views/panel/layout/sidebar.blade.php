@@ -7,7 +7,7 @@
         </li>
         <li class="nav-item">
             <div class="d-flex align-items-center">
-                <i class="fa fa-book"></i>
+                <i class="fa fa-users"></i>
                 <a href="#" class="nav-link my-1 text-nowrap w-100 collapsed" data-toggle="collapse" data-target="#submenu1">
                     همیاران
                     <i class="fa fa-angle-left float-left"></i>
@@ -15,15 +15,38 @@
             </div>
             <div class="collapse" id="submenu1">
                 <ul class="nav px-3">
+                    <li class="nav-item w-100">
+                        <a href="{{ route('members.index') }}" class="nav-link my-1">مشاهده همه</a>
+                    </li>
+                    <li class="nav-item w-100">
+                        <a href="{{ route('members.create') }}" class="nav-link my-1">اضافه کردن </a>
+                    </li>
+                        {{-- <li class="nav-item w-100">
+                            <a href="#" class="nav-link my-1">تایید درخواست</a>
+                        </li> --}}
+                </ul>
+            </div>
+        </li>
+        </li>
+        <li class="nav-item">
+            <div class="d-flex align-items-center">
+                <i class="fa fa-users"></i>
+                <a href="#" class="nav-link my-1 text-nowrap w-100 collapsed" data-toggle="collapse" data-target="#submenu2">
+                    کاربران
+                    <i class="fa fa-angle-left float-left"></i>
+                </a>
+            </div>
+            <div class="collapse" id="submenu2">
+                <ul class="nav px-3">
+                    <li class="nav-item w-100">
+                        <a href="{{ route('users.index') }}" class="nav-link my-1">مشاهده همه</a>
+                    </li>
                         <li class="nav-item w-100">
-                            <a href="{{ route('members.create') }}" class="nav-link my-1">اضافه کردن </a>
+                            <a href="{{ route('users.create') }}" class="nav-link my-1">اضافه کردن </a>
                         </li>
                         {{-- <li class="nav-item w-100">
                             <a href="#" class="nav-link my-1">تایید درخواست</a>
                         </li> --}}
-                        <li class="nav-item w-100">
-                            <a href="{{ route('members.index') }}" class="nav-link my-1">مشاهده همه</a>
-                        </li>
                 </ul>
             </div>
         </li>

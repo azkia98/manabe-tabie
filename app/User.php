@@ -21,10 +21,19 @@ class User extends Authenticatable
 
     /**
      * The attributes that should be hidden for arrays.
-     *
+     * 
      * @var array
      */
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+
+    public function isAdmin(){
+        if ($this->admin == true || $this->admin == 1) {
+            return true;
+        }
+        return false;
+    }
+
 }

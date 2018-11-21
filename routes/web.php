@@ -27,6 +27,7 @@ Route::namespace('Panel')->prefix('panell')->group(function(){
     Route::get('/show-card/{member}','MembersController@showCard')->name('cards.show');
     Route::get('/excel','MembersController@showMembersInExcel')->name('excel.all');
     Route::resource('options','OptionsController')->only(['index','update']);
+    Route::resource('users','UsersController');
 });
 
 

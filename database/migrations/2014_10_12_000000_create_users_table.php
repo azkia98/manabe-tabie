@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->smallInteger('permission');
             $table->string('sign');
+            $table->boolean('admin')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });
