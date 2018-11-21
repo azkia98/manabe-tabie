@@ -25,7 +25,9 @@ Route::namespace('Panel')->prefix('panell')->group(function(){
     Route::resource('members','MembersController');
     Route::get('/show-cards','MembersController@showCards')->name('cards.index');
     Route::get('/show-card/{member}','MembersController@showCard')->name('cards.show');
-    Route::get('/excel','MembersController@showMembersInExcel')->name('excel.all');
+    Route::get('/excel','ExcelController@showMembersInExcel')->name('excel.all');
+    Route::get('/excel/import','ExcelController@importMembersFromExcelForm')->name('excel.import');
+    Route::post('/excel/import','ExcelController@importMembersFromExcel')->name('excel.import.store');
     Route::resource('options','OptionsController')->only(['index','update']);
     Route::resource('users','UsersController');
 });

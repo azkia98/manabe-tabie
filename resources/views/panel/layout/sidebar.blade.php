@@ -50,6 +50,28 @@
                 </ul>
             </div>
         </li>
+        <li class="nav-item">
+            <div class="d-flex align-items-center">
+                <i class="fa fa-file-excel-o"></i>
+                <a href="#" class="nav-link my-1 text-nowrap w-100 collapsed" data-toggle="collapse" data-target="#submenu3">
+                    اکسل
+                    <i class="fa fa-angle-left float-left"></i>
+                </a>
+            </div>
+            <div class="collapse" id="submenu3">
+                <ul class="nav px-3">
+                    <li class="nav-item w-100">
+                        <a href="{{ route('excel.all') }}" class="nav-link my-1">خروجی</a>
+                    </li>
+                        <li class="nav-item w-100">
+                            <a href="{{ route('excel.import') }}" class="nav-link my-1">وارد کردن</a>
+                        </li>
+                        {{-- <li class="nav-item w-100">
+                            <a href="#" class="nav-link my-1">تایید درخواست</a>
+                        </li> --}}
+                </ul>
+            </div>
+        </li>
         
         <li class="nav-item d-flex align-items-center">
             <i class="fa fa-cogs"></i>
