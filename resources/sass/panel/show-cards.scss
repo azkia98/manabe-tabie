@@ -46,29 +46,37 @@ html{
     // background-color: red;
     &.background{
       &.student{
-        background-image: url('/images/cards/bg-st.png');
-        color: #40679e;
+        background-image: url('/images/cards/student-background.png');
+        color: #e53200;
+      }
+      &.promoter{
+        background-image: url('/images/cards/promoter-background.png');
+        color: #f2572d;
+      }
+      &.protector{
+        background-image: url('/images/cards/protector-background.png');
+        color: #356087;
       }
       .issue-date{
         position: absolute;
-        top: 98.7px;
-        right: 75px;
+        top: 95.7px;
+        right: 56px;
         color: black;
       }
       .expiry-date{
         position: absolute;
-        top: 108.6px;
-        right: 78px;
+        top: 105.6px;
+        right: 55px;
       }
       .local-phone{
         position: absolute;
-        top: 133.7px;
-        right: 79px;
+        top: 130.7px;
+        right: 57px;
       }
       .fax{
         position: absolute;
-        top: 146.7px;
-        right: 57px;
+        top: 143.7px;
+        right: 33px;
       }
     }
     .picture{
@@ -80,8 +88,8 @@ html{
     .signature{
       height: 1cm;
       position: absolute;
-      bottom: 18px;
-      left: 30px;
+      bottom: 5px;
+      left: 42px;
     }
     .name{
       position: absolute;

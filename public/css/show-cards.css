@@ -43,33 +43,43 @@ html {
 }
 
 .cards .card.background.student {
-  background-image: url("/images/cards/bg-st.png");
-  color: #40679e;
+  background-image: url("/images/cards/student-background.png");
+  color: #e53200;
+}
+
+.cards .card.background.promoter {
+  background-image: url("/images/cards/promoter-background.png");
+  color: #f2572d;
+}
+
+.cards .card.background.protector {
+  background-image: url("/images/cards/protector-background.png");
+  color: #356087;
 }
 
 .cards .card.background .issue-date {
   position: absolute;
-  top: 98.7px;
-  right: 75px;
+  top: 95.7px;
+  right: 56px;
   color: black;
 }
 
 .cards .card.background .expiry-date {
   position: absolute;
-  top: 108.6px;
-  right: 78px;
+  top: 105.6px;
+  right: 55px;
 }
 
 .cards .card.background .local-phone {
   position: absolute;
-  top: 133.7px;
-  right: 79px;
+  top: 130.7px;
+  right: 57px;
 }
 
 .cards .card.background .fax {
   position: absolute;
-  top: 146.7px;
-  right: 57px;
+  top: 143.7px;
+  right: 33px;
 }
 
 .cards .card .picture {
@@ -82,8 +92,8 @@ html {
 .cards .card .signature {
   height: 1cm;
   position: absolute;
-  bottom: 18px;
-  left: 30px;
+  bottom: 5px;
+  left: 42px;
 }
 
 .cards .card .name {
