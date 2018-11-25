@@ -8,26 +8,15 @@ use App\Member;
 use Maatwebsite\Excel\Facades\Excel;
 use Carbon\Carbon;
 use Hekmatinasser\Verta\Verta;
+use App\State;
+use App\City;
 
 class ExcelController extends Controller
 {
     public function showMembersInExcel()
     {
         $members = Member::all();
-        $data = [
-            // [
-            //     'نام و نام خانوادگی' => 'mahdi',
-            //     'تاریخ تولد' => '۱۳۸۵',
-            //     'شماره شاسنامه' => '0514245215',
-            //     'محل صدور' => 'اراک',
-            //     'کدملی' => '۰۵۲۱۰۷۲۳۴',
-            //     'نام پدر' => 'ابولمعصوم',
-            //     'محل سکونت' => 'اراک',
-            //     'شماره تماس' => '۰۹۳۸۳۹۰۴۹۶۳',
-            //     'شغل' => 'بیکار',
-            //     'سال صدور' => '۱۳۸۵',
-            // ],
-        ];
+        $data = [];
 
         foreach ($members as $member) {
             $data[] = [
@@ -69,38 +58,92 @@ class ExcelController extends Controller
     {
         // return $request->all();
         // $path = $request->file('excel')->store('excels');
-        Excel::load($request->file('excel'), function ($reader) {
-
+        Excel::load($request->file('excel'), function ($reader){
             // [
-            //         "nam_o_nam_khanoadgi" => "دادفر زارع"
-            //         "tarikh_told" => "۱۳۹۷"
-            //         "shmarh_shasnamh" => "۴۰۵۹۳۱۶"
-            //         "mhl_sdor" => "اراک"
-            //         "kdmli" => "۰۵۲۱۶۵۷۸۴۸"
-            //         "nam_pdr" => "گلسا"
-            //         "mhl_skont" => "استان چهارمحال و بختیاری خیابان صفوی ساختمان اورنگ کد پستی 4075405178"
-            //         "shmarh_tmas" => "۰۹۳۸۳۹۰۴۹۸۷"
-            //         "sth_thsilat" => "دیپلم"
-            //         "shghl" => "بیکار"
-            //         "sal_sdor" => "۱۳۶۰"
-            // ]
-            // reader methods
-            $rows = $reader->all();
-            // dd();
-            $data = [];
+                // "nam_o_nam_khanoadgi" => "افرنگ بحرینی"
+                // "tarikh_told" => "۱۳۹۷"
+                // "shmarh_shasnamh" => "۴۰۵۴۷۸۴"
+                // "mhl_sdor" => "اراک"
+                // "kdmli" => "۰۵۲۱۶۵۷۸۴۳"
+                // "nam_pdr" => "یزدگرد"
+                // "astan" => "خراسان رضوي"
+                // "shhrstan" => "كاشمر"
+                // "rosta" => "inventore"
+                // "shmarh_tmas" => "۰۹۳۸۳۹۰۴۹۸۷"
+                // "sth_thsilat" => "لیسانس"
+                // "shghl" => "بیکار"
+                // "dansh_aamozi" => null
+                // "mroj" => null
+                // "mhafth" => "✔"
+                // "sal_sdor" => "۱۳۷۱"
+                // ]
+                //  reader methods
+                $rows = $reader->all();
+                // dd();   
+            $datas = [];
+            $index = 0;
             foreach ($rows as $row) {
                 $nameAndFamily = explode(' ',trim($row->nam_o_nam_khanoadgi));
-                dd(Verta::getGregorian((int) convertToEnglish($row->tarikh_told),1,1),(int) convertToEnglish($row->tarikh_told));
-                dd(Carbon::createFromDate(Verta::getGregorian((int) convertToEnglish($row->tarikh_told),1,1)) );
-                $data = [
+                $state_id = $this->findStateWithName($row->astan);
+                $city_id = $this->findCityWithName($row->shhrstan);
+                // dd($city_id);
+                // dd($this->persianDateToEnglishDate($row->shhrstan));a
+                $typeMember = $this->detectTypeNumber($row->mhafth,$row->dansh_aamozi,$row->mroj);
+                $datas [$index] = [
                     'name' => $nameAndFamily[0],
-                    'familynamd' => $nameAndFamily[1],
-                    'birthdate' => Carbon::createFromDate(Verta::getGregorian($row->tarikh_told))
+                    'familyname' => $nameAndFamily[1],
+                    'birthdate' => $this->persianDateToEnglishDate($row->tarikh_told),
+                    'identitinumber' => $row->shmarh_shasnamh,
+                    'nationalcode'=> $row->kdmli,
+                    'fathername' => $row->nam_pdr,
+                    'state_id' => $state_id,
+                    'city_id' => $city_id,
+                    'village' => $row->rosta,
+                    'phonenumber' => $row->shmarh_tmas,
+                    'education' => 2,
+                    'job' => $row->shghl,
+                    'typemember' => $typeMember,
+                    'issuingdate'=> $this->persianDateToEnglishDate($row->sal_sdor),
+                    'created_at' => now(),
+                    'updated_at' => now()
                 ];
+                $datas[$index]['issuinglocal'] = $row->mhl_sdor;
+                $index++;
             }
-
+            Member::insert($datas); 
         });
-        // return $path;
+        alert()->success('همیار های شما با موفقیت ثبت شدن');
+        return redirect()->route('members.index');
+    }
 
+    public function persianDateToEnglishDate($stringDate){
+        $dateInArray = Verta::getGregorian((int) convertToEnglish($stringDate),1,1);
+        return Carbon::createFromDate($dateInArray[0],1,1);
+    }
+
+    public function findStateWithName($stateName) :int{
+        $state = State::whereName($stateName)->first();
+        
+        return is_null($state) ? 1 : $state->id;
+    }
+    public function findCityWithName($cityName) :int{
+        $city = City::whereName($cityName)->first();
+        return is_null($city) ? 1 : $city->id;
+    }
+
+    // "dansh_aamozi" => null
+            // "mroj" => null
+            // "mhafth" => "✔"
+
+    public function detectTypeNumber($protector,$student,$promoter){
+        if ($protector != null) {
+            return 1;
+        }
+        if ($promoter != null) {
+            return 2;
+        }
+        if ($student != null) {
+            return 3;
+        }
     }
 }
