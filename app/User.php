@@ -29,10 +29,44 @@ class User extends Authenticatable
     ];
 
 
-    public function isAdmin(){
+    public function isAdmin()
+    {
         if ($this->admin == true || $this->admin == 1) {
             return true;
         }
+        return false;
+    }
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }
+
+    public function members()
+    {
+        return $this->belongsToMany(Member::class);
+    }
+
+
+    public function owns($relation)
+    {
+        return $this->id == $relation->user_id;
+    }
+
+
+    public function hasRole($role)
+    {
+        if (is_string($role)) {
+            return $this->roles->contains('name',$role);
+        }
+
+        foreach($role as $r)
+        {
+            if($this->hasRole($r->name)){
+                return true;
+            }
+        }
+
         return false;
     }
 

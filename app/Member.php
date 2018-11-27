@@ -112,4 +112,8 @@ class Member extends Model
         return $query->whereTypemember(3); 
     }
 
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
 }

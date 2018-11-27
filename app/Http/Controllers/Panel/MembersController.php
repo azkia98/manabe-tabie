@@ -11,9 +11,15 @@ use App\Http\Requests\StoreMember;
 use App\User;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Option;
+use Illuminate\Support\Facades\Gate;
 
 class MembersController extends Controller
 {
+
+    public function __construct(){
+        auth()->loginUsingId(1);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -71,6 +77,10 @@ class MembersController extends Controller
      */
     public function edit(Member $member)
     {
+        if(Gate::denies('update',$member))
+        {
+            abort(403,'این یوزر را شما نساخته اید');
+        }
         return view('panel.members.edit', compact('member'));
     }
 
@@ -86,7 +96,7 @@ class MembersController extends Controller
         // return $member;
         // dd($request->file('picture'));
         $status = $this->saveMember($request, 'UPDATE', $member);
-
+        
         if (!$status)
             alert()->error('مشکلی در تغییر دادن همیار به وجود آمده!');
 

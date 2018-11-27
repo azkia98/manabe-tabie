@@ -32,6 +32,7 @@ class CreateMembersTable extends Migration
             $table->unsignedInteger('city_id')->nullable();
             $table->unsignedInteger('state_id')->nullable();
             $table->string('village')->nullable();
+            $table->unsignedInteger('user_id')->nullable();
             $table->timestamps();
         });
     }
