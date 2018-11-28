@@ -8,14 +8,15 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
+        <link href="{{ asset('css/panel.css') }}" rel="stylesheet" type="text/css">
 
         <!-- Styles -->
         <style>
             html, body {
                 background-color: #fff;
                 color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
+                /* font-family: 'Nunito', sans-serif; */
+                /* font-weight: 200; */
                 height: 100vh;
                 margin: 0;
             }
@@ -46,6 +47,11 @@
 
             .title {
                 font-size: 84px;
+                transition: all .5s;
+            }
+
+            .title:hover{
+                color: #20bf6b;
             }
 
             .links > a {
@@ -68,29 +74,25 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                        <a href="{{ route('dashboard') }}">پنل</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
 
-                        @if (Route::has('register'))
+                        {{--  @if (Route::has('register'))
                             <a href="{{ route('register') }}">Register</a>
-                        @endif
+                        @endif  --}}
                     @endauth
                 </div>
             @endif
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    منابع طبیعی
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="http://www.frw.org.ir/00/Fa/default.aspx">منابع‌طبیعی کل کشور</a>
+                    <a href="http://www.markazi.frw.org.ir/00/Fa/default.aspx">منابع‌طبیعی استان مرکزی</a>
                 </div>
             </div>
         </div>

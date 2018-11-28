@@ -44,9 +44,25 @@
                         <li class="nav-item w-100">
                             <a href="{{ route('users.create') }}" class="nav-link my-1">اضافه کردن </a>
                         </li>
-                        {{-- <li class="nav-item w-100">
-                            <a href="#" class="nav-link my-1">تایید درخواست</a>
-                        </li> --}}
+                </ul>
+            </div>
+        </li>
+        <li class="nav-item">
+            <div class="d-flex align-items-center">
+                <i class="fa fa-hand-paper-o "></i>
+                <a href="#" class="nav-link my-1 text-nowrap w-100 collapsed" data-toggle="collapse" data-target="#permissionAndRoles">
+                    نقش ها
+                    <i class="fa fa-angle-left float-left"></i>
+                </a>
+            </div>
+            <div class="collapse" id="permissionAndRoles">
+                <ul class="nav px-3">
+                    <li class="nav-item w-100">
+                        <a href="{{ route('roles.index') }}" class="nav-link my-1">مشاهده همه</a>
+                    </li>
+                        <li class="nav-item w-100">
+                            <a href="{{ route('roles.create') }}" class="nav-link my-1">اضافه کردن </a>
+                        </li>
                 </ul>
             </div>
         </li>
@@ -66,9 +82,6 @@
                         <li class="nav-item w-100">
                             <a href="{{ route('excel.import') }}" class="nav-link my-1">وارد کردن</a>
                         </li>
-                        {{-- <li class="nav-item w-100">
-                            <a href="#" class="nav-link my-1">تایید درخواست</a>
-                        </li> --}}
                 </ul>
             </div>
         </li>

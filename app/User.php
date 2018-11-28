@@ -53,6 +53,12 @@ class User extends Authenticatable
         return $this->id == $relation->user_id;
     }
 
+    public function assignRole(Role $role){
+        return $this->roles()->save(
+            Role::whereName($role)->firstOrFail()
+        );
+    }
+
 
     public function hasRole($role)
     {
@@ -69,5 +75,7 @@ class User extends Authenticatable
 
         return false;
     }
+
+
 
 }

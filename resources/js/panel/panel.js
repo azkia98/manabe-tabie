@@ -1,7 +1,7 @@
 
 const Jquery = jQuery = $ = require('jquery');
 require('bootstrap');
-
+require('bootstrap-select');
 
 
 window.Vue = require('vue');

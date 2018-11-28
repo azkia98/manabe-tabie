@@ -35,6 +35,7 @@ Route::namespace('Panel')->prefix('panell')->group(function(){
     Route::post('/excel/import','ExcelController@importMembersFromExcel')->name('excel.import.store');
     Route::resource('options','OptionsController')->only(['index','update']);
     Route::resource('users','UsersController');
+    Route::resource('roles','RolesAndPermissionsController');
 });
 
 
