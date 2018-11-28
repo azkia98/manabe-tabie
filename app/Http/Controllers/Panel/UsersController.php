@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Panel;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Role;
 
 class UsersController extends Controller
 {
@@ -16,7 +17,7 @@ class UsersController extends Controller
     public function index()
     {
         $users = User::paginate(10);
-        return view('panel.users.index',compact('users'));
+        return view('panel.users.index', compact('users'));
     }
 
     /**
@@ -26,7 +27,8 @@ class UsersController extends Controller
      */
     public function create()
     {
-        return view('panel.users.create');
+        $roles = Role::all();
+        return view('panel.users.create', compact('roles'));
     }
 
     /**
@@ -51,6 +53,7 @@ class UsersController extends Controller
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
         $user->save();
+        $user->roles()->attach($request->roles);
         alert()->success('کاربر شما با موفقیت ثبت شد!');
         return redirect()->route('users.index');
         return $request->all();
@@ -64,7 +67,7 @@ class UsersController extends Controller
      */
     public function show(User $user)
     {
-        return view('panel.users.show',compact('user'));
+        return view('panel.users.show', compact('user'));
     }
 
     /**
@@ -75,7 +78,8 @@ class UsersController extends Controller
      */
     public function edit(User $user)
     {
-        return view('panel.users.edit',compact('user'));
+        $roles = Role::all();
+        return view('panel.users.edit', compact('user','roles'));
     }
 
     /**
@@ -93,17 +97,18 @@ class UsersController extends Controller
             'username' => 'required',
             'email' => 'required',
         ]);
-        if($request->password !== null)
+        if ($request->password !== null)
             $user->password = bcrypt($request->password);
         $user->name = $request->name;
         $user->familyname = $request->familyname;
         $user->username = $request->username;
         $user->username = $request->username;
         $user->email = $request->email;
-        alert()->success('اطلاعات کاربر شما با موفقیت تغییر کرد','تغییر کرد!');
+        $user->roles()->sync($request->roles);
+        alert()->success('اطلاعات کاربر شما با موفقیت تغییر کرد', 'تغییر کرد!');
         return redirect()->back();
     }
-    
+
     /**
      * Remove the specified resource from storage.
      *

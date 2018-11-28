@@ -2,7 +2,7 @@
 const Jquery = jQuery = $ = require('jquery');
 require('bootstrap');
 require('bootstrap-select');
-
+$.fn.selectpicker.Constructor.BootstrapVersion = '4';
 
 window.Vue = require('vue');
 

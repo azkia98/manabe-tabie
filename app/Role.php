@@ -20,4 +20,8 @@ class Role extends Model
     {
         return $this->permissions()->save($permission);
     }
+
+    public function hasPermission($id){
+        return $this->permissions->contains($id);
+    }
 }

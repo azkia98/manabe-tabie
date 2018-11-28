@@ -11465,6 +11465,7 @@ module.exports = __webpack_require__(50);
 var Jquery = jQuery = $ = __webpack_require__(5);
 __webpack_require__(14);
 __webpack_require__(79);
+$.fn.selectpicker.Constructor.BootstrapVersion = '4';
 
 window.Vue = __webpack_require__(16);
 

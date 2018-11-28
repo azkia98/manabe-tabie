@@ -62,6 +62,16 @@
         </div>
       </div>
 
+      <div class="row">
+        <div class="col-12">
+            <select class="selectpicker w-100" multiple name="roles[]">
+              @foreach ($roles as $role)
+                <option data-content="<span class='badge badge-success'>{{ $role->name }}</span>" value="{{ $role->id }}"></option>
+              @endforeach
+              </select>
+        </div>
+      </div>
+
       <button type="submit" class="btn btn-success mt-3">ثبت</button>
     </form>
 </div>
@@ -70,13 +80,8 @@
 
 @section('scripts')
     <script>
-       $(document).ready(function() {
-          $("#birthdate,#issuingdate").pDatepicker({
-            persianDigit: false,
-            formatter: function(unix){
-                return unix / 1000; 
-            } 
-          });
-        });
+      $(document).ready(function(){
+        $('.selectpicker').selectpicker();
+      })
     </script>
-@endsection 
+@endsection

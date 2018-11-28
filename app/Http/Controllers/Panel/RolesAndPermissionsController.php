@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Panel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Role;
+use App\Permission;
 
 class RolesAndPermissionsController extends Controller
 {
@@ -16,7 +17,7 @@ class RolesAndPermissionsController extends Controller
     public function index()
     {
         $roles = Role::all();
-        return view('panel.roles.index',compact('roles'));
+        return view('panel.roles.index', compact('roles'));
     }
 
     /**
@@ -26,7 +27,8 @@ class RolesAndPermissionsController extends Controller
      */
     public function create()
     {
-        return view('panel.roles.create');
+        $permissions = Permission::all();
+        return view('panel.roles.create', compact('permissions'));
     }
 
     /**
@@ -37,7 +39,13 @@ class RolesAndPermissionsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // return $request->all();
+        if (!$this->saveRole($request)) {
+            alert()->error('نقش شما با موفقیت ثبت نشد!!');
+            return redirect()->back();
+        }
+        alert()->success('نقش شما با موفقیت ثبت شد!');
+        return redirect()->route('roles.index');
     }
 
     /**
@@ -59,7 +67,9 @@ class RolesAndPermissionsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $role = Role::find($id);
+        $permissions = Permission::all();
+        return view('panel.roles.edit', compact('role', 'permissions'));
     }
 
     /**
@@ -71,7 +81,14 @@ class RolesAndPermissionsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $role = Role::find($id);
+        if (!$this->saveRole($request,$role)) {
+            alert()->error('نقش شما با موفقیت ثبت نشد!!');
+            return redirect()->back();
+        }
+
+        alert()->success('نقش شما با موفقیت تغییر کرد!!');
+        return redirect()->back();
     }
 
     /**
@@ -83,5 +100,22 @@ class RolesAndPermissionsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function saveRole(Request $request,Role $role = null) 
+    {
+        if($role == null)
+        {
+            $role = new Role();
+        }
+        $role->name = $request->name;
+        $role->label = $request->label;
+        if ($request->method() == "PATCH" or $request->method() == "PUT") {
+            $role->update();
+        } else {
+            $role->save();
+        }
+        $role->permissions()->sync($request->permissions);
+        return true;
     }
 }

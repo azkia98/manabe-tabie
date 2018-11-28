@@ -25,12 +25,11 @@
       </div>
       <div class="row">
         <div class="col-12">
-            <select class="selectpicker">
-                <option>Mustard</option>
-                <option>Ketchup</option>
-                <option>Barbecue</option>
+            <select class="selectpicker w-100" multiple name="permissions[]">
+              @foreach ($permissions as $permission)
+                <option data-content="<span class='badge badge-danger'>{{ $permission->name }}</span>" value="{{ $permission->id }}"></option>
+              @endforeach
               </select>
-              
         </div>
 
       </div>
