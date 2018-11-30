@@ -22,6 +22,7 @@ class MembersController extends Controller
      */
     public function index()
     {
+        auth()->loginUsingId(1);
         $this->denied('members-index');
         $members = Member::paginate(20);
         return view('panel.members.index', compact('members'));

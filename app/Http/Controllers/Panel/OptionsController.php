@@ -11,7 +11,7 @@ class OptionsController extends Controller
 
     public function __construct()
     {
-        $this->denied('options');   
+        $this->denied('options-use');   
     }
 
     /**
