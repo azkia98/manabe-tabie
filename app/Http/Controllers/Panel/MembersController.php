@@ -15,11 +15,6 @@ use Illuminate\Support\Facades\Gate;
 
 class MembersController extends Controller
 {
-
-    public function __construct(){
-        auth()->loginUsingId(1);
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -27,6 +22,7 @@ class MembersController extends Controller
      */
     public function index()
     {
+        $this->denied('members-index');
         $members = Member::paginate(20);
         return view('panel.members.index', compact('members'));
     }
@@ -38,6 +34,7 @@ class MembersController extends Controller
      */
     public function create()
     {
+        $this->denied('members-create');
         return view('panel.members.create');
     }
 
@@ -49,6 +46,7 @@ class MembersController extends Controller
      */
     public function store(StoreMember $request)
     {
+        $this->denied('members-create');
         if (!$this->saveMember($request, 'SAVE', new Member())) {
             alert()->error('فایل شما با موفقیت ذخیره نشد!', 'یه مشکلی به وجود آمده!!!');
             return redirect()->back();
@@ -66,6 +64,7 @@ class MembersController extends Controller
      */
     public function show(Member $member)
     {
+        $this->denied('members-show');
         return view('panel.members.show', compact('member'));
     }
 
@@ -77,9 +76,9 @@ class MembersController extends Controller
      */
     public function edit(Member $member)
     {
-        if(Gate::denies('update',$member))
-        {
-            abort(403,'این یوزر را شما نساخته اید');
+        $this->denied('members-edit');
+        if (Gate::denies('update', $member)) {
+            abort(403, 'این یوزر را شما نساخته اید');
         }
         return view('panel.members.edit', compact('member'));
     }
@@ -93,10 +92,11 @@ class MembersController extends Controller
      */
     public function update(StoreMember $request, Member $member)
     {
+        $this->denied('members-update');
         // return $member;
         // dd($request->file('picture'));
         $status = $this->saveMember($request, 'UPDATE', $member);
-        
+
         if (!$status)
             alert()->error('مشکلی در تغییر دادن همیار به وجود آمده!');
 
@@ -112,6 +112,7 @@ class MembersController extends Controller
      */
     public function destroy(Member $member)
     {
+        $this->denied('members-delete');
         $member->delete();
         alert()->success('حذف شد !', 'همیار شما با موفقیت حذف گردید');
         return redirect()->route('members.index');
@@ -123,11 +124,12 @@ class MembersController extends Controller
 
     public function showCards()
     {
+        $this->denied('cards');
         $members = Member::all();
         $fax = Option::GVWK('fax');
         $expiryDate = Option::GVWK('expiry-date');
         $localPhone = Option::GVWK('local-phone');
-        return view('panel.members.show-cards', compact('members','fax','expiryDate','localPhone'));
+        return view('panel.members.show-cards', compact('members', 'fax', 'expiryDate', 'localPhone'));
     }
 
     /**
@@ -137,6 +139,7 @@ class MembersController extends Controller
 
     public function showCard(Member $member)
     {
+        $this->denied('cards');
         $fax = Option::GVWK('fax');
         $expiryDate = Option::GVWK('expiry-date');
         $localPhone = Option::GVWK('local-phone');
@@ -190,4 +193,6 @@ class MembersController extends Controller
 
         return true;
     }
+
+    
 }

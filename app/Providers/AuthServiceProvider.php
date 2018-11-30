@@ -29,15 +29,26 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
+        Gate::before(function($user,$ability){
+            if($user->isSuperAdmin())
+                return true; 
+        });
+
+        $this->acl();
+        
+    }
+
+    protected function getPermissions()
+    {
+        return Permission::with('roles')->get();
+    }
+
+
+    protected function acl(){
         foreach ($this->getPermissions() as $permission) {
             Gate::define($permission->name, function ($user) use($permission) {
                 return $user->hasRole($permission->roles);
             });
         }
-    }
-
-    public function getPermissions()
-    {
-        return Permission::with('roles')->get();
     }
 }

@@ -9,6 +9,10 @@ use App\Permission;
 
 class RolesAndPermissionsController extends Controller
 {
+
+    public function __construct(){
+        // $this->denied('permissions-and-roles');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -117,5 +121,10 @@ class RolesAndPermissionsController extends Controller
         }
         $role->permissions()->sync($request->permissions);
         return true;
+    }
+
+    public function showPermissions(){
+        $permissions = Permission::all();
+        return view('panel.roles.index-permissions',compact('permissions'));
     }
 }

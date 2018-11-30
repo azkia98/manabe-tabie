@@ -28,7 +28,11 @@
               @endforeach
             </td>
             <td class="text-center">
-              <a class="btn btn-primary btn-sm" href="{{ route('users.show',['id'=> $user->id]) }}"><i class="fa fa-info"></i></a>
+              @can('users-show')
+                <a class="btn btn-primary btn-sm" href="{{ route('users.show',['id'=> $user->id]) }}"><i class="fa fa-info"></i></a>
+              @else
+                <a class="btn btn-primary btn-sm disabled" href="{{ route('users.show',['id'=> $user->id]) }}"><i class="fa fa-info"></i></a>
+              @endcan
             </td>
             </tr>
         @endforeach

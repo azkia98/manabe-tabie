@@ -21,11 +21,13 @@
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a href="#" class="nav-link">داشبورد</a>
+                    <a href="{{ route('dashboard') }}" class="nav-link">داشبورد</a>
                 </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">همیارها</a>
-                </li>
+                @can('members-index')
+                    <li class="nav-item">
+                        <a href="{{ route('members.index') }}" class="nav-link">همیارها</a>
+                    </li>
+                @endcan
             </ul>
             <div class="ml-3 mr-auto">
                 @include('panel.layout.topleft')

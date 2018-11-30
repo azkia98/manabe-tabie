@@ -15,6 +15,7 @@ class ExcelController extends Controller
 {
     public function showMembersInExcel()
     {
+        $this->denied('excel-export');
         $members = Member::all();
         $data = [];
 
@@ -51,11 +52,13 @@ class ExcelController extends Controller
 
     public function importMembersFromExcelForm()
     {
+        $this->denied('excel-import');
         return view('panel.excel.import');
     }
 
     public function importMembersFromExcel(Request $request)
     {
+        $this->denied('excel-import');
         // return $request->all();
         // $path = $request->file('excel')->store('excels');
         Excel::load($request->file('excel'), function ($reader){

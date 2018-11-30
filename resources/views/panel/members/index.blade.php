@@ -17,19 +17,27 @@
     <tbody>
         @foreach ($members as $member)
             <tr>
-    
-            <td>{{ $member->name }}</td>
-            <td>{{ $member->familyname }}</td>
-            <td>{{ verta($member->birthdate)->format('%B %d، %Y') }}</td>
-            <td>{{ $member->fathername }}</td>
-            <td>{{ $member->typememberPretty }}</td>
-            <td>{{ $member->educationPretty }}</td>
-            <td class="d-none d-md-table-cell">{{ $member->city->name }}</td>
-            <td class="text-center">
-              <a class="btn btn-primary btn-sm" href="{{ route('members.show',['id'=> $member->id]) }}"><i class="fa fa-info"></i></a>
-              <a class="btn btn-success btn-sm" href="{{ route('cards.show',['id'=> $member->id]) }}"><i class="fa fa-id-card"></i></a>
-            </td>
+              <td>{{ $member->name }}</td>
+              <td>{{ $member->familyname }}</td>
+              <td>{{ verta($member->birthdate)->format('%B %d، %Y') }}</td>
+              <td>{{ $member->fathername }}</td>
+              <td>{{ $member->typememberPretty }}</td>
+              <td>{{ $member->educationPretty }}</td>
+              <td class="d-none d-md-table-cell">{{ $member->city->name }}</td>
+              <td class="text-center">
+                @can('members-show')
+                <a class="btn btn-primary btn-sm" href="{{ route('members.show',['id'=> $member->id]) }}"><i class="fa fa-info"></i></a>
+                @else
+                <a class="btn btn-primary btn-sm disabled" href="{{ route('members.show',['id'=> $member->id]) }}"><i class="fa fa-info"></i></a>
+                @endcan
+                @can('cards')
+                  <a class="btn btn-success btn-sm" href="{{ route('cards.show',['id'=> $member->id]) }}"><i class="fa fa-id-card"></i></a>
+                @else
+                  <a class="btn btn-success btn-sm disabled" href="{{ route('cards.show',['id'=> $member->id]) }}"><i class="fa fa-id-card"></i></a>
+                @endcan
+              </td>
             </tr>
+            
         @endforeach
     </tbody>
   </table>

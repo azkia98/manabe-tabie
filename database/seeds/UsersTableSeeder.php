@@ -35,7 +35,8 @@ class UsersTableSeeder extends Seeder
         $admin = factory(User::class)->create([
             'name' => 'Mahdi',
             'familyname' => 'Admin',
-            'email' => 'azkia@iran.ir'
+            'email' => 'azkia@iran.ir',
+            'admin' => true
         ]);
         $user = factory(User::class)->create([
             'name' => 'Nosi',

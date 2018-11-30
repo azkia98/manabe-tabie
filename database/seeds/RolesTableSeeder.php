@@ -13,11 +13,11 @@ class RolesTableSeeder extends Seeder
      */
     public function run()
     {
-        $member_show_permission = Permission::where('name','member-show')->first();
-        $member_delete_permission = Permission::where('name','member-delete')->first();
-        $member_index_permission = Permission::where('name','member-index')->first();
-        $member_update_permission = Permission::where('name','member-update')->first();
-        $member_create_permission = Permission::where('name','member-create')->first();
+        $member_show_permission = Permission::where('name','members-show')->first();
+        $member_delete_permission = Permission::where('name','members-delete')->first();
+        $member_index_permission = Permission::where('name','members-index')->first();
+        $member_update_permission = Permission::where('name','members-update')->first();
+        $member_create_permission = Permission::where('name','members-create')->first();
 
         $role_user = new Role();
         $role_user->name = 'User';

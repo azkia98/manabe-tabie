@@ -8,6 +8,12 @@ use App\Http\Controllers\Controller;
 
 class OptionsController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->denied('options');   
+    }
+
     /**
      * Display a listing of the resource.
      *

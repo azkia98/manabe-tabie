@@ -29,7 +29,7 @@ class User extends Authenticatable
     ];
 
 
-    public function isAdmin()
+    public function isSuperAdmin()
     {
         if ($this->admin == true || $this->admin == 1) {
             return true;

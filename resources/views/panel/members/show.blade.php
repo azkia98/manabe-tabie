@@ -38,12 +38,18 @@
 </div>
 
 <div class="d-flex justify-content-end">
-  <a href="{{ route('members.edit',['id'=> $member->id]) }}" class="btn btn-primary ml-1"><i class="fa fa-edit"></i></a>
+  @can('users-update')
+    <a href="{{ route('members.edit',['id'=> $member->id]) }}" class="btn btn-primary ml-1"><i class="fa fa-edit"></i></a>
+  @else
+    <a href="{{ route('members.edit',['id'=> $member->id]) }}" class="btn btn-primary disabled ml-1"><i class="fa fa-edit"></i></a>
+  @endcan
+  @can('users-delete')
   <form action="{{ route('members.destroy',['id'=> $member->id]) }}" class="mb-0" method="POST">
     @method('DELETE')
     @csrf
     <button class="btn btn-danger" id="deleteButton"><i class="fa fa-trash"></i></button>
   </form>
+  @endcan
 </div>
 @endsection
 

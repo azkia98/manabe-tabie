@@ -15,10 +15,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     auth()->loginUsingId(1);
-    if(auth()->user()->cannot('member-delete'))
-    {
-        return 'member-delete';
-    }
     return view('welcome');
 });
 
@@ -36,6 +32,7 @@ Route::namespace('Panel')->prefix('panell')->group(function(){
     Route::resource('options','OptionsController')->only(['index','update']);
     Route::resource('users','UsersController');
     Route::resource('roles','RolesAndPermissionsController');
+    Route::get('permissions','RolesAndPermissionsController@showPermissions')->name('permissions.index');
 });
 
 

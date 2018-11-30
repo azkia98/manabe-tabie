@@ -16,6 +16,7 @@ class UsersController extends Controller
      */
     public function index()
     {
+        $this->denied('users-index');
         $users = User::paginate(10);
         return view('panel.users.index', compact('users'));
     }
@@ -27,6 +28,7 @@ class UsersController extends Controller
      */
     public function create()
     {
+        $this->denied('users-create');
         $roles = Role::all();
         return view('panel.users.create', compact('roles'));
     }
@@ -39,6 +41,7 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
+        $this->denied('users-create');
         $request->validate([
             'name' => 'required',
             'familyname' => 'required',
@@ -67,6 +70,7 @@ class UsersController extends Controller
      */
     public function show(User $user)
     {
+        $this->denied('users-show');
         return view('panel.users.show', compact('user'));
     }
 
@@ -78,6 +82,7 @@ class UsersController extends Controller
      */
     public function edit(User $user)
     {
+        $this->denied('users-update');
         $roles = Role::all();
         return view('panel.users.edit', compact('user','roles'));
     }
@@ -91,6 +96,7 @@ class UsersController extends Controller
      */
     public function update(Request $request, User $user)
     {
+        $this->denied('users-update');
         $request->validate([
             'name' => 'required',
             'familyname' => 'required',
@@ -117,6 +123,7 @@ class UsersController extends Controller
      */
     public function destroy(User $user)
     {
+        $this->denied('users-delete');
         return $user;
     }
 }
