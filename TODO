@@ -6,16 +6,17 @@ Project:
     + add city and state property
     + add city and state to edit section
     + craete the excel export for our application
-    x create the * Gates * for our application
-    x create the index page for our application
+    + create the * Gates * for our application
+    + create the index page for our application
     - create the signature for our application
-    - create CURD for our users
+    + create CURD for our users
     + create the background for our cards
     + create the options section
     + fix the excel export
     + add village
-    - create the excel import section
-    - add search or filter section for our application
+    + create the excel import section
+    + add search or filter section for our application
     + create report section for our dashboard `MemberCounts,UserCounts,ProtectorCount,PromoterCount,StudentCount`
     - change some bugs same as `birth-date field,issue-date field`
     - fix form size  
+    - change the way for showing publish date

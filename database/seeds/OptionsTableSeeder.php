@@ -23,9 +23,9 @@ class OptionsTableSeeder extends Seeder
             'label' => 'نمابر'
         ],
         [
-            'key' => 'faxf',
+            'key' => 'signature',
             'value' => '۳۴۱۶۰۶۳۱',
-            'label' => 'نمابر'
+            'label' => 'امضاع مدیریت'
         ],
         ];
 
