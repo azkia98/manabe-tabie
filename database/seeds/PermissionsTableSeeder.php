@@ -76,7 +76,7 @@ class PermissionsTableSeeder extends Seeder
                 'label' => 'قابلیت خروجی گرفتن از اکسل'
             ],
             [
-                'name' => 'options-use',
+                'name' => 'options',
                 'label' => 'دسترسی به قسمت تنظیمات'
             ],
             [

@@ -21,7 +21,12 @@ class OptionsTableSeeder extends Seeder
             'key' => 'fax',
             'value' => '۳۴۱۶۰۶۳۱',
             'label' => 'نمابر'
-        ]
+        ],
+        [
+            'key' => 'faxf',
+            'value' => '۳۴۱۶۰۶۳۱',
+            'label' => 'نمابر'
+        ],
         ];
 
     /**

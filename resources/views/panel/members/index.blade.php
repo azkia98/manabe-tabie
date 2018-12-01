@@ -1,6 +1,17 @@
 @extends('panel.layout.master')
 
 @section('content')
+<div class="d-flex">
+  <div>
+    <a href="{{ route('members.create') }}" class="btn btn-success d-flex justify-content-center align-items-center">اضافه کردن <i class="fa fa-plus mr-2"></i></a>
+  </div>
+    <form action="{{ route('members.index') }}" method="GET" class="form-inline">
+        <label class="sr-only" for="inlineFormInputName2">جستجو</label>
+        <input type="text" name="search" class="form-control mb-2 mr-sm-2 rounded-0" id="inlineFormInputName2" placeholder="جستجو ...">
+        <button type="submit" class="btn btn-primary mb-2 rounded-0 search-button-padding"><i class="fa fa-search"></i></button>
+      </form>
+</div>
+
 <table class="table">
     <thead class="thead-light">
       <tr>
@@ -43,6 +54,6 @@
   </table>
 
   <div class="d-flex justify-content-center mt-3">
-    {{ $members->links() }}
+    {{ $members->appends($_GET)->links() }}
   </div>
 @endsection

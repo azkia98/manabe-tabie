@@ -20,11 +20,27 @@ class MembersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         auth()->loginUsingId(1);
+        $search = $request->search;
+        if ($search) {
+            $members = Member::with('city')
+                ->where('familyname','like',"%$search%")
+                ->orWhere('name','like',"%$search%")
+                ->orWhere('nationalcode','like',"%$search%")
+                ->orWhere('issuinglocal','like',"%$search%")
+                ->orWhere('identitinumber','like',"%$search%")
+                ->orWhere('fathername','like',"%$search%")
+                ->orWhere('address','like',"%$search%")
+                ->orWhere('phonenumber','like',"%$search%")
+                ->orWhere('job','like',"%$search%")
+                ->orWhere('village','like',"%$search%")->paginate(20);
+        } else {
+            $members = Member::with('city')->paginate(20);
+        }
+
         $this->denied('members-index');
-        $members = Member::with('city')->paginate(20);
         return view('panel.members.index', compact('members'));
     }
 
@@ -195,5 +211,5 @@ class MembersController extends Controller
         return true;
     }
 
-    
+
 }

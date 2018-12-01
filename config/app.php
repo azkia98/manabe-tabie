@@ -179,6 +179,8 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Overtrue\LaravelLang\TranslationServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
+        
 
     ],
 
@@ -231,7 +233,7 @@ return [
         'Verta' => Hekmatinasser\Verta\Verta::class,
         'Alert' => UxWeb\SweetAlert\SweetAlert::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
-
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
     ],
 
 ];
