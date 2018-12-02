@@ -59,26 +59,26 @@ html {
 
 .cards .card.background .issue-date {
   position: absolute;
-  top: 95.7px;
-  right: 56px;
+  top: 84.7px;
+  right: 54px;
   color: black;
 }
 
 .cards .card.background .expiry-date {
   position: absolute;
-  top: 105.6px;
+  top: 99.6px;
   right: 55px;
 }
 
 .cards .card.background .local-phone {
   position: absolute;
-  top: 130.7px;
-  right: 57px;
+  top: 126.7px;
+  right: 55px;
 }
 
 .cards .card.background .fax {
   position: absolute;
-  top: 143.7px;
+  top: 139.7px;
   right: 33px;
 }
 
@@ -104,8 +104,8 @@ html {
 
 .cards .card .number-of-register {
   position: absolute;
-  top: 71px;
-  right: 93px;
+  top: 70px;
+  right: 87px;
 }
 
 .cards .card .birthdate {
@@ -129,18 +129,47 @@ html {
 .cards .card .fathername {
   position: absolute;
   top: 110px;
-  right: 60px;
+  right: 62px;
 }
 
 .cards .card .state {
   position: absolute;
   top: 138px;
-  right: 55px;
+  right: 58px;
 }
 
 .cards .card .city {
   position: absolute;
-  top: 152px;
-  right: 71px;
+  top: 151px;
+  right: 70px;
+}
+
+.cards .card.promoter .issue-date,
+.cards .card.student .issue-date {
+  position: absolute;
+  top: 95px;
+  right: 56px;
+  color: black;
+}
+
+.cards .card.promoter .expiry-date,
+.cards .card.student .expiry-date {
+  position: absolute;
+  top: 105.6px;
+  right: 55px;
+}
+
+.cards .card.promoter .local-phone,
+.cards .card.student .local-phone {
+  position: absolute;
+  top: 131.7px;
+  right: 55px;
+}
+
+.cards .card.promoter .fax,
+.cards .card.student .fax {
+  position: absolute;
+  top: 143.7px;
+  right: 31px;
 }
 

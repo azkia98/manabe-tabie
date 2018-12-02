@@ -16,8 +16,8 @@
                 <section class="national-code"> {{ $member->nationalcode }}</section>
                 <section class="fathername">{{ $member->fathername }}</section>
                 <section class="birthdate">{{ verta($member->created_at)->year }}</section>
-                <section class="state">{{{ $member->name }}}</section>
-                <section class="city">{{ $member->name }}</section>
+                <section class="state">{{{ $member->state->name }}}</section>
+                <section class="city">{{ $member->city->name }}</section>
                 <img class="picture" src="{{ asset($member->picture) }}" alt="">
                 <img class="signature" src="/images/signature.png" alt="">
             </div>

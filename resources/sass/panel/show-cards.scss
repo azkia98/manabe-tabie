@@ -59,23 +59,23 @@ html{
       }
       .issue-date{
         position: absolute;
-        top: 95.7px;
-        right: 56px;
+        top: 84.7px;
+        right: 54px;
         color: black;
       }
       .expiry-date{
         position: absolute;
-        top: 105.6px;
+        top: 99.6px;
         right: 55px;
       }
       .local-phone{
         position: absolute;
-        top: 130.7px;
-        right: 57px;
+        top: 126.7px;
+        right: 55px;
       }
       .fax{
         position: absolute;
-        top: 143.7px;
+        top: 139.7px;
         right: 33px;
       }
     }
@@ -98,8 +98,8 @@ html{
     }
     .number-of-register{
       position: absolute;
-      top: 69px + 2px;
-      right: 83px + 10px;
+      top: 70px;
+      right: 87px;
     }
     .birthdate{
       position: absolute;
@@ -119,17 +119,40 @@ html{
     .fathername{
       position: absolute;
       top: 108px + 2px;
-      right: 50px + 10px;
+      right: 50px + 12px;
     }
     .state{
       position: absolute;
       top: 136px + 2px;
-      right: 45px + 10px;
+      right: 45px + 13px;
     }
     .city{
       position: absolute;
-      top: 150px + 2px;
-      right: 61px + 10px;
+      top: 151px;
+      right: 70px;
+    }
+    &.promoter , &.student{
+      .issue-date{
+        position: absolute;
+        top: 95px;
+        right: 56px;
+        color: black;
+      }
+      .expiry-date{
+        position: absolute;
+        top: 105.6px;
+        right: 55px;
+      }
+      .local-phone{
+        position: absolute;
+        top: 131.7px;
+        right: 55px;
+      }
+      .fax{
+        position: absolute;
+        top: 143.7px;
+        right: 31px;
+      }
     }
   }
 }
