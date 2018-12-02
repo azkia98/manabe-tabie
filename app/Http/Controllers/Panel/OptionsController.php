@@ -38,4 +38,16 @@ class OptionsController extends Controller
         alert()->success('تنظیم شما با موفقیت تنظیم گردید');
         return ['msg'=>true];
     }
+
+    /**
+     * save signature picture
+     */
+     public function updateSing(Request $request){
+         $path = $request->file('picture')->store('pictures', 'public');
+         $sigature_option = Option::GVWK('signature');
+         $sigature_option->value = $path;
+         $sigature_option->update();
+         alert()->success('امضاء شما با موفقیت تغییر پیدا کرد');
+         return redirect()->back();
+     }
 }

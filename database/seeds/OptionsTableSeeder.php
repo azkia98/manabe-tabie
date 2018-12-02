@@ -24,8 +24,8 @@ class OptionsTableSeeder extends Seeder
         ],
         [
             'key' => 'signature',
-            'value' => '۳۴۱۶۰۶۳۱',
-            'label' => 'امضاع مدیریت'
+            'value' => 'images/signature.png',
+            'label' => 'امضاء مدیریت'
         ],
         ];
 
