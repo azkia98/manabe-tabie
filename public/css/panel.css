@@ -12815,3 +12815,21 @@ nav .fa.fa-bars {
   padding-top: 0.6rem;
   padding-bottom: 0.6rem;
 }
+
+main {
+  background-image: url("/images/manabe-tabie-logo.png");
+  min-height: calc(100vh - 85px);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+@media (min-width: 768px) {
+  main .login-main-page {
+    margin-top: 10%;
+    opacity: 0.95;
+  }
+  main .login-main-page:hover {
+    opacity: 1;
+  }
+}

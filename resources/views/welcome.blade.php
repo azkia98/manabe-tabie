@@ -76,8 +76,7 @@
                     @auth
                         <a href="{{ route('dashboard') }}">پنل</a>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
-
+                        <a href="{{ route('login') }}">ورود</a>
                         {{--  @if (Route::has('register'))
                             <a href="{{ route('register') }}">Register</a>
                         @endif  --}}

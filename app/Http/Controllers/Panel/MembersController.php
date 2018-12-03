@@ -142,7 +142,7 @@ class MembersController extends Controller
     public function showCards()
     {
         $this->denied('cards');
-        $members = Member::all();
+        $members = Member::with(['state','city'])->get();
         $fax = Option::GVWK('fax');
         $expiryDate = Option::GVWK('expiry-date');
         $localPhone = Option::GVWK('local-phone');

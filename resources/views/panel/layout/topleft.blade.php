@@ -12,6 +12,11 @@
     <span>تعداد همیارها</span>
     <span class="badge badge-light">۹</span>
 </button>  --}}
-<button type="button" class="btn btn-sm btn-danger">
-    <span>خروج</span>
-</button>
+
+<form class="d-inline-block" action="{{ route('logout') }}" method="post">
+    @csrf
+    <button  type="submit" class="btn btn-sm btn-danger">
+        <span>خروج</span>
+    </button>
+
+</form>

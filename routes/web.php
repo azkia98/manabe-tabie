@@ -14,14 +14,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    auth()->loginUsingId(1);
+    
+    // return app()->getLocale();
     return view('welcome');
 });
 
 
 
 
-Route::namespace('Panel')->prefix('panell')->group(function(){
+Route::middleware('auth')->namespace('Panel')->prefix('panell')->group(function(){
     Route::get('/','PanelController@index')->name('dashboard');
     Route::resource('members','MembersController');
     Route::get('/show-cards','MembersController@showCards')->name('cards.index');
