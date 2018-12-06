@@ -20,7 +20,7 @@ Project:
     - change some bugs same as `birth-date field,issue-date field`
     - fix form size  
     x change the way for showing publish date
-    - Add remove ability for roles
+    + Add remove ability for roles
     - Redirect index page to login
     - Add validation for image file
     - Create the sms panel

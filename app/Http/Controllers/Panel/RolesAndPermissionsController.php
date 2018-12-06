@@ -101,9 +101,11 @@ class RolesAndPermissionsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Role $role)
     {
-        //
+        $role->delete();
+        alert()->success('نقش مورد نظر با موفقیت حذف شد!!');
+        return redirect()->back();
     }
 
     public function saveRole(Request $request,Role $role = null) 
