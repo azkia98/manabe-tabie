@@ -1,16 +1,25 @@
 main{
-    background-image: url('/images/manabe-tabie-logo.png');
+    background-image: url('/images/Damavand.JPG');
     min-height: calc(100vh - 85px);
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
-    background-position: center;
+    // background-position: center;
     .login-main-page{
         @include md{
-            margin-top: 10%;
-            opacity: 0.95;
-            &:hover{
-                opacity: 1;
-            }
+            // margin-top: 10%;
+            // opacity: 0.3;
+            // transition: all .5s;
+            // &:hover{
+            //     opacity: 1;
+            // }
+        }
+
+        .card-img-top{
+            height: 250px;
+            width: auto;
+            display: block;
+            margin-right: auto;
+            margin-left: auto;
         }
     }
 }

@@ -12817,19 +12817,16 @@ nav .fa.fa-bars {
 }
 
 main {
-  background-image: url("/images/manabe-tabie-logo.png");
+  background-image: url("/images/Damavand.JPG");
   min-height: calc(100vh - 85px);
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
 }
 
-@media (min-width: 768px) {
-  main .login-main-page {
-    margin-top: 10%;
-    opacity: 0.95;
-  }
-  main .login-main-page:hover {
-    opacity: 1;
-  }
+main .login-main-page .card-img-top {
+  height: 250px;
+  width: auto;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
 }

@@ -17,7 +17,7 @@ Project:
     + create the excel import section
     + add search or filter section for our application
     + create report section for our dashboard `MemberCounts,UserCounts,ProtectorCount,PromoterCount,StudentCount`
-    - change some bugs same as `birth-date field,issue-date field`
+    - change some bugs same fas `birth-date field,issue-date field`
     - fix form size  
     x change the way for showing publish date
     + Add remove ability for roles
