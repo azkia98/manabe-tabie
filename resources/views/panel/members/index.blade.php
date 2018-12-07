@@ -42,10 +42,11 @@
                 <a class="btn btn-primary btn-sm disabled" href="{{ route('members.show',['id'=> $member->id]) }}"><i class="fa fa-info"></i></a>
                 @endcan
                 @can('cards')
-                  <a class="btn btn-success btn-sm" href="{{ route('cards.show',['id'=> $member->id]) }}"><i class="fa fa-id-card"></i></a>
+                  <a class="btn btn-dark btn-sm" href="{{ route('cards.show',['id'=> $member->id]) }}"><i class="fa fa-id-card"></i></a>
                 @else
-                  <a class="btn btn-success btn-sm disabled" href="{{ route('cards.show',['id'=> $member->id]) }}"><i class="fa fa-id-card"></i></a>
+                  <a class="btn btn-dark btn-sm disabled" href="{{ route('cards.show',['id'=> $member->id]) }}"><i class="fa fa-id-card"></i></a>
                 @endcan
+                  <a class="btn btn-success btn-sm" href="{{ route('sms.form.singel',['id'=> $member->id]) }}"><i class="fa fa-comment"></i></a>
               </td>
             </tr>
             

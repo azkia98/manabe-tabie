@@ -180,6 +180,7 @@ return [
         Overtrue\LaravelLang\TranslationServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
+        Kavenegar\Laravel\ServiceProvider::class,
         
 
     ],
@@ -234,6 +235,7 @@ return [
         'Alert' => UxWeb\SweetAlert\SweetAlert::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
+        'Kavenegar' => Kavenegar\Laravel\Facade::class,
     ],
 
 ];

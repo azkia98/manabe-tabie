@@ -35,6 +35,15 @@ Route::middleware('auth')->namespace('Panel')->prefix('panell')->group(function(
     Route::resource('users','UsersController');
     Route::resource('roles','RolesAndPermissionsController');
     Route::get('permissions','RolesAndPermissionsController@showPermissions')->name('permissions.index');
+    Route::prefix('sms')->name('sms.')->group(function (){
+        Route::post('send/singel','SmsController@sendSms')->name('send.singel');
+        Route::get('form/singel/{member}','SmsController@singelForm')->name('form.singel');
+        Route::get('form/multipel','SmsController@showMultipleSendForm')->name('form.multipel');
+        Route::post('form/multipel','SmsController@sendMultipleMessages')->name('send.multipel');
+        Route::get('/','SmsController@index')->name('index');
+        Route::get('/{sms}','SmsController@show')->name('show');
+        Route::delete('/{sms}','SmsController@destroy')->name('destroy');
+    });
 });
 
 

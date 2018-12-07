@@ -9,6 +9,7 @@
         "barryvdh/laravel-ide-helper": "^2.5",
         "fideloper/proxy": "^4.0",
         "hekmatinasser/verta": "^1.9",
+        "kavenegar/laravel": "^1.0",
         "laravel/framework": "5.7.*",
         "laravel/telescope": "^1.0",
         "laravel/tinker": "^1.0",
