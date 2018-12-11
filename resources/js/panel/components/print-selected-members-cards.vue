@@ -1,8 +1,12 @@
 <template>
   <div class="mr-auto" v-show="isMembersExist">
-    <button class="btn btn-warning d-flex justify-content-center align-items-center">
-      <i class="fa fa-print"></i>
-    </button>
+    <form :action="getAction" method="get" class="d-inline-block" id="showSpecificMembersCards">
+        <input type="hidden" name="Ids" v-model="members">
+        
+        <button class="btn btn-warning d-flex justify-content-center align-items-center">
+            <i class="fa fa-print"></i>
+        </button>
+    </form>
   </div>
 </template>
 
@@ -16,6 +20,11 @@ export default {
   },
   mounted() {
     this.checkMembersIsExist();
+    this.takeMembersData();
+    this.$root.$on('show-print-button',() =>{
+        this.checkMembersIsExist();
+        this.takeMembersData();
+    });
   },
   methods: {
     checkMembersIsExist() {
@@ -25,9 +34,17 @@ export default {
       }
 
       this.isMembersExist = true;
-      this.members = JSON.parse(sessionStorage.membersForPrint);
+      
       return true;
+    },
+    takeMembersData(){
+        this.members = JSON.parse(sessionStorage.membersForPrint);
     }
+  },
+  computed:{
+      getAction(){
+          return `${Url}/panell/members/show-specific-members-cards`;
+      }
   }
 };
 </script>

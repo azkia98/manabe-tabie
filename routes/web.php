@@ -23,6 +23,7 @@ Route::get('/', function () {
 
 Route::middleware('auth')->namespace('Panel')->prefix('panell')->group(function(){
     Route::get('/','PanelController@index')->name('dashboard');
+    Route::get('/members/show-specific-members-cards','MembersController@showSpecificMembersCards');
     Route::resource('members','MembersController');
     Route::get('/show-cards','MembersController@showCards')->name('cards.index');
     Route::get('/show-card/{member}','MembersController@showCard')->name('cards.show');

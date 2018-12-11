@@ -211,4 +211,13 @@ class MembersController extends Controller
     }
 
 
+    public function showSpecificMembersCards(Request $request){
+        $IDs = explode(',',$request->Ids);
+        $members = Member::with('city','state')->findMany($IDs);
+        $fax = Option::GVWK('fax');
+        $expiryDate = Option::GVWK('expiry-date');
+        $localPhone = Option::GVWK('local-phone');
+        return view('panel.members.show-cards',compact('members', 'fax', 'expiryDate', 'localPhone'));
+    }
+
 }

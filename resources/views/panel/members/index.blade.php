@@ -11,7 +11,7 @@
     <button type="submit" class="btn btn-primary mb-2 rounded-0 search-button-padding text-center "><i class="fa fa-search"></i></button>
   </form>
   
-  <print-selected-members-cards></print-selected-members-cards>
+  <print-selected-members-cards ></print-selected-members-cards>
   
 </div>
 <form action="{{ route('members.index') }}" method="get">

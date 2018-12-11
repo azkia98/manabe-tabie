@@ -33757,6 +33757,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   methods: {
     saveStorage: function saveStorage() {
       var members = [];
+
       if (this.getMembers()) {
         members = this.getMembers();
         if (members.includes(this.member_id)) {
@@ -33773,7 +33774,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         members = [this.member_id];
         this.saveToSessionStorage(members);
       }
-      // sessionStorage.removeItem('membersForSearch');
+      this.$root.$emit('show-print-button');
     },
     saveToSessionStorage: function saveToSessionStorage(members) {
       sessionStorage.membersForPrint = JSON.stringify(members);
@@ -33924,6 +33925,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -33933,7 +33938,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     };
   },
   mounted: function mounted() {
+    var _this = this;
+
     this.checkMembersIsExist();
+    this.takeMembersData();
+    this.$root.$on('show-print-button', function () {
+      _this.checkMembersIsExist();
+      _this.takeMembersData();
+    });
   },
 
   methods: {
@@ -33944,8 +33956,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       }
 
       this.isMembersExist = true;
-      this.members = JSON.parse(sessionStorage.membersForPrint);
+
       return true;
+    },
+    takeMembersData: function takeMembersData() {
+      this.members = JSON.parse(sessionStorage.membersForPrint);
+    }
+  },
+  computed: {
+    getAction: function getAction() {
+      return Url + '/panell/members/show-specific-members-cards';
     }
   }
 });
@@ -33971,7 +33991,43 @@ var render = function() {
       ],
       staticClass: "mr-auto"
     },
-    [_vm._m(0)]
+    [
+      _c(
+        "form",
+        {
+          staticClass: "d-inline-block",
+          attrs: {
+            action: _vm.getAction,
+            method: "get",
+            id: "showSpecificMembersCards"
+          }
+        },
+        [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.members,
+                expression: "members"
+              }
+            ],
+            attrs: { type: "hidden", name: "Ids" },
+            domProps: { value: _vm.members },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.members = $event.target.value
+              }
+            }
+          }),
+          _vm._v(" "),
+          _vm._m(0)
+        ]
+      )
+    ]
   )
 }
 var staticRenderFns = [

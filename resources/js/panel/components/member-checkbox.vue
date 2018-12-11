@@ -32,6 +32,7 @@ export default {
   methods: {
     saveStorage() {
       let members = [];
+      
       if (this.getMembers()) {
         members = this.getMembers();
         if (members.includes(this.member_id)) {
@@ -48,7 +49,7 @@ export default {
         members = [this.member_id];
         this.saveToSessionStorage(members);
       }
-      // sessionStorage.removeItem('membersForSearch');
+      this.$root.$emit('show-print-button');
     },
     saveToSessionStorage(members) {
       sessionStorage.membersForPrint = JSON.stringify(members);
