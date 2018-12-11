@@ -6,11 +6,13 @@ use App\Http\Controllers\Controller;
 use Kavenegar;
 use App\Member;
 use App\SMS;
+use Illuminate\Support\Facades\Gate;
 
 class SmsController extends Controller
 {
     public function sendSms(Request $request)
     {
+        $this->denied('sms');
         $sender = "10004346";
         $results = Kavenegar::Send(null, convertToEnglish($request->phonenumber), $request->message);
         $this->saveSmsLog($results);
@@ -20,17 +22,20 @@ class SmsController extends Controller
 
     public function singelForm(Member $member)
     {
+        $this->denied('sms');
         return view('panel.sms.singel-form', compact('member'));
     }
 
 
     public function showMultipleSendForm()
     {
+        $this->denied('sms');
         return view('panel.sms.multiple');
     }
 
     public function sendMultipleMessages(Request $request)
     {
+        $this->denied('sms');
         $members = Member::whereIn('typemember', $request->type_member)->get();
         $phonenumbers = "";
         foreach ($members as $member) {
@@ -46,6 +51,7 @@ class SmsController extends Controller
 
     protected function saveSmsLog(array $results) : void
     {
+        $this->denied('sms');
         foreach ($results as $result) {
             SMS::create([
                 'messageid' => $result->messageid,
@@ -58,12 +64,14 @@ class SmsController extends Controller
 
     public function index()
     {
+        $this->denied('sms');
         $smss = SMS::paginate(10);
         return view('panel.sms.index', compact('smss'));
     }
 
     public function show(SMS $sms)
     {
+        $this->denied('sms');
         // return view();
         $status = Kavenegar::Status($sms->messageid)[0];
         $member = Member::select('id','name')->wherePhonenumber($sms->receptor)->firstOrFail();
@@ -72,6 +80,7 @@ class SmsController extends Controller
 
     public function destroy(SMS $sms)
     {
+        $this->denied('sms');
         return $sms;
     }
 }

@@ -11,7 +11,10 @@
     <button type="submit" class="btn btn-primary mb-2 rounded-0 search-button-padding text-center "><i class="fa fa-search"></i></button>
   </form>
   
-  <print-selected-members-cards ></print-selected-members-cards>
+
+  @can('cards')
+    <print-selected-members-cards ></print-selected-members-cards>
+  @endcan
   
 </div>
 <form action="{{ route('members.index') }}" method="get">
@@ -49,8 +52,14 @@
                   @else
                     <a class="btn btn-dark btn-sm disabled" href="{{ route('cards.show',['id'=> $member->id]) }}"><i class="fa fa-id-card"></i></a>
                   @endcan
-                  <a class="btn btn-success btn-sm" href="{{ route('sms.form.singel',['id'=> $member->id]) }}"><i class="fa fa-comment"></i></a>
-                  <member-checkbox member_id="{{ $member->id }}"></member-checkbox>
+                  @can('sms')
+                    <a class="btn btn-success btn-sm" href="{{ route('sms.form.singel',['id'=> $member->id]) }}"><i class="fa fa-comment"></i></a>
+                  @else
+                    <a class="btn btn-success btn-sm disabled" href="{{ route('sms.form.singel',['id'=> $member->id]) }}"><i class="fa fa-comment"></i></a>
+                  @endcan
+                  @can('cards')
+                    <member-checkbox member_id="{{ $member->id }}"></member-checkbox>
+                  @endcan
                 </td>
               </tr>
               
@@ -60,6 +69,6 @@
 </form>
 
   <div class="d-flex justify-content-center mt-3">
-    {{ $members->appends($_GET)->links() }}
+    {{ $members->appends($_GET)->render() }}
   </div>
 @endsection

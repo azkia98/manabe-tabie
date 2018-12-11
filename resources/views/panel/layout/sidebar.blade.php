@@ -54,28 +54,30 @@
                 </div>
             </li>
         @endcan
-        <li class="nav-item">
-            <div class="d-flex align-items-center">
-                <i class="fa fa-hand-paper-o "></i>
-                <a href="#" class="nav-link my-1 text-nowrap w-100 collapsed" data-toggle="collapse" data-target="#permissionAndRoles">
-                    نقش ها و اجازه ها
-                    <i class="fa fa-angle-left float-left"></i>
-                </a>
-            </div>
-            <div class="collapse" id="permissionAndRoles">
-                <ul class="nav px-3">
-                    <li class="nav-item w-100">
-                        <a href="{{ route('roles.index') }}" class="nav-link my-1">مشاهده تمام نقش ها</a>
-                    </li>
-                    <li class="nav-item w-100">
-                        <a href="{{ route('roles.create') }}" class="nav-link my-1">اضافه کردن نقش جدید</a>
-                    </li>
-                    <li class="nav-item w-100">
-                        <a href="{{ route('permissions.index') }}" class="nav-link my-1">مشاهده تمام اجازه ها</a>
-                    </li>
-                </ul>
-            </div>
-        </li>
+        @can('permissions-and-roles')
+            <li class="nav-item">
+                <div class="d-flex align-items-center">
+                    <i class="fa fa-hand-paper-o "></i>
+                    <a href="#" class="nav-link my-1 text-nowrap w-100 collapsed" data-toggle="collapse" data-target="#permissionAndRoles">
+                        نقش ها و اجازه ها
+                        <i class="fa fa-angle-left float-left"></i>
+                    </a>
+                </div>
+                <div class="collapse" id="permissionAndRoles">
+                    <ul class="nav px-3">
+                        <li class="nav-item w-100">
+                            <a href="{{ route('roles.index') }}" class="nav-link my-1">مشاهده تمام نقش ها</a>
+                        </li>
+                        <li class="nav-item w-100">
+                            <a href="{{ route('roles.create') }}" class="nav-link my-1">اضافه کردن نقش جدید</a>
+                        </li>
+                        <li class="nav-item w-100">
+                            <a href="{{ route('permissions.index') }}" class="nav-link my-1">مشاهده تمام اجازه ها</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        @endcan
         @can('excel-export')
             <li class="nav-item">
                 <div class="d-flex align-items-center">
@@ -98,25 +100,28 @@
             </li>
         @endcan
 
-        <li class="nav-item">
-            <div class="d-flex align-items-center">
-                <i class="fa fa-comments"></i>
-                <a href="#" class="nav-link my-1 text-nowrap w-100 collapsed" data-toggle="collapse" data-target="#smsMenu">
-                    پیام ها
-                    <i class="fa fa-angle-left float-left"></i>
-                </a>
-            </div>
-            <div class="collapse" id="smsMenu">
-                <ul class="nav px-3">
-                    <li class="nav-item w-100">
-                        <a href="{{ route('sms.form.multipel') }}" class="nav-link my-1">ارسال گروهی</a>
-                    </li>
-                    <li class="nav-item w-100">
-                        <a href="{{ route('sms.index') }}" class="nav-link my-1">تاریخچه</a>
-                    </li>
-                </ul>
-            </div>
-        </li>
+        @can('sms')
+            <li class="nav-item">
+                <div class="d-flex align-items-center">
+                    <i class="fa fa-comments"></i>
+                    <a href="#" class="nav-link my-1 text-nowrap w-100 collapsed" data-toggle="collapse" data-target="#smsMenu">
+                        پیام ها
+                        <i class="fa fa-angle-left float-left"></i>
+                    </a>
+                </div>
+                <div class="collapse" id="smsMenu">
+                    <ul class="nav px-3">
+                        <li class="nav-item w-100">
+                            <a href="{{ route('sms.form.multipel') }}" class="nav-link my-1">ارسال گروهی</a>
+                        </li>
+                        <li class="nav-item w-100">
+                            <a href="{{ route('sms.index') }}" class="nav-link my-1">تاریخچه</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            
+        @endcan
         
         @can('options')
             <li class="nav-item d-flex align-items-center">

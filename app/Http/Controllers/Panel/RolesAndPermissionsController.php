@@ -9,10 +9,6 @@ use App\Permission;
 
 class RolesAndPermissionsController extends Controller
 {
-
-    public function __construct(){
-        // $this->denied('permissions-and-roles');
-    }
     /**
      * Display a listing of the resource.
      *
@@ -20,6 +16,7 @@ class RolesAndPermissionsController extends Controller
      */
     public function index()
     {
+        $this->denied('permissions-and-roles');
         $roles = Role::all();
         return view('panel.roles.index', compact('roles'));
     }
@@ -31,6 +28,7 @@ class RolesAndPermissionsController extends Controller
      */
     public function create()
     {
+        $this->denied('permissions-and-roles');
         $permissions = Permission::all();
         return view('panel.roles.create', compact('permissions'));
     }
@@ -43,6 +41,7 @@ class RolesAndPermissionsController extends Controller
      */
     public function store(Request $request)
     {
+        $this->denied('permissions-and-roles');
         // return $request->all();
         if (!$this->saveRole($request)) {
             alert()->error('نقش شما با موفقیت ثبت نشد!!');
@@ -71,6 +70,7 @@ class RolesAndPermissionsController extends Controller
      */
     public function edit($id)
     {
+        $this->denied('permissions-and-roles');
         $role = Role::find($id);
         $permissions = Permission::all();
         return view('panel.roles.edit', compact('role', 'permissions'));
@@ -85,6 +85,7 @@ class RolesAndPermissionsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->denied('permissions-and-roles');
         $role = Role::find($id);
         if (!$this->saveRole($request,$role)) {
             alert()->error('نقش شما با موفقیت ثبت نشد!!');
@@ -103,6 +104,7 @@ class RolesAndPermissionsController extends Controller
      */
     public function destroy(Role $role)
     {
+        $this->denied('permissions-and-roles');
         $role->delete();
         alert()->success('نقش مورد نظر با موفقیت حذف شد!!');
         return redirect()->back();
@@ -110,6 +112,7 @@ class RolesAndPermissionsController extends Controller
 
     public function saveRole(Request $request,Role $role = null) 
     {
+        $this->denied('permissions-and-roles');
         if($role == null)
         {
             $role = new Role();
@@ -126,6 +129,7 @@ class RolesAndPermissionsController extends Controller
     }
 
     public function showPermissions(){
+        $this->denied('permissions-and-roles');
         $permissions = Permission::all();
         return view('panel.roles.index-permissions',compact('permissions'));
     }

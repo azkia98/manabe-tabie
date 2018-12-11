@@ -87,6 +87,10 @@ class PermissionsTableSeeder extends Seeder
                 'name' => 'permissions-and-roles',
                 'label' => 'قابلیت مدیریت دسترسی ها'
             ],
+            [
+                'name' => 'sms',
+                'label' => 'قابلیت ارسال و دریافت پیام و دیدن تاریخچه پیام ها'
+            ],
         ];
     }
 
