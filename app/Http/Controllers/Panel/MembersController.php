@@ -22,7 +22,6 @@ class MembersController extends Controller
      */
     public function index(Request $request)
     {
-        auth()->loginUsingId(1);
         $search = $request->search;
         if ($search) {
             $members = Member::with('city')

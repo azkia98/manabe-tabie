@@ -12816,6 +12816,14 @@ nav .fa.fa-bars {
   padding-bottom: 0.6rem;
 }
 
+.custom-checkbox-1::after {
+  top: -13px;
+}
+
+.custom-checkbox-1::before {
+  top: -13px;
+}
+
 main {
   background-image: url("/images/Damavand.JPG");
   min-height: calc(100vh - 85px);

@@ -58,3 +58,13 @@ nav{
     padding-top: 0.6rem;
     padding-bottom: 0.6rem;
 }
+
+
+.custom-checkbox-1{
+    &::after{
+        top: -13px;
+    }
+    &::before{
+        top: -13px;
+    }
+}
