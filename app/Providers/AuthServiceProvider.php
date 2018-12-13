@@ -33,9 +33,7 @@ class AuthServiceProvider extends ServiceProvider
             if($user->isSuperAdmin())
                 return true; 
         });
-
         $this->acl();
-        
     }
 
     protected function getPermissions()
