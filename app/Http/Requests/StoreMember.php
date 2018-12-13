@@ -24,8 +24,8 @@ class StoreMember extends FormRequest
     public function rules()
     {
         $roles= [
-            // 'name' => 'required|string',
-            // 'familyname' => 'required|string',
+            'name' => 'required|string',
+            'familyname' => 'required|string',
             // 'birthdate' => 'required',
             // 'nationalcode' => 'required',
             // 'issuinglocal' => 'required',
@@ -38,11 +38,12 @@ class StoreMember extends FormRequest
             // 'issuingdate' => 'required',
             // 'typemember' => 'required',
         ];
-
+        
+        $roles['picture'] = 'mimes:jpeg,bmp,png';
         // if ($this->method() == 'POST') {
-        //     $roles['picture'] = 'required|mimes:jpeg,bmp,png';
+            // $roles['picture'] = 'required|mimes:jpeg,bmp,png';
         // }elseif($this->method() == 'PATCH'){
-        //     $roles['picture'] = 'mimes:jpeg,bmp,png';
+            // $roles['picture'] = 'mimes:jpeg,bmp,png';
         // }
 
         return $roles;

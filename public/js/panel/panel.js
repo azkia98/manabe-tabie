@@ -11453,8 +11453,8 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(13);
-__webpack_require__(53);
-module.exports = __webpack_require__(54);
+__webpack_require__(56);
+module.exports = __webpack_require__(57);
 
 
 /***/ }),
@@ -11480,7 +11480,7 @@ Vue.component('states-cities', __webpack_require__(23));
 Vue.component('states-cities-edit', __webpack_require__(44));
 Vue.component('edit-option', __webpack_require__(47));
 Vue.component('member-checkbox', __webpack_require__(50));
-Vue.component('print-selected-members-cards', __webpack_require__(83));
+Vue.component('print-selected-members-cards', __webpack_require__(53));
 
 var app = new Vue({
   el: '#main'
@@ -33826,54 +33826,14 @@ if (false) {
 
 /***/ }),
 /* 53 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 54 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 55 */,
-/* 56 */,
-/* 57 */,
-/* 58 */,
-/* 59 */,
-/* 60 */,
-/* 61 */,
-/* 62 */,
-/* 63 */,
-/* 64 */,
-/* 65 */,
-/* 66 */,
-/* 67 */,
-/* 68 */,
-/* 69 */,
-/* 70 */,
-/* 71 */,
-/* 72 */,
-/* 73 */,
-/* 74 */,
-/* 75 */,
-/* 76 */,
-/* 77 */,
-/* 78 */,
-/* 79 */,
-/* 80 */,
-/* 81 */,
-/* 82 */,
-/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(84)
+var __vue_script__ = __webpack_require__(54)
 /* template */
-var __vue_template__ = __webpack_require__(85)
+var __vue_template__ = __webpack_require__(55)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -33912,7 +33872,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 84 */
+/* 54 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -33971,7 +33931,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 85 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -34053,6 +34013,18 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-1f3d255d", module.exports)
   }
 }
+
+/***/ }),
+/* 56 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 57 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

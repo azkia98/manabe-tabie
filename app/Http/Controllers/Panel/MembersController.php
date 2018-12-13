@@ -213,6 +213,7 @@ class MembersController extends Controller
         $member->city_id = $request->city;
         $member->state_id = $request->state;
         $member->village = $request->village;
+        $member->user_id = auth()->user()->id;
         if ($request->file('picture')) {
             $path = $request->file('picture')->store('pictures', 'public');
             $member->picture = 'storage/' . $path;

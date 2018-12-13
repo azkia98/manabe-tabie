@@ -12824,15 +12824,8 @@ nav .fa.fa-bars {
   top: -13px;
 }
 
-main {
-  background-image: url("/images/Damavand.JPG");
-  min-height: calc(100vh - 85px);
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
 main .login-main-page .card-img-top {
-  height: 250px;
+  height: 200px;
   width: auto;
   display: block;
   margin-right: auto;
