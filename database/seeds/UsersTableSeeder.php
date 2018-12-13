@@ -43,17 +43,19 @@ class UsersTableSeeder extends Seeder
         $user = factory(User::class)->create([
             'name' => 'Nosi',
             'familyname' => 'User',
+            'username' => 'nosi',
             'email' => 'Nosi@iran.ir'
         ]);
         $author = factory(User::class)->create([
             'name' => 'Mashhadi',
             'familyname' => 'author',
+            'username' => 'mashhadi',
             'email' => 'Mashhadi@iran.ir'
         ]);
 
         $admin->roles()->attach($role_admin);
-        $user->roles()->attach($role_user);
-        $author->roles()->attach($role_author);
+        $user->roles()->attach($role_admin);
+        $author->roles()->attach($role_admin);
 
 
     }

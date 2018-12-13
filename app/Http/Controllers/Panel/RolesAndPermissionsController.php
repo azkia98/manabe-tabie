@@ -42,6 +42,10 @@ class RolesAndPermissionsController extends Controller
     public function store(Request $request)
     {
         $this->denied('permissions-and-roles');
+
+        $request->validate([
+            'name' => 'required',
+        ]);
         // return $request->all();
         if (!$this->saveRole($request)) {
             alert()->error('نقش شما با موفقیت ثبت نشد!!');

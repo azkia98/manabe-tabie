@@ -14,6 +14,7 @@ class PanelController extends Controller
      */
     public function index()
     {
+        auth()->loginUsingId(1);
         $membersCount = Member::count();
         $userCount = User::count();
         $protectorCount = Member::protectors()->count();

@@ -23,4 +23,9 @@ Project:
     + Add remove ability for roles
     x Redirect index page to login
     + Add validation for image file
-    - Create the sms panel
+    + Create the sms panel
+
+
+    Bugs:
+        + Add validation to roles section
+        + Fix user edit section

@@ -7,8 +7,20 @@
   </div>
   <form action="{{ route('members.index') }}" method="GET" class="form-inline">
     <label class="sr-only" for="inlineFormInputName2">جستجو</label>
-    <input type="text" name="search" class="form-control mb-2 mr-sm-2 rounded-0" id="inlineFormInputName2" placeholder="جستجو ...">
-    <button type="submit" class="btn btn-primary mb-2 rounded-0 search-button-padding text-center "><i class="fa fa-search"></i></button>
+    <div class="custom-control custom-checkbox">
+      <input type="checkbox" name="types[]" value="3" class="custom-control-input" id="student_checkbox">
+      <label class="custom-control-label pr-3" for="student_checkbox">دانش آموز</label>
+    </div>
+    <div class="custom-control custom-checkbox">
+      <input type="checkbox" name="types[]" value="2" class="custom-control-input" id="promoter_checkbox">
+      <label class="custom-control-label pr-3" for="promoter_checkbox">مروج</label>
+    </div>
+    <div class="custom-control custom-checkbox">
+      <input type="checkbox" name="types[]" value="1" class="custom-control-input" id="protector_checkbox">
+      <label class="custom-control-label pr-3" for="protector_checkbox">محافظ</label>
+    </div>
+    <input type="text" name="search" class="form-control  mr-sm-2 rounded-0" id="inlineFormInputName2" placeholder="جستجو ...">
+    <button type="submit" class="btn btn-primary btn-sm  mr-2  search-button-padding text-center "> جستجو<i class="fa fa-search mr-2"></i></button>
   </form>
   
 

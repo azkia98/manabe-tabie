@@ -22,24 +22,41 @@ class MembersController extends Controller
      */
     public function index(Request $request)
     {
+        // auth()->loginUsingId(1);
+
+        // return $request->all();
+
+
         $search = $request->search;
+        $members = Member::with('city');
         if ($search) {
-            $members = Member::with('city')
-                ->where('familyname','like',"%$search%")
-                ->orWhere('name','like',"%$search%")
-                ->orWhere('nationalcode','like',"%$search%")
-                ->orWhere('issuinglocal','like',"%$search%")
-                ->orWhere('identitinumber','like',"%$search%")
-                ->orWhere('fathername','like',"%$search%")
-                ->orWhere('address','like',"%$search%")
-                ->orWhere('phonenumber','like',"%$search%")
-                ->orWhere('job','like',"%$search%")
-                ->orWhere('village','like',"%$search%")->paginate(20);
-        } else {
-            $members = Member::with('city')->paginate(20);
+            $members
+                ->Where('familyname', 'like', "%$search%")
+                ->orWhere('name', 'like', "%$search%")
+                ->orWhere('nationalcode', 'like', "%$search%")
+                ->orWhere('issuinglocal', 'like', "%$search%")
+                ->orWhere('identitinumber', 'like', "%$search%")
+                ->orWhere('fathername', 'like', "%$search%")
+                ->orWhere('address', 'like', "%$search%")
+                ->orWhere('phonenumber', 'like', "%$search%")
+                ->orWhere('job', 'like', "%$search%")
+                ->orWhere('village', 'like', "%$search%");
         }
 
-        $this->denied('members-index');
+        if ($request->types) {
+            // return $request->types;
+            $members->whereIn('typemember', $request->types);
+        }
+
+
+
+        if (!auth()->user()->isSuperAdmin()) {
+            $members->where('user_id', auth()->user()->id);
+        }
+
+        $members = $members->paginate(20);
+
+        // $this->denied('members-index');
         return view('panel.members.index', compact('members'));
     }
 
@@ -94,8 +111,9 @@ class MembersController extends Controller
     {
         $this->denied('members-edit');
         if (Gate::denies('update', $member)) {
-            abort(403, 'این یوزر را شما نساخته اید');
+            abort(403, 'این همیار را شما نساخته اید');
         }
+
         return view('panel.members.edit', compact('member'));
     }
 
@@ -129,6 +147,10 @@ class MembersController extends Controller
     public function destroy(Member $member)
     {
         $this->denied('members-delete');
+        
+        if (Gate::denies('delete', $member))
+            abort('شما نمیتوانید این همیار را پاک کنید!!');
+
         $member->delete();
         alert()->success('حذف شد !', 'همیار شما با موفقیت حذف گردید');
         return redirect()->route('members.index');
@@ -141,7 +163,7 @@ class MembersController extends Controller
     public function showCards()
     {
         $this->denied('cards');
-        $members = Member::with(['state','city'])->get();
+        $members = Member::with(['state', 'city'])->get();
         $fax = Option::GVWK('fax');
         $expiryDate = Option::GVWK('expiry-date');
         $localPhone = Option::GVWK('local-phone');
@@ -211,13 +233,14 @@ class MembersController extends Controller
     }
 
 
-    public function showSpecificMembersCards(Request $request){
-        $IDs = explode(',',$request->Ids);
-        $members = Member::with('city','state')->findMany($IDs);
+    public function showSpecificMembersCards(Request $request)
+    {
+        $IDs = explode(',', $request->Ids);
+        $members = Member::with('city', 'state')->findMany($IDs);
         $fax = Option::GVWK('fax');
         $expiryDate = Option::GVWK('expiry-date');
         $localPhone = Option::GVWK('local-phone');
-        return view('panel.members.show-cards',compact('members'));
+        return view('panel.members.show-cards', compact('members', 'fax', 'expiryDate', 'localPhone'));
     }
 
 }

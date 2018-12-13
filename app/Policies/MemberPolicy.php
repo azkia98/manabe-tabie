@@ -12,7 +12,12 @@ class MemberPolicy
 
     public function update(User $user, Member $member)
     {
-        // return $user->id == $post->id;
+        return $user->owns($member);
+    }
+
+
+    public function delete(User $user, Member $member)
+    {
         return $user->owns($member);
     }
 }

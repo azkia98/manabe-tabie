@@ -84,7 +84,7 @@ class UsersController extends Controller
     {
         $this->denied('users-update');
         $roles = Role::all();
-        return view('panel.users.edit', compact('user','roles'));
+        return view('panel.users.edit', compact('user', 'roles'));
     }
 
     /**
@@ -111,6 +111,7 @@ class UsersController extends Controller
         $user->username = $request->username;
         $user->email = $request->email;
         $user->roles()->sync($request->roles);
+        $user->update();
         alert()->success('اطلاعات کاربر شما با موفقیت تغییر کرد', 'تغییر کرد!');
         return redirect()->back();
     }
@@ -124,6 +125,13 @@ class UsersController extends Controller
     public function destroy(User $user)
     {
         $this->denied('users-delete');
-        return $user;
+        if ($user->isSuperAdmin()) {
+            alert()->error('شما نمیتوانید مدیر ارشد را پاک کند!!');
+            return redirect()->back();
+        }
+
+        $user->delete();
+        alert()->success('کاربر شما با موفقیت حذف شد!!');
+        return redirect()->back();
     }
 }
