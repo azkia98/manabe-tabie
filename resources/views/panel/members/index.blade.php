@@ -19,6 +19,7 @@
       <input type="checkbox" name="types[]" value="1" class="custom-control-input" id="protector_checkbox">
       <label class="custom-control-label pr-3" for="protector_checkbox">محافظ</label>
     </div>
+    <select-box-for-states-cities-search></select-box-for-states-cities-search>
     <input type="text" name="search" class="form-control  mr-sm-2 rounded-0" id="inlineFormInputName2" placeholder="جستجو ...">
     <button type="submit" class="btn btn-primary btn-sm  mr-2  search-button-padding text-center "> جستجو<i class="fa fa-search mr-2"></i></button>
   </form>
@@ -83,4 +84,11 @@
   <div class="d-flex justify-content-center mt-3">
     {{ $members->appends($_GET)->render() }}
   </div>
+@endsection
+
+
+@section('scripts')
+    <script>
+    $('#selectCities').selectpicker();
+    </script>
 @endsection

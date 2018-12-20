@@ -54,10 +54,5 @@ Route::middleware('auth')->namespace('Panel')->prefix('panell')->group(function(
 
 
 
-
-
-
-
-
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

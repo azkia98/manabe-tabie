@@ -18,6 +18,7 @@ Vue.component('states-cities-edit', require('./components/statesAndcitiesEdit.vu
 Vue.component('edit-option', require('./components/EditOption.vue'));
 Vue.component('member-checkbox', require('./components/member-checkbox.vue'));
 Vue.component('print-selected-members-cards', require('./components/print-selected-members-cards.vue'));
+Vue.component('select-box-for-states-cities-search', require('./components/cities-states-search-box.vue'));
 
 const app = new Vue({
     el: '#main'

@@ -12,6 +12,7 @@ use App\User;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Option;
 use Illuminate\Support\Facades\Gate;
+use App\State;
 
 class MembersController extends Controller
 {
@@ -23,8 +24,6 @@ class MembersController extends Controller
     public function index(Request $request)
     {
         // auth()->loginUsingId(1);
-
-        // return $request->all();
 
 
         $search = $request->search;
@@ -46,6 +45,16 @@ class MembersController extends Controller
         if ($request->types) {
             // return $request->types;
             $members->whereIn('typemember', $request->types);
+        }
+
+        if($request->city){
+            $members->whereCity_id((int)$request->city);
+        }
+        
+        // dd((int)$request->state);
+
+        if($request->state){
+            $members->whereState_id((int)$request->state);
         }
 
 
