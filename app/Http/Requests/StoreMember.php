@@ -26,17 +26,17 @@ class StoreMember extends FormRequest
         $roles= [
             'name' => 'required|string',
             'familyname' => 'required|string',
-            // 'birthdate' => 'required',
-            // 'nationalcode' => 'required',
-            // 'issuinglocal' => 'required',
-            // 'identitinumber' => 'required',
-            // 'fathername' => 'required',
-            // 'address' => 'required',
-            // 'phonenumber' => 'required',
-            // 'education' => 'required',
-            // 'job' => 'required',
-            // 'issuingdate' => 'required',
-            // 'typemember' => 'required',
+            'birthdate' => 'required',
+            'nationalcode' => 'required',
+            'issuinglocal' => 'required',
+            'identitinumber' => 'required',
+            'fathername' => 'required',
+            'address' => 'required',
+            'phonenumber' => 'required',
+            'education' => 'required',
+            'job' => 'required',
+            'issuingdate' => 'required',
+            'typemember' => 'required',
         ];
         
         $roles['picture'] = 'mimes:jpeg,bmp,png';

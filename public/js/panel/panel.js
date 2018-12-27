@@ -33903,7 +33903,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     this.checkMembersIsExist();
     this.takeMembersData();
-    this.$root.$on('show-print-button', function () {
+    this.$root.$on("show-print-button", function () {
       _this.checkMembersIsExist();
       _this.takeMembersData();
     });
@@ -33911,7 +33911,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
   methods: {
     checkMembersIsExist: function checkMembersIsExist() {
-      if (!sessionStorage.membersForPrint || sessionStorage.membersForPrint == '[]') {
+      if (!sessionStorage.membersForPrint || sessionStorage.membersForPrint == "[]") {
         this.isMembersExist = false;
         return false;
       }
@@ -33921,12 +33921,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       return true;
     },
     takeMembersData: function takeMembersData() {
-      this.members = JSON.parse(sessionStorage.membersForPrint);
+      if (sessionStorage.membersForPrint) this.members = JSON.parse(sessionStorage.membersForPrint);
     }
   },
   computed: {
     getAction: function getAction() {
-      return Url + '/panell/members/show-specific-members-cards';
+      return Url + "/panell/members/show-specific-members-cards";
     }
   }
 });

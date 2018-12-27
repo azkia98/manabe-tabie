@@ -237,7 +237,7 @@ class MembersController extends Controller
             default:
                 break;
         }
-
+    
 
         return true;
     }

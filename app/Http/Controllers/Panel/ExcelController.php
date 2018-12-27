@@ -40,12 +40,11 @@ class ExcelController extends Controller
             ];
         }
 
-
         Excel::create('users', function ($excel) use ($data) {
             $excel->sheet('Sheet 1', function ($sheet) use ($data) {
                 $sheet->fromArray($data);
             });
-        })->export('xls');
+        })->export('xlsx');
 
         return 'Ok';
     }
