@@ -179,5 +179,6 @@ return [
         'typemember'            => 'نوع همیار',
         'job'                   => 'شغل',
         'picture'               => 'عکس',
+        'state'                 => 'استان'
     ],
 ];
