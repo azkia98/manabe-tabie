@@ -24,6 +24,10 @@ class CreateUsersTable extends Migration
             $table->smallInteger('permission')->default(false);
             $table->string('sign')->nullable();
             $table->boolean('admin')->default(false);
+            $table->unsignedInteger('state_id');
+            $table->unsignedInteger('city_id');
+            $table->string('vilage')->nullable();
+            $table->boolean('administration')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });

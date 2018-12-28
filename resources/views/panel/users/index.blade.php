@@ -9,6 +9,8 @@
         <th scope="col">ایمیل</th>
         <th scope="col">نام کاربری</th>
         <th scope="col">تاریخ ساخته شدن</th>
+        <th scope="col">استان</th>
+        <th scope="col">شهر</th>
         <th scope="col">نقش ها</th>
         <th scope="col">امکانات</th>
       </tr>
@@ -22,6 +24,8 @@
             <td>{{ $user->email }}</td>
             <td>{{ $user->username }}</td>
             <td>{{ convertToPersian(verta($user->created_at)->year) }}</td>
+            <td>{{ $user->state->name }}</td>
+            <td>{{ $user->city->name }}</td>
             <td>
               @foreach ($user->roles as $role)
               <span class="badge badge-success">{{ $role->name }}</span>

@@ -40,6 +40,7 @@
           <th scope="col">نام پدر</th>
           <th scope="col">نوع همیار</th>
           <th scope="col">تحصیلات</th>
+          <th scope="col">ثب شده در</th>
           <th scope="col" class="d-none d-md-table-cell">شهر</th>
           <th scope="col" class="text-center">امکانات</th>
         </tr>
@@ -53,6 +54,7 @@
                 <td>{{ $member->fathername }}</td>
                 <td>{{ $member->typememberPretty }}</td>
                 <td>{{ $member->educationPretty }}</td>
+                <td>{{ $member->stateSubmited->name }}</td>
                 <td class="d-none d-md-table-cell">{{ $member->city->name }}</td>
                 <td class="text-center">
                   @can('members-show')

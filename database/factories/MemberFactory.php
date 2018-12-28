@@ -23,6 +23,7 @@ $factory->define(App\Member::class, function (Faker $faker) {
         'state_id'=> $state->id,
         'city_id'=> $state->cities->random(1)->first()->id,
         'village'=> $faker->word,
-        'user_id'=> rand(1,3)
+        'user_id'=> rand(1,3),
+        'state_submited' => 28
     ];
 });

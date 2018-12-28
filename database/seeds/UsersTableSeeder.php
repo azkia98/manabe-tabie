@@ -44,7 +44,8 @@ class UsersTableSeeder extends Seeder
             'name' => 'Nosi',
             'familyname' => 'User',
             'username' => 'nosi',
-            'email' => 'Nosi@iran.ir'
+            'email' => 'Nosi@iran.ir',
+            'administration' => true
         ]);
         $author = factory(User::class)->create([
             'name' => 'Mashhadi',

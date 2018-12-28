@@ -24,7 +24,7 @@ Project:
     x Redirect index page to login
     + Add validation for image file
     + Create the sms panel
-
+    - درست کردن قسمت کسانی که داخل منابع طبیعی کل استان دارن کار میکنند
 
     Bugs:
         + Add validation to roles section

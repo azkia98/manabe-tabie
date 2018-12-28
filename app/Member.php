@@ -116,4 +116,8 @@ class Member extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function stateSubmited(){
+        return $this->belongsTo(State::class,'state_submited');     
+    }
+
 }

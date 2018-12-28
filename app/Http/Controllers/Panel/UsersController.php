@@ -14,10 +14,10 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index() :object
     {
         $this->denied('users-index');
-        $users = User::paginate(10);
+        $users = User::with(['city','state'])->paginate(10);
         return view('panel.users.index', compact('users'));
     }
 
@@ -47,19 +47,24 @@ class UsersController extends Controller
             'familyname' => 'required',
             'username' => 'required',
             'email' => 'required|unique:users',
+            'state' => 'required',
+            'city' => 'required',
         ]);
+
         $user = new User();
         $user->name = $request->name;
         $user->familyname = $request->familyname;
         $user->username = $request->username;
         $user->username = $request->username;
         $user->email = $request->email;
+        $user->state_id = $request->state;
+        $user->city_id = $request->city;
+        $user->administration = $request->administration ? true: false;
         $user->password = bcrypt($request->password);
         $user->save();
         $user->roles()->attach($request->roles);
         alert()->success('کاربر شما با موفقیت ثبت شد!');
         return redirect()->route('users.index');
-        return $request->all();
     }
 
     /**

@@ -47,20 +47,27 @@ class MembersController extends Controller
             $members->whereIn('typemember', $request->types);
         }
 
-        if($request->city){
+        if ($request->city) {
             $members->whereCity_id((int)$request->city);
         }
         
         // dd((int)$request->state);
 
-        if($request->state){
+        if ($request->state) {
             $members->whereState_id((int)$request->state);
         }
 
 
 
+
         if (!auth()->user()->isSuperAdmin()) {
-            $members->where('user_id', auth()->user()->id);
+            if (auth()->user()->administration) {
+                $members->where('state_submited', auth()->user()->state_id);
+            }else{
+                $members->where('user_id', auth()->user()->id);
+            }
+
+
         }
 
         $members = $members->paginate(20);
@@ -156,7 +163,7 @@ class MembersController extends Controller
     public function destroy(Member $member)
     {
         $this->denied('members-delete');
-        
+
         if (Gate::denies('delete', $member))
             abort('شما نمیتوانید این همیار را پاک کنید!!');
 
@@ -223,6 +230,7 @@ class MembersController extends Controller
         $member->state_id = $request->state;
         $member->village = $request->village;
         $member->user_id = auth()->user()->id;
+        $member->state_submited = auth()->user()->state_id;
         if ($request->file('picture')) {
             $path = $request->file('picture')->store('pictures', 'public');
             $member->picture = 'storage/' . $path;
@@ -237,7 +245,7 @@ class MembersController extends Controller
             default:
                 break;
         }
-    
+
 
         return true;
     }

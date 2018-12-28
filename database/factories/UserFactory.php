@@ -23,6 +23,8 @@ $factory->define(App\User::class, function (Faker $faker) {
         'familyname'=> $faker->lastName,
         'username'=> $faker->userName,
         'permission'=> 2,
-        'sign'=>  'http://placehold.it/120x120&text=sign'
+        'sign'=>  'http://placehold.it/120x120&text=sign',
+        'state_id' => 28,
+        'city_id' => 416
     ];
 });

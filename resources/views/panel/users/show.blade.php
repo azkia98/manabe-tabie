@@ -9,7 +9,8 @@
       <p><span>نام کاربری :</span>{{ $user->username }}</p>
     </div>
     <div class="col-6">
-      <p><span>ادمین :</span>{{ $user->isSuperAdmin() ? 'ادمین  است' : 'ادمین نیست' }}</p>
+      <p><span>سوپر ادمین :</span>{{ $user->isSuperAdmin() ? 'است ' : 'نیست ' }}</p>
+      <p><span>اداره کلی :</span>{{ $user->administration ? 'هست ' : 'نیست ' }}</p>
     </div>
   </div>
   <hr>
