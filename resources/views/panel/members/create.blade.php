@@ -86,7 +86,8 @@
           <div class="form-group row">
             <label for="birthdate" class="col-sm-2 col-form-label">تاریخ تولد</label>
             <div class="col-sm-10">
-              <input type="text" value="{{ old('birthdate') }}" class="form-control" name="birthdate" id="birthdate" placeholder="تاریخ تولد">
+              <input type="text" value="{{ old('birthdate') }}" class="form-control" id="birthdate" placeholder="تاریخ تولد">
+              <input type="hidden" class="observer-birthdate" name="birthdate">
             </div>
           </div>
         </div>
@@ -94,7 +95,8 @@
           <div class="form-group row">
             <label for="issuingdate" class="col-sm-2 col-form-label text-truncate">تاریخ صدور</label>
             <div class="col-sm-10">
-              <input class="form-control" name="issuingdate" id="issuingdate" placeholder="تاریخ صدور">
+              <input class="form-control" id="issuingdate" placeholder="تاریخ صدور">
+              <input type="hidden" class="observer-issuingdate" name="issuingdate">
             </div>
           </div>
         </div>
@@ -143,6 +145,8 @@
         </div>
       </div>
       <button type="submit" class="btn btn-success mt-3">ثبت</button>
+
+
     </form>
 </div>
 
@@ -151,11 +155,22 @@
 @section('scripts')
     <script>
        $(document).ready(function() {
-          $("#birthdate,#issuingdate").pDatepicker({
+          $("#birthdate").persianDatepicker({
             persianDigit: false,
-            formatter: function(unix){
-                return unix / 1000; 
-            } 
+            // formatter: function(unix){
+            //     return unix / 1000; 
+            // },
+            observer: true,
+            format: 'YYYY/MM/DD',
+            altField: '.observer-birthdate'
+            
+          });
+          $("#issuingdate").persianDatepicker({
+            persianDigit: false,
+            observer: true,
+            format: 'YYYY/MM/DD',
+            altField: '.observer-issuingdate'
+            
           });
         });
     </script>

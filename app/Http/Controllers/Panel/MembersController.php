@@ -95,6 +95,8 @@ class MembersController extends Controller
      */
     public function store(StoreMember $request)
     {
+
+
         $this->denied('members-create');
         if (!$this->saveMember($request, 'SAVE', new Member())) {
             alert()->error('فایل شما با موفقیت ذخیره نشد!', 'یه مشکلی به وجود آمده!!!');
@@ -215,7 +217,7 @@ class MembersController extends Controller
 
         $member->name = $request->name;
         $member->familyname = $request->familyname;
-        $member->birthdate = Carbon::now()->timestamp($request->birthdate);
+        $member->birthdate = Carbon::now()->timestamp($request->birthdate / 1000);
         $member->nationalcode = $request->nationalcode;
         $member->issuinglocal = $request->issuinglocal;
         $member->identitinumber = $request->identitinumber;
@@ -224,7 +226,7 @@ class MembersController extends Controller
         $member->phonenumber = $request->phonenumber;
         $member->education = $request->education;
         $member->job = $request->job;
-        $member->issuingdate = Carbon::now()->timestamp($request->issuingdate);
+        $member->issuingdate = Carbon::now()->timestamp($request->issuingdate / 1000);
         $member->typemember = $request->typemember;
         $member->city_id = $request->city;
         $member->state_id = $request->state;
