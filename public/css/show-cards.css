@@ -27,11 +27,11 @@ html {
 }
 
 .cards .card.student {
-  background-image: url("/images/cards/student.png");
+  background-image: url("/images/cards/student-front.jpg");
 }
 
 .cards .card.promoter {
-  background-image: url("/images/cards/promoter.png");
+  background-image: url("/images/cards/promoter-front.jpg");
 }
 
 .cards .card.protector {
@@ -43,50 +43,50 @@ html {
 }
 
 .cards .card.background.student {
-  background-image: url("/images/cards/student-background.png");
+  background-image: url("/images/cards/student-back.jpg");
   color: #e53200;
 }
 
 .cards .card.background.promoter {
-  background-image: url("/images/cards/promoter-background.png");
+  background-image: url("/images/cards/promoter-back.jpg");
   color: #f2572d;
 }
 
 .cards .card.background.protector {
-  background-image: url("/images/cards/protector-background.png");
+  background-image: url("/images/cards/protector-back.jpg");
   color: #356087;
 }
 
 .cards .card.background .issue-date {
   position: absolute;
-  top: 84.7px;
+  top: 96px;
   right: 54px;
   color: black;
 }
 
 .cards .card.background .expiry-date {
   position: absolute;
-  top: 99.6px;
+  top: 107px;
   right: 55px;
 }
 
 .cards .card.background .local-phone {
   position: absolute;
-  top: 126.7px;
+  top: 132px;
   right: 55px;
 }
 
 .cards .card.background .fax {
   position: absolute;
-  top: 139.7px;
+  top: 145px;
   right: 33px;
 }
 
 .cards .card .picture {
   height: 1.6cm;
   position: absolute;
-  top: 6px;
-  left: 20px;
+  top: 15px;
+  left: 18px;
 }
 
 .cards .card .signature {
@@ -144,32 +144,28 @@ html {
   right: 70px;
 }
 
-.cards .card.promoter .issue-date,
 .cards .card.student .issue-date {
   position: absolute;
   top: 95px;
-  right: 56px;
+  right: 59px;
   color: black;
 }
 
-.cards .card.promoter .expiry-date,
 .cards .card.student .expiry-date {
   position: absolute;
   top: 105.6px;
-  right: 55px;
+  right: 60px;
 }
 
-.cards .card.promoter .local-phone,
 .cards .card.student .local-phone {
   position: absolute;
   top: 131.7px;
-  right: 55px;
+  right: 60px;
 }
 
-.cards .card.promoter .fax,
 .cards .card.student .fax {
   position: absolute;
   top: 143.7px;
-  right: 31px;
+  right: 35px;
 }
 

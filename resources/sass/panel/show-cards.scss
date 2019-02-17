@@ -26,10 +26,10 @@ html{
     background-size: 100% 100%;
     background-repeat: no-repeat;
     &.student{
-      background-image: url('/images/cards/student.png') ;
+      background-image: url('/images/cards/student-front.jpg') ;
     }
     &.promoter{
-      background-image: url('/images/cards/promoter.png') ;
+      background-image: url('/images/cards/promoter-front.jpg') ;
     }
     &.protector{
       background-image: url('/images/cards/protector.png') ;
@@ -46,44 +46,44 @@ html{
     // background-color: red;
     &.background{
       &.student{
-        background-image: url('/images/cards/student-background.png');
+        background-image: url('/images/cards/student-back.jpg');
         color: #e53200;
       }
       &.promoter{
-        background-image: url('/images/cards/promoter-background.png');
+        background-image: url('/images/cards/promoter-back.jpg');
         color: #f2572d;
       }
       &.protector{
-        background-image: url('/images/cards/protector-background.png');
+        background-image: url('/images/cards/protector-back.jpg');
         color: #356087;
       }
       .issue-date{
         position: absolute;
-        top: 84.7px;
+        top: 96px;
         right: 54px;
         color: black;
       }
       .expiry-date{
         position: absolute;
-        top: 99.6px;
+        top: 107px;
         right: 55px;
       }
       .local-phone{
         position: absolute;
-        top: 126.7px;
+        top: 132px;
         right: 55px;
       }
       .fax{
         position: absolute;
-        top: 139.7px;
+        top: 145px;
         right: 33px;
       }
     }
     .picture{
       height: 1.6cm;
       position: absolute;
-      top: 6px;
-      left: 20px;
+      top: 15px;
+      left: 18px;
     }
     .signature{
       height: 1cm;
@@ -131,27 +131,27 @@ html{
       top: 151px;
       right: 70px;
     }
-    &.promoter , &.student{
+    &.student{
       .issue-date{
         position: absolute;
         top: 95px;
-        right: 56px;
+        right: 59px;
         color: black;
       }
       .expiry-date{
         position: absolute;
         top: 105.6px;
-        right: 55px;
+        right: 60px;
       }
       .local-phone{
         position: absolute;
         top: 131.7px;
-        right: 55px;
+        right: 60px;
       }
       .fax{
         position: absolute;
         top: 143.7px;
-        right: 31px;
+        right: 35px;
       }
     }
   }
