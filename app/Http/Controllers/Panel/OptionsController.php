@@ -19,7 +19,6 @@ class OptionsController extends Controller
      */
     public function index()
     {
-        auth()->loginUsingId(1);
         $this->denied('options');
         $options = Option::all();
         return view('panel.options.index', compact('options'));
