@@ -1,0 +1,8 @@
+{
+    "platform": "laravel",
+    "project": "manabe",
+    "laravel": {
+        "buildAssets": false
+    },
+    "volume": "/var/www/html/storage"
+}
