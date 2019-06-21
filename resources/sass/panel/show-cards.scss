@@ -10,6 +10,7 @@ html{
 @media print {
     html,
     body {
+      // font-size: 4rem;
         width: 210mm;
         height: 297mm;
     }
@@ -18,13 +19,27 @@ html{
 
 // Cards
 
+$card-width : 9cm;
+$card-height: 6cm;
+$card-right : 110px;
+$card-top : 85px;
+
+$card-back-top : 117px;
+$card-back-right : 59px;
+
 .cards{
   .card{
+    // margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 1px;
     display: inline-block;
-    width: 8.5cm;
-    height: 5cm;
+    width: $card-width;
+    height: $card-height;
     background-size: 100% 100%;
     background-repeat: no-repeat;
+    font-size: 0.55rem;
+    font-weight: 800;
+    
     &.student{
       background-image: url('/images/cards/student-front.jpg') ;
     }
@@ -37,8 +52,6 @@ html{
     &.background{
       background-image: url('/images/cards/background.png') ;
     }
-    font-size: 0.40rem;
-    font-weight: 800;
     
     
     // background-attachment: fixed;
@@ -59,24 +72,24 @@ html{
       }
       .issue-date{
         position: absolute;
-        top: 96px;
-        right: 54px;
+        top: $card-back-top;
+        right: $card-back-right;
         color: black;
       }
       .expiry-date{
         position: absolute;
-        top: 107px;
-        right: 55px;
+        top: $card-back-top+ 11px;
+        right: $card-back-right + 2px;
       }
       .local-phone{
         position: absolute;
-        top: 132px;
-        right: 55px;
+        top: $card-back-top + 4 * 10.6px;
+        right: $card-back-right + 2px;
       }
       .fax{
         position: absolute;
-        top: 145px;
-        right: 33px;
+        top: $card-back-top + 5 * 11.5px;
+        right: $card-back-right - 20px;
       }
     }
     .picture{
@@ -91,67 +104,67 @@ html{
       bottom: 5px;
       left: 42px;
     }
-    .name{
-      position: absolute;
-      top: 81px + 2px;
-      right: 89px + 10px;
-    }
     .number-of-register{
       position: absolute;
-      top: 70px;
-      right: 87px;
+      top: $card-top; 
+      right:  $card-right;
     }
-    .birthdate{
+    .name{
       position: absolute;
-      top: 123px + 2px;
-      right: 61px + 10px;
-    }
-    .familyname{
-      position: absolute;
-      top: 110px + 2px;
-      right: 83px + 10px;
+      top:  $card-top + 16px;
+      right: $card-right;
     }
     .national-code{
       position: absolute;
-      top: 95.5px + 2px;
-      right: 50px + 10px;
+      top: $card-top + 16*2px;
+      right: $card-right;
     }
     .fathername{
       position: absolute;
-      top: 108px + 2px;
-      right: 50px + 12px;
+      top:  $card-top + 16*3px;
+      right: $card-right;
     }
+    .birthdate{
+      position: absolute;
+      top:  $card-top + 16*4px;
+      right:  $card-right;
+    }
+    // .familyname{
+    //   position: absolute;
+    //   top:  $card-top + 16*5px;
+    //   right: $card-right;
+    // }
     .state{
       position: absolute;
-      top: 136px + 2px;
-      right: 45px + 13px;
+      top:  $card-top + 16*5px;
+      right: $card-right;
     }
     .city{
       position: absolute;
-      top: 151px;
-      right: 70px;
+      top: $card-top + 16*6px; 
+      right: $card-right; 
     }
     &.student{
       .issue-date{
         position: absolute;
-        top: 95px;
-        right: 59px;
+        top: $card-back-top;
+        right: $card-back-right + 5px;
         color: black;
       }
       .expiry-date{
         position: absolute;
-        top: 105.6px;
-        right: 60px;
+        top: $card-back-top + 11px;
+        right: $card-back-right + 6px;
       }
       .local-phone{
         position: absolute;
-        top: 131.7px;
-        right: 60px;
+        top: $card-back-top + 3 * 13.5px;
+        right: $card-back-right + 8px;
       }
       .fax{
         position: absolute;
-        top: 143.7px;
-        right: 35px;
+        top: $card-back-top + 4 * 14px;
+        right: $card-back-right - 14px;
       }
     }
   }

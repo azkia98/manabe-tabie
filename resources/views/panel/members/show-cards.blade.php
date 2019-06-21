@@ -12,7 +12,7 @@
             @foreach ($members as $member)
             <div class="card {{ $member->returnTypeValueForClass() }}">
                 <section class="number-of-register">{{ $member->id }}</section>
-                <section class="name">{{ $member->name }}</section>
+                <section class="name">{{ $member->full_name }}</section>
                 <section class="national-code"> {{ $member->nationalcode }}</section>
                 <section class="fathername">{{ $member->fathername }}</section>
                 <section class="birthdate">{{ verta($member->created_at)->year }}</section>

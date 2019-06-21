@@ -16,12 +16,14 @@ html {
 }
 
 .cards .card {
+  margin-bottom: 10px;
+  margin-left: 1px;
   display: inline-block;
-  width: 8.5cm;
-  height: 5cm;
+  width: 9cm;
+  height: 6cm;
   background-size: 100% 100%;
   background-repeat: no-repeat;
-  font-size: 0.40rem;
+  font-size: 0.55rem;
   font-weight: 800;
   position: relative;
 }
@@ -59,27 +61,27 @@ html {
 
 .cards .card.background .issue-date {
   position: absolute;
-  top: 96px;
-  right: 54px;
+  top: 117px;
+  right: 59px;
   color: black;
 }
 
 .cards .card.background .expiry-date {
   position: absolute;
-  top: 107px;
-  right: 55px;
+  top: 128px;
+  right: 61px;
 }
 
 .cards .card.background .local-phone {
   position: absolute;
-  top: 132px;
-  right: 55px;
+  top: 159.4px;
+  right: 61px;
 }
 
 .cards .card.background .fax {
   position: absolute;
-  top: 145px;
-  right: 33px;
+  top: 174.5px;
+  right: 39px;
 }
 
 .cards .card .picture {
@@ -96,76 +98,70 @@ html {
   left: 42px;
 }
 
-.cards .card .name {
-  position: absolute;
-  top: 83px;
-  right: 99px;
-}
-
 .cards .card .number-of-register {
   position: absolute;
-  top: 70px;
-  right: 87px;
+  top: 85px;
+  right: 110px;
 }
 
-.cards .card .birthdate {
+.cards .card .name {
   position: absolute;
-  top: 125px;
-  right: 71px;
-}
-
-.cards .card .familyname {
-  position: absolute;
-  top: 112px;
-  right: 93px;
+  top: 101px;
+  right: 110px;
 }
 
 .cards .card .national-code {
   position: absolute;
-  top: 97.5px;
-  right: 60px;
+  top: 117px;
+  right: 110px;
 }
 
 .cards .card .fathername {
   position: absolute;
-  top: 110px;
-  right: 62px;
+  top: 133px;
+  right: 110px;
+}
+
+.cards .card .birthdate {
+  position: absolute;
+  top: 149px;
+  right: 110px;
 }
 
 .cards .card .state {
   position: absolute;
-  top: 138px;
-  right: 58px;
+  top: 165px;
+  right: 110px;
 }
 
 .cards .card .city {
   position: absolute;
-  top: 151px;
-  right: 70px;
+  top: 181px;
+  right: 110px;
 }
 
 .cards .card.student .issue-date {
   position: absolute;
-  top: 95px;
-  right: 59px;
+  top: 117px;
+  right: 64px;
   color: black;
 }
 
 .cards .card.student .expiry-date {
   position: absolute;
-  top: 105.6px;
-  right: 60px;
+  top: 128px;
+  right: 65px;
 }
 
 .cards .card.student .local-phone {
   position: absolute;
-  top: 131.7px;
-  right: 60px;
+  top: 157.5px;
+  right: 67px;
 }
 
 .cards .card.student .fax {
   position: absolute;
-  top: 143.7px;
-  right: 35px;
+  top: 173px;
+  right: 45px;
 }
 
