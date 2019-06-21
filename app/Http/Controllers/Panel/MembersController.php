@@ -70,7 +70,7 @@ class MembersController extends Controller
 
         }
 
-        $members = $members->paginate(20);
+        $members = $members->orderByDesc('created_at')->paginate(20);
 
         // $this->denied('members-index');
         return view('panel.members.index', compact('members'));

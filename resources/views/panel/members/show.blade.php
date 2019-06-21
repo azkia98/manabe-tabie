@@ -31,6 +31,7 @@
       <p><span>شماره شناسنامه :</span>{{ $member->identitinumber }}</p>
       <p><span>تاریخ تولد :</span>{{ verta($member->birthdate)->format('%B %d، %Y') }}</p>
       <p><span>تاریخ صدور :</span>{{ verta($member->issuingdate)->format('%B %d، %Y') }}</p>
+      <p><span>تاریخ اضافه شدن به دیتابیس:</span> {{ verta($member->created_at)->format('%B %d، %Y') }}</p>
     </div>
   </div>
   <hr>
