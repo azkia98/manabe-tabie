@@ -57,7 +57,7 @@ class OptionsController extends Controller
 
         $path = $request->file('picture')->store('pictures', 'public');
         $sigature_option = Option::GVWK('signature');
-        $sigature_option->value = $path;
+        $sigature_option->value = 'storage/'.$path;
         $sigature_option->update();
         alert()->success('امضاء شما با موفقیت تغییر پیدا کرد');
         return redirect()->back();

@@ -19,7 +19,7 @@
                 <section class="state">{{{ $member->state->name }}}</section>
                 <section class="city">{{ $member->city->name }}</section>
                 <img class="picture" src="{{ asset($member->picture) }}" alt="">
-                <img class="signature" src="/images/signature.png" alt="">
+                <img class="signature" src="{{ asset($signature->value) }}" alt="">
             </div>
             <div class="card background {{ $member->returnTypeValueForClass() }}">
                     <section class="issue-date">۱۳۹۷</section>

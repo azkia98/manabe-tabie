@@ -185,7 +185,9 @@ class MembersController extends Controller
         $fax = Option::GVWK('fax');
         $expiryDate = Option::GVWK('expiry-date');
         $localPhone = Option::GVWK('local-phone');
-        return view('panel.members.show-cards', compact('members', 'fax', 'expiryDate', 'localPhone'));
+        $signature = Option::GVWK('signature');
+
+        return view('panel.members.show-cards', compact('members', 'fax', 'expiryDate', 'localPhone','signature'));
     }
 
     /**
@@ -199,7 +201,9 @@ class MembersController extends Controller
         $fax = Option::GVWK('fax');
         $expiryDate = Option::GVWK('expiry-date');
         $localPhone = Option::GVWK('local-phone');
-        return view('panel.members.show-card', compact('member', 'fax', 'expiryDate', 'localPhone'));
+        $signature = Option::GVWK('signature');
+
+        return view('panel.members.show-card', compact('member', 'fax', 'expiryDate', 'localPhone','signature'));
     }
 
 
