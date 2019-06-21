@@ -92,9 +92,12 @@
                         <li class="nav-item w-100">
                             <a href="{{ route('excel.all') }}" class="nav-link my-1">خروجی</a>
                         </li>
-                            <li class="nav-item w-100">
-                                <a href="{{ route('excel.import') }}" class="nav-link my-1">وارد کردن</a>
-                            </li>
+                        <li class="nav-item w-100">
+                            <a href="{{ route('excel.export.montly') }}" class="nav-link my-1">خروجی ماهیانه</a>
+                        </li>
+                        <li class="nav-item w-100">
+                            <a href="{{ route('excel.import') }}" class="nav-link my-1">وارد کردن</a>
+                        </li>
                     </ul>
                 </div>
             </li>

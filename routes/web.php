@@ -28,6 +28,7 @@ Route::middleware('auth')->namespace('Panel')->prefix('panell')->group(function(
     Route::get('/show-cards','MembersController@showCards')->name('cards.index');
     Route::get('/show-card/{member}','MembersController@showCard')->name('cards.show');
     Route::get('/excel','ExcelController@showMembersInExcel')->name('excel.all');
+    Route::get('/excel/export/monthly','ExcelController@monthlyExporttMembersFromExcel')->name('excel.export.montly');
     Route::get('/excel/import','ExcelController@importMembersFromExcelForm')->name('excel.import');
     Route::post('/excel/import','ExcelController@importMembersFromExcel')->name('excel.import.store');
     Route::put('/options/signature','OptionsController@updateSing')->name('options.update.signature');

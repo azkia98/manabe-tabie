@@ -58,17 +58,17 @@
                 <td class="d-none d-md-table-cell">{{ $member->city->name }}</td>
                 <td class="text-center">
                   @can('members-show')
-                  <a class="btn btn-primary btn-sm" href="{{ route('members.show',['id'=> $member->id]) }}"><i class="fa fa-info"></i></a>
+                  <a class="btn btn-primary btn-sm" href="{{ route('members.show',['id'=> $member->id]) }}" data-toggle="tooltip" data-placement="top" title="نشان دادن مشخصات کاربر"><i class="fa fa-info"></i></a>
                   @else
                   <a class="btn btn-primary btn-sm disabled" href="{{ route('members.show',['id'=> $member->id]) }}"><i class="fa fa-info"></i></a>
                   @endcan
                   @can('cards')
-                    <a class="btn btn-dark btn-sm" href="{{ route('cards.show',['id'=> $member->id]) }}"><i class="fa fa-id-card"></i></a>
+                    <a class="btn btn-dark btn-sm" href="{{ route('cards.show',['id'=> $member->id]) }}" data-toggle="tooltip" data-placement="top" title="چاپ کارت همیار"><i class="fa fa-id-card"></i></a>
                   @else
                     <a class="btn btn-dark btn-sm disabled" href="{{ route('cards.show',['id'=> $member->id]) }}"><i class="fa fa-id-card"></i></a>
                   @endcan
                   @can('sms')
-                    <a class="btn btn-success btn-sm" href="{{ route('sms.form.singel',['id'=> $member->id]) }}"><i class="fa fa-comment"></i></a>
+                    <a class="btn btn-success btn-sm" href="{{ route('sms.form.singel',['id'=> $member->id]) }}" data-toggle="tooltip" data-placement="top" title="ارسال پیامک به کاربر مورد نظر"><i class="fa fa-comment"></i></a>
                   @else
                     <a class="btn btn-success btn-sm disabled" href="{{ route('sms.form.singel',['id'=> $member->id]) }}"><i class="fa fa-comment"></i></a>
                   @endcan

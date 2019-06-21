@@ -13,12 +13,41 @@ use App\City;
 
 class ExcelController extends Controller
 {
+
+    /**
+     * گرفتن تمام کاربران داخل یک فایل excel
+     *
+     * @return void
+     */
     public function showMembersInExcel()
     {
         $this->denied('excel-export');
         $members = Member::all();
-        $data = [];
 
+        $this->getExcel($members);
+        return 'Ok';
+    }
+
+
+    /**
+     * گرفتن خروجی ماهیانه
+     *
+     * @return void
+     */
+    public function monthlyExporttMembersFromExcel()
+    {
+        $this->denied('excel-export');
+
+        $members = Member::where('created_at','>=',now()->subMonth(1))->get();
+
+        $this->getExcel($members);
+
+        return 'Ok';
+    }
+
+    
+    public function getExcel($members){
+        $data = [];
         foreach ($members as $member) {
             $data[] = [
                 'نام و نام خانوادگی' => $member->full_name,
@@ -44,10 +73,10 @@ class ExcelController extends Controller
             $excel->sheet('Sheet 1', function ($sheet) use ($data) {
                 $sheet->fromArray($data);
             });
-        })->export('xlsx');
-
-        return 'Ok';
+        })->export('xlsx');       
     }
+
+
 
     public function importMembersFromExcelForm()
     {
@@ -60,43 +89,43 @@ class ExcelController extends Controller
         $this->denied('excel-import');
         // return $request->all();
         // $path = $request->file('excel')->store('excels');
-        Excel::load($request->file('excel'), function ($reader){
+        Excel::load($request->file('excel'), function ($reader) {
             // [
-                // "nam_o_nam_khanoadgi" => "افرنگ بحرینی"
-                // "tarikh_told" => "۱۳۹۷"
-                // "shmarh_shasnamh" => "۴۰۵۴۷۸۴"
-                // "mhl_sdor" => "اراک"
-                // "kdmli" => "۰۵۲۱۶۵۷۸۴۳"
-                // "nam_pdr" => "یزدگرد"
-                // "astan" => "خراسان رضوي"
-                // "shhrstan" => "كاشمر"
-                // "rosta" => "inventore"
-                // "shmarh_tmas" => "۰۹۳۸۳۹۰۴۹۸۷"
-                // "sth_thsilat" => "لیسانس"
-                // "shghl" => "بیکار"
-                // "dansh_aamozi" => null
-                // "mroj" => null
-                // "mhafth" => "✔"
-                // "sal_sdor" => "۱۳۷۱"
-                // ]
-                //  reader methods
-                $rows = $reader->all();
-                // dd();   
+            // "nam_o_nam_khanoadgi" => "افرنگ بحرینی"
+            // "tarikh_told" => "۱۳۹۷"
+            // "shmarh_shasnamh" => "۴۰۵۴۷۸۴"
+            // "mhl_sdor" => "اراک"
+            // "kdmli" => "۰۵۲۱۶۵۷۸۴۳"
+            // "nam_pdr" => "یزدگرد"
+            // "astan" => "خراسان رضوي"
+            // "shhrstan" => "كاشمر"
+            // "rosta" => "inventore"
+            // "shmarh_tmas" => "۰۹۳۸۳۹۰۴۹۸۷"
+            // "sth_thsilat" => "لیسانس"
+            // "shghl" => "بیکار"
+            // "dansh_aamozi" => null
+            // "mroj" => null
+            // "mhafth" => "✔"
+            // "sal_sdor" => "۱۳۷۱"
+            // ]
+            //  reader methods
+            $rows = $reader->all();
+            // dd();   
             $datas = [];
             $index = 0;
             foreach ($rows as $row) {
-                $nameAndFamily = explode(' ',trim($row->nam_o_nam_khanoadgi));
+                $nameAndFamily = explode(' ', trim($row->nam_o_nam_khanoadgi));
                 $state_id = $this->findStateWithName($row->astan);
                 $city_id = $this->findCityWithName($row->shhrstan);
                 // dd($city_id);
                 // dd($this->persianDateToEnglishDate($row->shhrstan));a
-                $typeMember = $this->detectTypeNumber($row->mhafth,$row->dansh_aamozi,$row->mroj);
-                $datas [$index] = [
+                $typeMember = $this->detectTypeNumber($row->mhafth, $row->dansh_aamozi, $row->mroj);
+                $datas[$index] = [
                     'name' => $nameAndFamily[0],
                     'familyname' => $nameAndFamily[1],
                     'birthdate' => $this->persianDateToEnglishDate($row->tarikh_told),
                     'identitinumber' => $row->shmarh_shasnamh,
-                    'nationalcode'=> $row->kdmli,
+                    'nationalcode' => $row->kdmli,
                     'fathername' => $row->nam_pdr,
                     'state_id' => $state_id,
                     'city_id' => $city_id,
@@ -105,39 +134,43 @@ class ExcelController extends Controller
                     'education' => 2,
                     'job' => $row->shghl,
                     'typemember' => $typeMember,
-                    'issuingdate'=> $this->persianDateToEnglishDate($row->sal_sdor),
+                    'issuingdate' => $this->persianDateToEnglishDate($row->sal_sdor),
                     'created_at' => now(),
                     'updated_at' => now()
                 ];
                 $datas[$index]['issuinglocal'] = $row->mhl_sdor;
                 $index++;
             }
-            Member::insert($datas); 
+            Member::insert($datas);
         });
         alert()->success('همیار های شما با موفقیت ثبت شدن');
         return redirect()->route('members.index');
     }
 
-    public function persianDateToEnglishDate($stringDate){
-        $dateInArray = Verta::getGregorian((int) convertToEnglish($stringDate),1,1);
-        return Carbon::createFromDate($dateInArray[0],1,1);
+    public function persianDateToEnglishDate($stringDate)
+    {
+        $dateInArray = Verta::getGregorian((int)convertToEnglish($stringDate), 1, 1);
+        return Carbon::createFromDate($dateInArray[0], 1, 1);
     }
 
-    public function findStateWithName($stateName) :int{
+    public function findStateWithName($stateName): int
+    {
         $state = State::whereName($stateName)->first();
-        
+
         return is_null($state) ? 1 : $state->id;
     }
-    public function findCityWithName($cityName) :int{
+    public function findCityWithName($cityName): int
+    {
         $city = City::whereName($cityName)->first();
         return is_null($city) ? 1 : $city->id;
     }
 
     // "dansh_aamozi" => null
-            // "mroj" => null
-            // "mhafth" => "✔"
+    // "mroj" => null
+    // "mhafth" => "✔"
 
-    public function detectTypeNumber($protector,$student,$promoter){
+    public function detectTypeNumber($protector, $student, $promoter)
+    {
         if ($protector != null) {
             return 1;
         }
